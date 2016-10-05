@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5B3C67211D89A6D300AFCABA"
-               BuildableName = "Liquid.app"
-               BlueprintName = "Liquid"
-               ReferencedContainer = "container:Liquid.xcodeproj">
+               BuildableName = "Glowing Spheres.app"
+               BlueprintName = "Glowing Spheres"
+               ReferencedContainer = "container:Glowing Spheres.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5B3C67211D89A6D300AFCABA"
-            BuildableName = "Liquid.app"
-            BlueprintName = "Liquid"
-            ReferencedContainer = "container:Liquid.xcodeproj">
+            BuildableName = "Glowing Spheres.app"
+            BlueprintName = "Glowing Spheres"
+            ReferencedContainer = "container:Glowing Spheres.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5B3C67211D89A6D300AFCABA"
-            BuildableName = "Liquid.app"
-            BlueprintName = "Liquid"
-            ReferencedContainer = "container:Liquid.xcodeproj">
+            BuildableName = "Glowing Spheres.app"
+            BlueprintName = "Glowing Spheres"
+            ReferencedContainer = "container:Glowing Spheres.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5B3C67211D89A6D300AFCABA"
-            BuildableName = "Liquid.app"
-            BlueprintName = "Liquid"
-            ReferencedContainer = "container:Liquid.xcodeproj">
+            BuildableName = "Glowing Spheres.app"
+            BlueprintName = "Glowing Spheres"
+            ReferencedContainer = "container:Glowing Spheres.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

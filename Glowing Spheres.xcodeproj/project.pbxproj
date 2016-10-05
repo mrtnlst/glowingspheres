@@ -7,27 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B026E111D9EABA50066CB0C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B026E101D9EABA50066CB0C /* Extension.swift */; };
+		5B1C7ED31D8BFF7500E7A88C /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C7ED21D8BFF7500E7A88C /* Array2D.swift */; };
+		5B1C7ED51D8C019100E7A88C /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C7ED41D8C019100E7A88C /* Field.swift */; };
+		5B2F89921D9A9DAF00DEB367 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F89911D9A9DAF00DEB367 /* MenuScene.swift */; };
+		5B2F89941D9AA81400DEB367 /* SettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F89931D9AA81400DEB367 /* SettingsScene.swift */; };
+		5B3AD6D41D9C76E800E3F709 /* AboutScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3AD6D31D9C76E800E3F709 /* AboutScene.swift */; };
 		5B3C67261D89A6D300AFCABA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C67251D89A6D300AFCABA /* AppDelegate.swift */; };
-		5B3C67281D89A6D300AFCABA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C67271D89A6D300AFCABA /* GameScene.sks */; };
-		5B3C672A1D89A6D300AFCABA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C67291D89A6D300AFCABA /* Actions.sks */; };
 		5B3C672C1D89A6D300AFCABA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C672B1D89A6D300AFCABA /* GameScene.swift */; };
 		5B3C672E1D89A6D300AFCABA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C672D1D89A6D300AFCABA /* GameViewController.swift */; };
 		5B3C67311D89A6D300AFCABA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C672F1D89A6D300AFCABA /* Main.storyboard */; };
 		5B3C67331D89A6D300AFCABA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C67321D89A6D300AFCABA /* Assets.xcassets */; };
 		5B3C67361D89A6D300AFCABA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C67341D89A6D300AFCABA /* LaunchScreen.storyboard */; };
+		5B9AFFEE1D97C62B00A227FD /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9AFFED1D97C62B00A227FD /* Object.swift */; };
+		5BFD6D7A1D92C1CD0023F551 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6D791D92C1CD0023F551 /* Match.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5B3C67221D89A6D300AFCABA /* Liquid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Liquid.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B026E101D9EABA50066CB0C /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		5B1C7ED21D8BFF7500E7A88C /* Array2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
+		5B1C7ED41D8C019100E7A88C /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		5B2F89911D9A9DAF00DEB367 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		5B2F89931D9AA81400DEB367 /* SettingsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsScene.swift; sourceTree = "<group>"; };
+		5B3AD6D31D9C76E800E3F709 /* AboutScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutScene.swift; sourceTree = "<group>"; };
+		5B3C67221D89A6D300AFCABA /* Glowing Spheres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Glowing Spheres.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B3C67251D89A6D300AFCABA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5B3C67271D89A6D300AFCABA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		5B3C67291D89A6D300AFCABA /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		5B3C672B1D89A6D300AFCABA /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		5B3C672D1D89A6D300AFCABA /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		5B3C67301D89A6D300AFCABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B3C67321D89A6D300AFCABA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B3C67351D89A6D300AFCABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B3C67371D89A6D300AFCABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B9AFFED1D97C62B00A227FD /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
+		5BFD6D791D92C1CD0023F551 /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +56,7 @@
 		5B3C67191D89A6D300AFCABA = {
 			isa = PBXGroup;
 			children = (
-				5B3C67241D89A6D300AFCABA /* Liquid */,
+				5B3C67241D89A6D300AFCABA /* Glowing Spheres */,
 				5B3C67231D89A6D300AFCABA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,33 +64,39 @@
 		5B3C67231D89A6D300AFCABA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5B3C67221D89A6D300AFCABA /* Liquid.app */,
+				5B3C67221D89A6D300AFCABA /* Glowing Spheres.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5B3C67241D89A6D300AFCABA /* Liquid */ = {
+		5B3C67241D89A6D300AFCABA /* Glowing Spheres */ = {
 			isa = PBXGroup;
 			children = (
 				5B3C67251D89A6D300AFCABA /* AppDelegate.swift */,
-				5B3C67271D89A6D300AFCABA /* GameScene.sks */,
-				5B3C67291D89A6D300AFCABA /* Actions.sks */,
 				5B3C672B1D89A6D300AFCABA /* GameScene.swift */,
+				5BFD6D791D92C1CD0023F551 /* Match.swift */,
+				5B9AFFED1D97C62B00A227FD /* Object.swift */,
+				5B1C7ED41D8C019100E7A88C /* Field.swift */,
+				5B1C7ED21D8BFF7500E7A88C /* Array2D.swift */,
 				5B3C672D1D89A6D300AFCABA /* GameViewController.swift */,
+				5B2F89911D9A9DAF00DEB367 /* MenuScene.swift */,
+				5B026E101D9EABA50066CB0C /* Extension.swift */,
+				5B2F89931D9AA81400DEB367 /* SettingsScene.swift */,
 				5B3C672F1D89A6D300AFCABA /* Main.storyboard */,
+				5B3AD6D31D9C76E800E3F709 /* AboutScene.swift */,
 				5B3C67321D89A6D300AFCABA /* Assets.xcassets */,
 				5B3C67341D89A6D300AFCABA /* LaunchScreen.storyboard */,
 				5B3C67371D89A6D300AFCABA /* Info.plist */,
 			);
-			path = Liquid;
+			path = "Glowing Spheres";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5B3C67211D89A6D300AFCABA /* Liquid */ = {
+		5B3C67211D89A6D300AFCABA /* Glowing Spheres */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5B3C673A1D89A6D300AFCABA /* Build configuration list for PBXNativeTarget "Liquid" */;
+			buildConfigurationList = 5B3C673A1D89A6D300AFCABA /* Build configuration list for PBXNativeTarget "Glowing Spheres" */;
 			buildPhases = (
 				5B3C671E1D89A6D300AFCABA /* Sources */,
 				5B3C671F1D89A6D300AFCABA /* Frameworks */,
@@ -88,9 +106,9 @@
 			);
 			dependencies = (
 			);
-			name = Liquid;
+			name = "Glowing Spheres";
 			productName = Liquid;
-			productReference = 5B3C67221D89A6D300AFCABA /* Liquid.app */;
+			productReference = 5B3C67221D89A6D300AFCABA /* Glowing Spheres.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -105,11 +123,12 @@
 				TargetAttributes = {
 					5B3C67211D89A6D300AFCABA = {
 						CreatedOnToolsVersion = 8.0;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 4853CED358;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
-			buildConfigurationList = 5B3C671D1D89A6D300AFCABA /* Build configuration list for PBXProject "Liquid" */;
+			buildConfigurationList = 5B3C671D1D89A6D300AFCABA /* Build configuration list for PBXProject "Glowing Spheres" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -122,7 +141,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5B3C67211D89A6D300AFCABA /* Liquid */,
+				5B3C67211D89A6D300AFCABA /* Glowing Spheres */,
 			);
 		};
 /* End PBXProject section */
@@ -133,10 +152,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B3C67311D89A6D300AFCABA /* Main.storyboard in Resources */,
-				5B3C67281D89A6D300AFCABA /* GameScene.sks in Resources */,
 				5B3C67331D89A6D300AFCABA /* Assets.xcassets in Resources */,
 				5B3C67361D89A6D300AFCABA /* LaunchScreen.storyboard in Resources */,
-				5B3C672A1D89A6D300AFCABA /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +166,15 @@
 			files = (
 				5B3C672C1D89A6D300AFCABA /* GameScene.swift in Sources */,
 				5B3C672E1D89A6D300AFCABA /* GameViewController.swift in Sources */,
+				5B3AD6D41D9C76E800E3F709 /* AboutScene.swift in Sources */,
+				5B1C7ED51D8C019100E7A88C /* Field.swift in Sources */,
+				5B026E111D9EABA50066CB0C /* Extension.swift in Sources */,
 				5B3C67261D89A6D300AFCABA /* AppDelegate.swift in Sources */,
+				5B1C7ED31D8BFF7500E7A88C /* Array2D.swift in Sources */,
+				5B2F89921D9A9DAF00DEB367 /* MenuScene.swift in Sources */,
+				5B2F89941D9AA81400DEB367 /* SettingsScene.swift in Sources */,
+				5B9AFFEE1D97C62B00A227FD /* Object.swift in Sources */,
+				5BFD6D7A1D92C1CD0023F551 /* Match.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,7 +221,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -245,7 +271,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -270,10 +297,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Liquid/Info.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Martin List (7P8BY8528R)";
+				DEVELOPMENT_TEAM = 4853CED358;
+				INFOPLIST_FILE = "$(SRCROOT)/Glowing Spheres/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.Liquid;
+				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.glowingspheres;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "cb389f6a-fb98-4f43-ad48-0df7b40ba816";
+				PROVISIONING_PROFILE_SPECIFIER = GlowingSpheresDevelopment;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -282,10 +314,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Liquid/Info.plist;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Martin List (4853CED358)";
+				DEVELOPMENT_TEAM = 4853CED358;
+				INFOPLIST_FILE = "$(SRCROOT)/Glowing Spheres/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.Liquid;
+				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.glowingspheres;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "82e22705-8059-4626-8f51-778ff378583f";
+				PROVISIONING_PROFILE_SPECIFIER = GlowingSpheresDistribution;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -293,7 +330,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5B3C671D1D89A6D300AFCABA /* Build configuration list for PBXProject "Liquid" */ = {
+		5B3C671D1D89A6D300AFCABA /* Build configuration list for PBXProject "Glowing Spheres" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5B3C67381D89A6D300AFCABA /* Debug */,
@@ -302,13 +339,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5B3C673A1D89A6D300AFCABA /* Build configuration list for PBXNativeTarget "Liquid" */ = {
+		5B3C673A1D89A6D300AFCABA /* Build configuration list for PBXNativeTarget "Glowing Spheres" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5B3C673B1D89A6D300AFCABA /* Debug */,
 				5B3C673C1D89A6D300AFCABA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
