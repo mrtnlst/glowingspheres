@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hGi-f9-ckA">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Menu Scene View Controller-->
+        <scene sceneID="B4f-Ma-CdA">
+            <objects>
+                <viewController title="MenuScene.swift" id="hGi-f9-ckA" userLabel="Menu Scene View Controller" customClass="MenuScene" customModule="Glowing_Spheres" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="muA-Z1-8jo"/>
+                        <viewControllerLayoutGuide type="bottom" id="ckR-rj-jeU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PhI-w9-hlG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Y8j-r4-NjS">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YL2-H3-FHx">
+                                        <state key="normal" image="Play"/>
+                                        <connections>
+                                            <action selector="playButtonPressed:" destination="hGi-f9-ckA" eventType="touchUpInside" id="X14-Q9-rEN"/>
+                                            <segue destination="BV1-FR-VrT" kind="presentation" modalTransitionStyle="crossDissolve" id="eu3-hS-oqD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5N-ig-8mY">
+                                        <state key="normal" image="Settings"/>
+                                        <connections>
+                                            <segue destination="1la-hR-lFB" kind="presentation" modalTransitionStyle="crossDissolve" id="Fa3-sR-qgx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unE-0X-GlA">
+                                        <state key="normal" image="About"/>
+                                        <connections>
+                                            <segue destination="NMC-W4-SMu" kind="presentation" modalTransitionStyle="crossDissolve" id="KPG-Xe-vYq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="EbS-d3-iy7"/>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EbS-d3-iy7" firstAttribute="top" secondItem="muA-Z1-8jo" secondAttribute="bottom" constant="70" id="3HC-Td-5nY"/>
+                            <constraint firstItem="EbS-d3-iy7" firstAttribute="leading" secondItem="PhI-w9-hlG" secondAttribute="leading" id="EcR-sB-jFR"/>
+                            <constraint firstItem="Y8j-r4-NjS" firstAttribute="centerX" secondItem="PhI-w9-hlG" secondAttribute="centerX" id="Zde-f6-toJ"/>
+                            <constraint firstAttribute="trailing" secondItem="EbS-d3-iy7" secondAttribute="trailing" id="kDg-fQ-Lnn"/>
+                            <constraint firstItem="Y8j-r4-NjS" firstAttribute="centerY" secondItem="PhI-w9-hlG" secondAttribute="centerY" constant="60" id="w1B-7s-B5L"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="aboutButton" destination="unE-0X-GlA" id="Dkz-MI-DM0"/>
+                        <outlet property="logoImageView" destination="EbS-d3-iy7" id="cIM-qu-TOs"/>
+                        <outlet property="playButton" destination="YL2-H3-FHx" id="uSl-90-5V4"/>
+                        <outlet property="settingsButton" destination="z5N-ig-8mY" id="10n-Qh-ac7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n6v-3S-Yxu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="802.5" y="190.14084507042253"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Glowing_Spheres" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8aa-yV-Osq"/>
+                        <viewControllerLayoutGuide type="bottom" id="qHh-Mt-9TT"/>
+                    </layoutGuides>
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OaA-Y2-R6M">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="225" id="USZ-0t-LoN"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="Z13-np-lQh">
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lgu-IC-E5q">
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-39" translatesAutoresizingMaskIntoConstraints="NO" id="jN2-QN-52S">
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Score" translatesAutoresizingMaskIntoConstraints="NO" id="h8x-K0-yZ6"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jq0-Nw-bNh" userLabel="Score Label">
+                                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
+                                                        <color key="textColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-39" translatesAutoresizingMaskIntoConstraints="NO" id="e6y-EW-bBR">
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Highscore" translatesAutoresizingMaskIntoConstraints="NO" id="cUH-m1-vW7"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60v-BS-fec" userLabel="Highscore Label">
+                                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
+                                                        <color key="textColor" red="0.98958333333333337" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="E0Q-2l-hdt">
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHB-go-COu" userLabel="Back">
+                                                <state key="normal" image="Zurueck"/>
+                                                <connections>
+                                                    <segue destination="hGi-f9-ckA" kind="presentation" modalTransitionStyle="crossDissolve" id="zx6-Cz-3hF"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5C-Ar-cQz" userLabel="New Game">
+                                                <state key="normal" image="Neues Spiel"/>
+                                                <connections>
+                                                    <action selector="newGameButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Cz2-Dy-2sK"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tap to continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQR-KF-ocm">
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="16"/>
+                                <color key="textColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bonus + 300" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a99-ms-eo3">
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="16"/>
+                                <color key="textColor" red="0.15649035573005676" green="0.90056353807449341" blue="0.94708353281021118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Z13-np-lQh" secondAttribute="trailing" constant="8" id="38f-Ti-tYu"/>
+                            <constraint firstItem="Z13-np-lQh" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" constant="15" id="3Sx-Kd-2oJ"/>
+                            <constraint firstItem="OaA-Y2-R6M" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" id="43h-n7-z8D"/>
+                            <constraint firstItem="Z13-np-lQh" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="8" id="6fh-BU-J3k"/>
+                            <constraint firstItem="XQR-KF-ocm" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="8YN-Zl-eQy"/>
+                            <constraint firstItem="a99-ms-eo3" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="8vQ-Om-0i7"/>
+                            <constraint firstItem="XQR-KF-ocm" firstAttribute="top" secondItem="OaA-Y2-R6M" secondAttribute="bottom" constant="20" id="Dqd-OH-l1r"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OaA-Y2-R6M" secondAttribute="trailing" id="I6c-VZ-u59"/>
+                            <constraint firstItem="a99-ms-eo3" firstAttribute="top" secondItem="XQR-KF-ocm" secondAttribute="bottom" constant="20" id="JsW-Oc-R07"/>
+                            <constraint firstItem="OaA-Y2-R6M" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="S20-bM-M6s"/>
+                            <constraint firstItem="OaA-Y2-R6M" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" id="Z4l-oe-pgt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="WFD-e8-Bk7"/>
+                    <connections>
+                        <outlet property="backToMenuButton" destination="RHB-go-COu" id="6tw-Al-aGv"/>
+                        <outlet property="bonusLabel" destination="a99-ms-eo3" id="BsO-0Z-Yg1"/>
+                        <outlet property="gameOverPanel" destination="OaA-Y2-R6M" id="f1K-WC-ARx"/>
+                        <outlet property="highscoreLabel" destination="60v-BS-fec" id="8NE-yL-1d7"/>
+                        <outlet property="newGameButton" destination="N5C-Ar-cQz" id="OI5-aj-Twh"/>
+                        <outlet property="scoreLabel" destination="Jq0-Nw-bNh" id="Hpd-TL-pgG"/>
+                        <outlet property="tapToContinueLabel" destination="XQR-KF-ocm" id="P7y-dz-B7Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1584.375" y="-528.16901408450701"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="y91-xZ-hUx">
+            <objects>
+                <viewController id="1la-hR-lFB" userLabel="Settings View Controller" customClass="SettingsScene" customModule="Glowing_Spheres" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QPJ-Of-BkT"/>
+                        <viewControllerLayoutGuide type="bottom" id="9hR-20-D99"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UgA-Rg-xoO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="peS-Ib-ac4">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idM-jb-ksJ">
+                                        <state key="normal" image="ResetHighscore"/>
+                                        <connections>
+                                            <action selector="resetHighscoreButtonPressed:" destination="1la-hR-lFB" eventType="touchUpInside" id="bUe-rt-cnC"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="M0s-R5-8cN">
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Play Music" translatesAutoresizingMaskIntoConstraints="NO" id="VK4-9m-IpO"/>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bDL-Ft-626" userLabel="playMusicSwitch">
+                                                <color key="onTintColor" red="0.98431372549999996" green="0.031372549020000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="playMusicUISwitchToggled:" destination="1la-hR-lFB" eventType="valueChanged" id="e4N-hi-lRa"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sK5-JD-h3y">
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Play Sounds" translatesAutoresizingMaskIntoConstraints="NO" id="3zf-w8-L5y"/>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kp8-be-MOd" userLabel="playSoundsSwitch">
+                                                <color key="onTintColor" red="0.98431372549999996" green="0.031372549020000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="playSoundsUISwitchToggled:" destination="1la-hR-lFB" eventType="valueChanged" id="aPp-Pl-gll"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAY-pC-R4t">
+                                        <state key="normal" image="SupportDevelopment">
+                                            <color key="titleColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tipJarButtonPressed:" destination="1la-hR-lFB" eventType="touchUpInside" id="4w9-cB-fSR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8x6-Y4-nXP">
+                                        <state key="normal" image="RestorePurchases">
+                                            <color key="titleColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="restorePurchasesButtonPressed:" destination="1la-hR-lFB" eventType="touchUpInside" id="PRO-Jp-e9W"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXq-tS-xBS">
+                                        <state key="normal" image="Back"/>
+                                        <connections>
+                                            <segue destination="hGi-f9-ckA" kind="presentation" modalTransitionStyle="crossDissolve" id="lAb-fV-mb5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="supporter-1" translatesAutoresizingMaskIntoConstraints="NO" id="45O-v2-IEY"/>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="45O-v2-IEY" firstAttribute="top" secondItem="QPJ-Of-BkT" secondAttribute="bottom" constant="8" id="07j-dW-QM2"/>
+                            <constraint firstAttribute="trailing" secondItem="45O-v2-IEY" secondAttribute="trailing" constant="8" id="0e2-FA-YrK"/>
+                            <constraint firstItem="peS-Ib-ac4" firstAttribute="centerY" secondItem="UgA-Rg-xoO" secondAttribute="centerY" id="F8w-4F-M3w"/>
+                            <constraint firstItem="peS-Ib-ac4" firstAttribute="centerX" secondItem="UgA-Rg-xoO" secondAttribute="centerX" id="j0E-Cq-J8U"/>
+                            <constraint firstItem="45O-v2-IEY" firstAttribute="leading" secondItem="UgA-Rg-xoO" secondAttribute="leading" constant="8" id="jaM-vH-Muw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="OXq-tS-xBS" id="2db-zD-P44"/>
+                        <outlet property="playMusicImage" destination="VK4-9m-IpO" id="WY6-An-0lW"/>
+                        <outlet property="playMusicUISwitch" destination="bDL-Ft-626" id="RHO-xw-XxL"/>
+                        <outlet property="playSoundsImage" destination="3zf-w8-L5y" id="BfX-AN-oWb"/>
+                        <outlet property="playSoundsUISwitch" destination="kp8-be-MOd" id="7zI-3Q-Ly3"/>
+                        <outlet property="resetHighscore" destination="idM-jb-ksJ" id="cTW-2R-Pau"/>
+                        <outlet property="restorePurchasesButton" destination="8x6-Y4-nXP" id="sbm-Ws-Tsn"/>
+                        <outlet property="supporterLabel" destination="45O-v2-IEY" id="1fs-vu-t9d"/>
+                        <outlet property="tipJarButton" destination="OAY-pC-R4t" id="iuD-es-3s6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SCo-8a-EyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1880.625" y="258.80281690140845"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="guN-uZ-hMH">
+            <objects>
+                <viewController id="NMC-W4-SMu" userLabel="About View Controller" customClass="AboutScene" customModule="Glowing_Spheres" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wkf-3u-58D"/>
+                        <viewControllerLayoutGuide type="bottom" id="us3-Nq-01K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wDT-Em-RLj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCT-Xc-Oca">
+                                <state key="normal" image="Back"/>
+                                <connections>
+                                    <segue destination="hGi-f9-ckA" kind="presentation" modalTransitionStyle="crossDissolve" id="DIf-xJ-TSj"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2FA-oi-hXR">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8FM-YV-cOz">
+                                        <string key="text">Glowing Spheres was developed 
+and designed by Martin List.</string>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                        <color key="textColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ob-9N-lPm">
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                        <state key="normal" title="Follow @mrtnlst">
+                                            <color key="titleColor" red="0.25098039215686274" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="followOnTwitterPressed:" destination="NMC-W4-SMu" eventType="touchUpInside" id="Jmt-9G-rQr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Hy-vb-X1F">
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                        <state key="normal" title="Follow @glowingspheres">
+                                            <color key="titleColor" red="0.30605217810000002" green="0.6758336425" blue="0.99861246349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="followGlowingSpheresPressed:" destination="NMC-W4-SMu" eventType="touchUpInside" id="6yC-jF-0xf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDN-ta-jpj">
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                        <state key="normal" title="e-mail support">
+                                            <color key="titleColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="writeEmailPressed:" destination="NMC-W4-SMu" eventType="touchUpInside" id="EWr-sa-pao"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2FA-oi-hXR" firstAttribute="centerX" secondItem="wDT-Em-RLj" secondAttribute="centerX" id="81l-AG-3mQ"/>
+                            <constraint firstItem="2FA-oi-hXR" firstAttribute="leading" secondItem="wDT-Em-RLj" secondAttribute="leadingMargin" constant="40" id="92t-En-9Ga"/>
+                            <constraint firstItem="yCT-Xc-Oca" firstAttribute="top" secondItem="2FA-oi-hXR" secondAttribute="bottom" constant="50" id="LOQ-Ij-Zby"/>
+                            <constraint firstItem="yCT-Xc-Oca" firstAttribute="centerY" secondItem="wDT-Em-RLj" secondAttribute="centerY" id="TIy-s4-WNT"/>
+                            <constraint firstItem="yCT-Xc-Oca" firstAttribute="centerX" secondItem="wDT-Em-RLj" secondAttribute="centerX" id="VN2-0W-wc3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2FA-oi-hXR" secondAttribute="trailing" constant="40" id="p7M-Tx-MqN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="aboutText" destination="8FM-YV-cOz" id="W10-Fz-f3Z"/>
+                        <outlet property="backButton" destination="yCT-Xc-Oca" id="de9-ws-6ej"/>
+                        <outlet property="followGlowingSpheres" destination="9Hy-vb-X1F" id="nml-gV-YSn"/>
+                        <outlet property="followOnTwitter" destination="4Ob-9N-lPm" id="vLN-t6-qn2"/>
+                        <outlet property="writeEmail" destination="WDN-ta-jpj" id="wYQ-ap-K3D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mRj-HB-bOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1659.375" y="1000.3521126760563"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="About" width="121" height="50"/>
+        <image name="Back" width="56" height="50"/>
+        <image name="Highscore" width="225" height="90"/>
+        <image name="Neues Spiel" width="126" height="31"/>
+        <image name="Play" width="87" height="50"/>
+        <image name="Play Music" width="167" height="45"/>
+        <image name="Play Sounds" width="178" height="45"/>
+        <image name="ResetHighscore" width="225" height="45"/>
+        <image name="RestorePurchases" width="229" height="45"/>
+        <image name="Score" width="225" height="90"/>
+        <image name="Settings" width="139" height="50"/>
+        <image name="SupportDevelopment" width="269" height="45"/>
+        <image name="Zurueck" width="83" height="30"/>
+        <image name="logo-1" width="320" height="154"/>
+        <image name="supporter-1" width="320" height="77"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="DIf-xJ-TSj"/>
+    </inferredMetricsTieBreakers>
+</document>
