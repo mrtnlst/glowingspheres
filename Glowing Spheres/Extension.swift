@@ -1,6 +1,6 @@
 //
 //  Extension.swift
-//  Liquid
+//  Glowing Spheres
 //
 //  Created by Martin List on 30/09/2016.
 //  Copyright © 2016 Martin List. All rights reserved.

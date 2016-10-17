@@ -1,6 +1,6 @@
 //
 //  MenuScene.swift
-//  Liquid
+//  Glowing Spheres
 //
 //  Created by Martin List on 27/09/2016.
 //  Copyright © 2016 Martin List. All rights reserved.
@@ -35,12 +35,9 @@ class MenuScene: UIViewController {
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
     
+    // Setting up music playback (if UserSetting is enabled).
     let savedMusicSetting = UserDefaults.standard
     var playMusicSwitchOn : Bool = false
-    
-    @IBAction func playButtonPressed(_ sender: AnyObject) {
-    
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,9 +62,9 @@ class MenuScene: UIViewController {
         
         // Set images for menu buttons.
         if locale.languageCode == "de" {
-            playButton.setImage(UIImage(named: "Spielen"), for: .normal)
-            aboutButton.setImage(UIImage(named: "Infos"), for: .normal)
-            settingsButton.setImage(UIImage(named: "Einstellungen"), for: .normal)
+            playButton.setImage(UIImage(named: "Play-de"), for: .normal)
+            aboutButton.setImage(UIImage(named: "About-de"), for: .normal)
+            settingsButton.setImage(UIImage(named: "Settings-de"), for: .normal)
         }
         else {
             playButton.setImage(UIImage(named: "Play"), for: .normal)
@@ -85,6 +82,43 @@ class MenuScene: UIViewController {
         logoImageView.animationDuration = 4.0
         logoImageView.startAnimating()
         
+        // When coming back from background, restore any touch interaction, if touch was hold while entering background.
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    }
+    
+    // MARK: Set up correct button behavior.
+    @IBAction func playButtonTouchedDown(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = false
+    }
+    @IBAction func playButtonMoved(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
+    @IBAction func playButtonTouchedUpd(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
+    @IBAction func settingsButtonTouchedDown(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = false
+    }
+    @IBAction func settingsButtonMoved(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
+    @IBAction func settingsButtonTouchedUp(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
+    @IBAction func aboutButtonTouchedDown(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = false
+    }
+    @IBAction func aboutButtonTouchedUp(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
+    @IBAction func aboutButtonMoved(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
+    func wakingUpFromBackground(){
+        view.isUserInteractionEnabled = true
+        playButton.isUserInteractionEnabled = true
+        settingsButton.isUserInteractionEnabled = true
+        aboutButton.isUserInteractionEnabled = true
     }
 }
 

@@ -24,19 +24,27 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YL2-H3-FHx">
                                         <state key="normal" image="Play"/>
                                         <connections>
-                                            <action selector="playButtonPressed:" destination="hGi-f9-ckA" eventType="touchUpInside" id="X14-Q9-rEN"/>
+                                            <action selector="playButtonMoved:" destination="hGi-f9-ckA" eventType="touchDragOutside" id="io6-K7-Mx7"/>
+                                            <action selector="playButtonTouchedDown:" destination="hGi-f9-ckA" eventType="touchDown" id="tJD-dX-vIt"/>
+                                            <action selector="playButtonTouchedUpd:" destination="hGi-f9-ckA" eventType="touchUpInside" id="Ftg-dr-T2J"/>
                                             <segue destination="BV1-FR-VrT" kind="presentation" modalTransitionStyle="crossDissolve" id="eu3-hS-oqD"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5N-ig-8mY">
                                         <state key="normal" image="Settings"/>
                                         <connections>
+                                            <action selector="settingsButtonMoved:" destination="hGi-f9-ckA" eventType="touchDragOutside" id="17C-8J-Lq5"/>
+                                            <action selector="settingsButtonTouchedDown:" destination="hGi-f9-ckA" eventType="touchDown" id="JVr-a6-rAo"/>
+                                            <action selector="settingsButtonTouchedUp:" destination="hGi-f9-ckA" eventType="touchUpInside" id="5h5-HH-zGx"/>
                                             <segue destination="1la-hR-lFB" kind="presentation" modalTransitionStyle="crossDissolve" id="Fa3-sR-qgx"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unE-0X-GlA">
                                         <state key="normal" image="About"/>
                                         <connections>
+                                            <action selector="aboutButtonMoved:" destination="hGi-f9-ckA" eventType="touchDragOutside" id="Agt-X6-h1Q"/>
+                                            <action selector="aboutButtonTouchedDown:" destination="hGi-f9-ckA" eventType="touchDown" id="3le-vx-BaE"/>
+                                            <action selector="aboutButtonTouchedUp:" destination="hGi-f9-ckA" eventType="touchUpInside" id="hEd-qy-8ne"/>
                                             <segue destination="NMC-W4-SMu" kind="presentation" modalTransitionStyle="crossDissolve" id="KPG-Xe-vYq"/>
                                         </connections>
                                     </button>
@@ -110,15 +118,20 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="E0Q-2l-hdt">
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHB-go-COu" userLabel="Back">
-                                                <state key="normal" image="Zurueck"/>
+                                                <state key="normal" image="Back"/>
                                                 <connections>
+                                                    <action selector="backButtonMoved:" destination="BV1-FR-VrT" eventType="touchDragOutside" id="a73-7c-kcf"/>
+                                                    <action selector="backButtonTouchDown:" destination="BV1-FR-VrT" eventType="touchDown" id="pb7-Kb-eiP"/>
+                                                    <action selector="backButtonTouchUp:" destination="BV1-FR-VrT" eventType="touchUpInside" id="eN9-Lx-68L"/>
                                                     <segue destination="hGi-f9-ckA" kind="presentation" modalTransitionStyle="crossDissolve" id="zx6-Cz-3hF"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5C-Ar-cQz" userLabel="New Game">
-                                                <state key="normal" image="Neues Spiel"/>
+                                                <state key="normal" image="NewGame"/>
                                                 <connections>
                                                     <action selector="newGameButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Cz2-Dy-2sK"/>
+                                                    <action selector="newGameButtonPressedDown:" destination="BV1-FR-VrT" eventType="touchDown" id="fp5-SG-2IG"/>
+                                                    <action selector="newGameButtonTouchMoved:" destination="BV1-FR-VrT" eventType="touchDragOutside" id="1bc-R7-nEX"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -178,18 +191,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="peS-Ib-ac4">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="peS-Ib-ac4">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idM-jb-ksJ">
-                                        <state key="normal" image="ResetHighscore"/>
-                                        <connections>
-                                            <action selector="resetHighscoreButtonPressed:" destination="1la-hR-lFB" eventType="touchUpInside" id="bUe-rt-cnC"/>
-                                        </connections>
-                                    </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="M0s-R5-8cN">
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="M0s-R5-8cN">
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Play Music" translatesAutoresizingMaskIntoConstraints="NO" id="VK4-9m-IpO"/>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bDL-Ft-626" userLabel="playMusicSwitch">
+                                            <switch opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bDL-Ft-626" userLabel="playMusicSwitch">
                                                 <color key="onTintColor" red="0.98431372549999996" green="0.031372549020000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="playMusicUISwitchToggled:" destination="1la-hR-lFB" eventType="valueChanged" id="e4N-hi-lRa"/>
@@ -197,9 +204,9 @@
                                             </switch>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sK5-JD-h3y">
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="sK5-JD-h3y">
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Play Sounds" translatesAutoresizingMaskIntoConstraints="NO" id="3zf-w8-L5y"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="251" image="Play Sounds" translatesAutoresizingMaskIntoConstraints="NO" id="3zf-w8-L5y"/>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kp8-be-MOd" userLabel="playSoundsSwitch">
                                                 <color key="onTintColor" red="0.98431372549999996" green="0.031372549020000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
@@ -208,43 +215,75 @@
                                             </switch>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAY-pC-R4t">
-                                        <state key="normal" image="SupportDevelopment">
-                                            <color key="titleColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idM-jb-ksJ">
+                                        <inset key="contentEdgeInsets" minX="-3" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" image="ResetHighscore"/>
                                         <connections>
-                                            <action selector="tipJarButtonPressed:" destination="1la-hR-lFB" eventType="touchUpInside" id="4w9-cB-fSR"/>
+                                            <action selector="reseHighscoreButtonTouchedDown:" destination="1la-hR-lFB" eventType="touchDown" id="2ni-E5-BUW"/>
+                                            <action selector="resetHighscoreButtonMoved:" destination="1la-hR-lFB" eventType="touchDragOutside" id="Lpo-49-wSQ"/>
+                                            <action selector="resetHighscoreButtonPressed:" destination="1la-hR-lFB" eventType="touchUpInside" id="bUe-rt-cnC"/>
                                         </connections>
                                     </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="VPk-Lw-WKs">
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAY-pC-R4t">
+                                                <inset key="contentEdgeInsets" minX="-6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" image="SupportDevelopment">
+                                                    <color key="titleColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tipJarButtonMoved:" destination="1la-hR-lFB" eventType="touchDragOutside" id="GvV-Qv-fti"/>
+                                                    <action selector="tipJarButtonPressed:" destination="1la-hR-lFB" eventType="touchUpInside" id="4w9-cB-fSR"/>
+                                                    <action selector="tipJarButtonTouchedDown:" destination="1la-hR-lFB" eventType="touchDown" id="8Ny-ac-tN6"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMc-FP-KAa">
+                                                <string key="text"> Like my app? Support its development
+ with a 99 ct in-app purchase.</string>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8x6-Y4-nXP">
+                                        <inset key="contentEdgeInsets" minX="-6" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" image="RestorePurchases">
                                             <color key="titleColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="restorePurchasesButtonPressed:" destination="1la-hR-lFB" eventType="touchUpInside" id="PRO-Jp-e9W"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXq-tS-xBS">
-                                        <state key="normal" image="Back"/>
-                                        <connections>
-                                            <segue destination="hGi-f9-ckA" kind="presentation" modalTransitionStyle="crossDissolve" id="lAb-fV-mb5"/>
+                                            <action selector="restorePurchasesMoved:" destination="1la-hR-lFB" eventType="touchDragOutside" id="e9f-R0-UoS"/>
+                                            <action selector="restorePurchasesTouchedDown:" destination="1la-hR-lFB" eventType="touchDown" id="ysa-kY-zdl"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="supporter-1" translatesAutoresizingMaskIntoConstraints="NO" id="45O-v2-IEY"/>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXq-tS-xBS">
+                                <state key="normal" image="Back"/>
+                                <connections>
+                                    <action selector="BackButtonMoved:" destination="1la-hR-lFB" eventType="touchDragOutside" id="pK8-sq-izE"/>
+                                    <action selector="BackButtonTouchDown:" destination="1la-hR-lFB" eventType="touchDown" id="UTr-Dt-JYt"/>
+                                    <action selector="BackButtonTouchedUp:" destination="1la-hR-lFB" eventType="touchUpInside" id="lWN-Pm-g8L"/>
+                                    <segue destination="hGi-f9-ckA" kind="presentation" modalTransitionStyle="crossDissolve" id="lAb-fV-mb5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="45O-v2-IEY" firstAttribute="top" secondItem="QPJ-Of-BkT" secondAttribute="bottom" constant="8" id="07j-dW-QM2"/>
                             <constraint firstAttribute="trailing" secondItem="45O-v2-IEY" secondAttribute="trailing" constant="8" id="0e2-FA-YrK"/>
-                            <constraint firstItem="peS-Ib-ac4" firstAttribute="centerY" secondItem="UgA-Rg-xoO" secondAttribute="centerY" id="F8w-4F-M3w"/>
+                            <constraint firstItem="peS-Ib-ac4" firstAttribute="centerY" secondItem="UgA-Rg-xoO" secondAttribute="centerY" constant="10" id="F8w-4F-M3w"/>
+                            <constraint firstItem="peS-Ib-ac4" firstAttribute="top" secondItem="45O-v2-IEY" secondAttribute="bottom" constant="12" id="INU-dK-fqW"/>
+                            <constraint firstItem="OXq-tS-xBS" firstAttribute="top" secondItem="peS-Ib-ac4" secondAttribute="bottom" constant="10" id="gh1-2y-5qv"/>
                             <constraint firstItem="peS-Ib-ac4" firstAttribute="centerX" secondItem="UgA-Rg-xoO" secondAttribute="centerX" id="j0E-Cq-J8U"/>
                             <constraint firstItem="45O-v2-IEY" firstAttribute="leading" secondItem="UgA-Rg-xoO" secondAttribute="leading" constant="8" id="jaM-vH-Muw"/>
+                            <constraint firstItem="OXq-tS-xBS" firstAttribute="centerX" secondItem="UgA-Rg-xoO" secondAttribute="centerX" id="mJV-I2-Lcg"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="OXq-tS-xBS" id="2db-zD-P44"/>
+                        <outlet property="inAppPurchaseLabel" destination="zMc-FP-KAa" id="Qlb-du-d15"/>
                         <outlet property="playMusicImage" destination="VK4-9m-IpO" id="WY6-An-0lW"/>
                         <outlet property="playMusicUISwitch" destination="bDL-Ft-626" id="RHO-xw-XxL"/>
                         <outlet property="playSoundsImage" destination="3zf-w8-L5y" id="BfX-AN-oWb"/>
@@ -257,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SCo-8a-EyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1880.625" y="258.80281690140845"/>
+            <point key="canvasLocation" x="1879.2" y="258.62068965517244"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="guN-uZ-hMH">
@@ -271,46 +310,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCT-Xc-Oca">
-                                <state key="normal" image="Back"/>
-                                <connections>
-                                    <segue destination="hGi-f9-ckA" kind="presentation" modalTransitionStyle="crossDissolve" id="DIf-xJ-TSj"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2FA-oi-hXR">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DVd-ZK-DRS">
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8FM-YV-cOz">
-                                        <string key="text">Glowing Spheres was developed 
-and designed by Martin List.</string>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                        <color key="textColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ob-9N-lPm">
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                        <state key="normal" title="Follow @mrtnlst">
-                                            <color key="titleColor" red="0.25098039215686274" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2FA-oi-hXR">
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8FM-YV-cOz">
+                                                <string key="text">Glowing Spheres was developed 
+and designed by Martin List.
+</string>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                <color key="textColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ob-9N-lPm">
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                <state key="normal" title="Follow @mrtnlst">
+                                                    <color key="titleColor" red="0.25098039215686274" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="followOnTwitterMoved:" destination="NMC-W4-SMu" eventType="touchDragOutside" id="unn-64-vmu"/>
+                                                    <action selector="followOnTwitterPressed:" destination="NMC-W4-SMu" eventType="touchUpInside" id="Jmt-9G-rQr"/>
+                                                    <action selector="followOnTwitterTouchDown:" destination="NMC-W4-SMu" eventType="touchDown" id="uBO-ee-r2O"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Hy-vb-X1F">
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                <state key="normal" title="Follow @glowingspheres">
+                                                    <color key="titleColor" red="0.30605217810000002" green="0.6758336425" blue="0.99861246349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="followGlowingSpheresMoved:" destination="NMC-W4-SMu" eventType="touchDragOutside" id="1tp-Wl-iGb"/>
+                                                    <action selector="followGlowingSpheresPressed:" destination="NMC-W4-SMu" eventType="touchUpInside" id="6yC-jF-0xf"/>
+                                                    <action selector="followGlowingSpheresTouchDown:" destination="NMC-W4-SMu" eventType="touchDown" id="rsQ-vv-Zzt"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDN-ta-jpj">
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                <state key="normal" title="E-Mail @glowingspheres">
+                                                    <color key="titleColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="writeEmailMoved:" destination="NMC-W4-SMu" eventType="touchDragOutside" id="k2l-LO-VdV"/>
+                                                    <action selector="writeEmailPressed:" destination="NMC-W4-SMu" eventType="touchUpInside" id="EWr-sa-pao"/>
+                                                    <action selector="writeEmailTouchDown:" destination="NMC-W4-SMu" eventType="touchDown" id="56R-QZ-1E4"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYv-C3-gLW">
+                                                <string key="text">
+The font LAZER 84 was made 
+by Juan Hodgson. 
+The font Axis was made by
+Jean M. Wojciechowski.
+
+</string>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCT-Xc-Oca">
+                                        <state key="normal" image="Back"/>
                                         <connections>
-                                            <action selector="followOnTwitterPressed:" destination="NMC-W4-SMu" eventType="touchUpInside" id="Jmt-9G-rQr"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Hy-vb-X1F">
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                        <state key="normal" title="Follow @glowingspheres">
-                                            <color key="titleColor" red="0.30605217810000002" green="0.6758336425" blue="0.99861246349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="followGlowingSpheresPressed:" destination="NMC-W4-SMu" eventType="touchUpInside" id="6yC-jF-0xf"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDN-ta-jpj">
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                        <state key="normal" title="e-mail support">
-                                            <color key="titleColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="writeEmailPressed:" destination="NMC-W4-SMu" eventType="touchUpInside" id="EWr-sa-pao"/>
+                                            <action selector="backButtonMoved:" destination="NMC-W4-SMu" eventType="touchDragOutside" id="1a6-ya-CXU"/>
+                                            <action selector="backButtonTouchDown:" destination="NMC-W4-SMu" eventType="touchDown" id="Swh-TU-qnx"/>
+                                            <action selector="backButtonTouchUp:" destination="NMC-W4-SMu" eventType="touchUpInside" id="Dpe-X4-uGV"/>
+                                            <segue destination="hGi-f9-ckA" kind="presentation" modalTransitionStyle="crossDissolve" id="DIf-xJ-TSj"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -318,12 +383,8 @@ and designed by Martin List.</string>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2FA-oi-hXR" firstAttribute="centerX" secondItem="wDT-Em-RLj" secondAttribute="centerX" id="81l-AG-3mQ"/>
-                            <constraint firstItem="2FA-oi-hXR" firstAttribute="leading" secondItem="wDT-Em-RLj" secondAttribute="leadingMargin" constant="40" id="92t-En-9Ga"/>
-                            <constraint firstItem="yCT-Xc-Oca" firstAttribute="top" secondItem="2FA-oi-hXR" secondAttribute="bottom" constant="50" id="LOQ-Ij-Zby"/>
-                            <constraint firstItem="yCT-Xc-Oca" firstAttribute="centerY" secondItem="wDT-Em-RLj" secondAttribute="centerY" id="TIy-s4-WNT"/>
-                            <constraint firstItem="yCT-Xc-Oca" firstAttribute="centerX" secondItem="wDT-Em-RLj" secondAttribute="centerX" id="VN2-0W-wc3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="2FA-oi-hXR" secondAttribute="trailing" constant="40" id="p7M-Tx-MqN"/>
+                            <constraint firstItem="DVd-ZK-DRS" firstAttribute="centerY" secondItem="wDT-Em-RLj" secondAttribute="centerY" id="Q1y-Zo-Tii"/>
+                            <constraint firstItem="DVd-ZK-DRS" firstAttribute="centerX" secondItem="wDT-Em-RLj" secondAttribute="centerX" id="bP9-XL-q38"/>
                         </constraints>
                     </view>
                     <connections>
@@ -331,6 +392,7 @@ and designed by Martin List.</string>
                         <outlet property="backButton" destination="yCT-Xc-Oca" id="de9-ws-6ej"/>
                         <outlet property="followGlowingSpheres" destination="9Hy-vb-X1F" id="nml-gV-YSn"/>
                         <outlet property="followOnTwitter" destination="4Ob-9N-lPm" id="vLN-t6-qn2"/>
+                        <outlet property="fontCreditsText" destination="fYv-C3-gLW" id="MnJ-5l-Lwh"/>
                         <outlet property="writeEmail" destination="WDN-ta-jpj" id="wYQ-ap-K3D"/>
                     </connections>
                 </viewController>
@@ -343,16 +405,15 @@ and designed by Martin List.</string>
         <image name="About" width="121" height="50"/>
         <image name="Back" width="56" height="50"/>
         <image name="Highscore" width="225" height="90"/>
-        <image name="Neues Spiel" width="126" height="31"/>
+        <image name="NewGame" width="118" height="50"/>
         <image name="Play" width="87" height="50"/>
-        <image name="Play Music" width="167" height="45"/>
-        <image name="Play Sounds" width="178" height="45"/>
+        <image name="Play Music" width="152" height="45"/>
+        <image name="Play Sounds" width="152" height="45"/>
         <image name="ResetHighscore" width="225" height="45"/>
         <image name="RestorePurchases" width="229" height="45"/>
         <image name="Score" width="225" height="90"/>
         <image name="Settings" width="139" height="50"/>
         <image name="SupportDevelopment" width="269" height="45"/>
-        <image name="Zurueck" width="83" height="30"/>
         <image name="logo-1" width="320" height="154"/>
         <image name="supporter-1" width="320" height="77"/>
     </resources>

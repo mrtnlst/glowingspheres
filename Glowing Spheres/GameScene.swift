@@ -1,6 +1,6 @@
 //
 //  GameScene.swift
-//  Liquid
+//  Glowing Spheres
 //
 //  Created by Martin List on 14/09/16.
 //  Copyright © 2016 Martin List. All rights reserved.
@@ -14,11 +14,6 @@ var disappearSound: AVAudioPlayer?
 
 class GameScene: SKScene {
 
-    private var touchInColumn: Int?
-    private var touchInRow: Int?
-    private var checkSelectionSprite: Bool?
-    private var soundEffectsCounter: Int = 1
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder) is not used in this app")
     }
@@ -26,6 +21,43 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         
     }
+    
+    private var touchInColumn: Int?
+    private var touchInRow: Int?
+    private var checkSelectionSprite: Bool?
+    private var soundEffectsCounter: Int = 1
+    var field: Field!
+    
+    // Set TileWidth and TileHight.
+    let TileWidth: CGFloat = 40.0
+    let TileHeight: CGFloat = 40.0
+    
+    // Set the game and objects layer.
+    let gameLayer = SKNode()
+    let objectsLayer = SKNode()
+    
+    // Sprite image for higlighted object.
+    var selectionSprite = SKSpriteNode()
+    
+    // Preload sound effect for match.
+    //let matchedSound = SKAction.playSoundFileNamed("Matched.m4a", waitForCompletion: false)
+    
+    let savedSoundsSetting = UserDefaults.standard
+    var playSoundsSwitchOn : Bool = false
+    
+    // The touchHandler connect GameViewController with GameScene.
+    // It is called when a object is touched and transfers object Information to handleTouch in GameViewController.
+    var touchHandler: ((Object) -> ())?
+    
+    // The inputHandler allows to disable input from newGameButton in the GameViewController.
+    var inputHandler: ((Bool) -> ())?
+    
+    // To check, whether a touch in touchesBegan is detected.
+    var gameSceneTouchDetected: Bool = false
+
+
+// MARK: INITIALISING THE GAME
+    
     override init(size: CGSize) {
         super.init(size: size)
 
@@ -55,34 +87,6 @@ class GameScene: SKScene {
 
     }
 
-    var field: Field!
-    
-    // Set TileWidth and TileHight.
-    let TileWidth: CGFloat = 40.0
-    let TileHeight: CGFloat = 40.0
-    
-    // Set the game and objects layer.
-    let gameLayer = SKNode()
-    let objectsLayer = SKNode()
-    
-    // Sprite image for higlighted object.
-    var selectionSprite = SKSpriteNode()
-    
-    // Preload sound effect for match.
-    //let matchedSound = SKAction.playSoundFileNamed("Matched.m4a", waitForCompletion: false)
-    
-    let savedSoundsSetting = UserDefaults.standard
-    var playSoundsSwitchOn : Bool = false
-    
-    // The touchHandler connect GameViewController with GameScene.
-    // It is called when a object is touched and transfers object Information to handleTouch in GameViewController.
-    var touchHandler: ((Object) -> ())?
-    
-    // The inputHandler allows to disable input from newGameButton in the GameViewController.
-    var inputHandler: ((Bool) -> ())?
-
-// MARK: INITIALISING THE GAME
-    
    // Adding sprite image to the objects.
     func addSpritesForObjects(objects: Set<Object>) {
         for object in objects {
@@ -132,6 +136,10 @@ class GameScene: SKScene {
 // MARK: TOUCH INTERACTIONS
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touchesBegan")
+        
+        // Allow GameViewController to check whether touchBegan is active.
+        gameSceneTouchDetected = true
         guard let touch = touches.first else { return }
         // Convert the touch location to a point relative to the objectsLayer.
         let location = touch.location(in: objectsLayer)
@@ -152,7 +160,8 @@ class GameScene: SKScene {
     }
     
      override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        print("touchesEnded")
+
         // Converts touched point to a location relative to objectsLayer.
         guard let touch = touches.first else { return }
         let location = touch.location(in: objectsLayer)
@@ -168,7 +177,6 @@ class GameScene: SKScene {
                 // Otherwise you can tap on an object, swipe and release on a different object.
                 if column == touchInColumn && row == touchInRow {
                     print(field.objects[column, row]?.description)
-                    //checkSelectionSprite = false
                     if let handler = touchHandler {
                         let object = field.objects[column, row]
                         handler(object!)
@@ -183,7 +191,8 @@ class GameScene: SKScene {
         if checkSelectionSprite == true {
             hideSelectionIndicator(completion: enableUserInteraction)
             checkSelectionSprite = false
-        }
+        } 
+        gameSceneTouchDetected = false
     }
 
 

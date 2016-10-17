@@ -1,6 +1,6 @@
 //
 //  AboutScene.swift
-//  Liquid
+//  Glowing Spheres
 //
 //  Created by Martin List on 29/09/2016.
 //  Copyright © 2016 Martin List. All rights reserved.
@@ -22,6 +22,7 @@ class AboutScene: UIViewController {
         return true
     }
    
+    @IBOutlet weak var fontCreditsText: UILabel!
     @IBOutlet weak var aboutText: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var writeEmail: UIButton!
@@ -37,8 +38,9 @@ class AboutScene: UIViewController {
        
         // Setting up the button image.
         if locale.languageCode == "de" {
-            backButton.setImage(UIImage(named: "Zurueck"), for: .normal)
-            aboutText.text = "Alle Inhalte von Glowing Spheres wurden gestaltet und programmiert von Martin List."
+            backButton.setImage(UIImage(named: "Back-de"), for: .normal)
+            aboutText.text = "Glowing Spheres wurde gestaltet \nund programmiert von Martin List.\n"
+            fontCreditsText.text = "\nSchriftart LAZER 84 von Juan Hodgson. \nSchriftart Axis von Jean M. Wojciechowski\n\n"
         } else {
         backButton.setImage(UIImage(named: "Back"), for: .normal)
         }
@@ -58,23 +60,67 @@ class AboutScene: UIViewController {
             //iPhone 6 Plus
             aboutText.font = UIFont(name: "Futura", size: 21)
         }
+        // When coming back from background, restore any touch interaction, if touch was hold while entering background.
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
-    
+    // MARK: writeEmail Events.
+    @IBAction func writeEmailTouchDown(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = false
+    }
+    @IBAction func writeEmailMoved(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
     @IBAction func writeEmailPressed(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
         let coded = URL(string:"mailto:glowingspheresios@gmail.com")
         let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
         UIApplication.shared.open(coded!, options: options, completionHandler: nil)
 
     }
+    
+    // MARK: followGlowingSpheres Events.
+    @IBAction func followGlowingSpheresTouchDown(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = false
+    }
+    @IBAction func followGlowingSpheresMoved(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
     @IBAction func followGlowingSpheresPressed(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
         let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
         UIApplication.shared.open(twitterURLGlowingSpheres!, options: options, completionHandler: nil)
 
     }
+    
+    // MARK: followOnTwitter Events.
+    @IBAction func followOnTwitterTouchDown(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = false
+    }
+    @IBAction func followOnTwitterMoved(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
     @IBAction func followOnTwitterPressed(_ sender: AnyObject) {
-        
-        // If the button is pressed, open Twitter.app if possible, or safari. 
+        view.isUserInteractionEnabled = true
+        // If the button is pressed, open Twitter.app if possible, or safari.
         let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
         UIApplication.shared.open(twitterURLMartin!, options: options, completionHandler: nil)
+    }
+    
+    // MARK: backButton Events.
+    @IBAction func backButtonTouchDown(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = false
+    }
+    @IBAction func backButtonTouchUp(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
+    @IBAction func backButtonMoved(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
+    func wakingUpFromBackground(){
+        view.isUserInteractionEnabled = true
+        followOnTwitter.isUserInteractionEnabled = true
+        followGlowingSpheres.isUserInteractionEnabled = true
+        writeEmail.isUserInteractionEnabled = true
+        backButton.isUserInteractionEnabled = true
     }
 }

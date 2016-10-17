@@ -1,6 +1,6 @@
 //
 //  GameViewController.swift
-//  Liquid
+//  Glowing Spheres
 //
 //  Created by Martin List on 14/09/16.
 //  Copyright © 2016 Martin List. All rights reserved.
@@ -29,6 +29,7 @@ class GameViewController: UIViewController {
     var field: Field!
     var score = 0
     var highscore = 0
+    var tapGestureRecognizer: UITapGestureRecognizer!
     
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var highscoreLabel: UILabel!
@@ -37,18 +38,15 @@ class GameViewController: UIViewController {
     @IBOutlet weak var newGameButton: UIButton!
     @IBOutlet weak var backToMenuButton: UIButton!
     @IBOutlet weak var gameOverPanel: UIImageView!
-    var tapGestureRecognizer: UITapGestureRecognizer!
+    
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         print(locale.languageCode)
-        
-        
         // Changing the style of the two buttons.
         if locale.languageCode == "de" {
-            backToMenuButton.setImage(UIImage(named: "Zurueck"), for: .normal)
-            newGameButton.setImage(UIImage(named: "Neues Spiel"), for: .normal)
+            backToMenuButton.setImage(UIImage(named: "Back-de"), for: .normal)
+            newGameButton.setImage(UIImage(named: "NewGame-de"), for: .normal)
             tapToContinueLabel.text = "tippen um fortzufahren"
         }
         else {
@@ -78,24 +76,10 @@ class GameViewController: UIViewController {
         // Connection between GameScene and GameViewController.
         scene.touchHandler = handleTouch
         scene.inputHandler = handleUserInput
-        
         beginGame()
-    }
-    
-    
-    @IBAction func newGameButtonPressed(_ sender: AnyObject) {
-        // Disable input while animations.
-        newGameButton.isUserInteractionEnabled = false
-        view.isUserInteractionEnabled = false
         
-        // If newGameButton was clicked, but a gameOverPanel is on the screen, it needs to be hidden first!
-        if (tapGestureRecognizer != nil) {
-            hideGameOver()
-            
-        }
-        else {
-            beginGame()
-        }
+        // When coming back from background, restore any touch interaction, if touch was hold while entering background.
+         NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
     func beginGame() {
@@ -103,6 +87,7 @@ class GameViewController: UIViewController {
         scene.animateBeginGame {
             self.newGameButton.isUserInteractionEnabled = true
             self.view.isUserInteractionEnabled = true
+            self.backToMenuButton.isUserInteractionEnabled = true
         }
         // Reset the score.
         score = 0
@@ -129,6 +114,47 @@ class GameViewController: UIViewController {
         scene.addSpritesForObjects(objects: newObjects)
     }
     
+    // MARK: backButton Events.
+    @IBAction func backButtonTouchDown(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = false
+    }
+    @IBAction func backButtonTouchUp(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
+    @IBAction func backButtonMoved(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
+    
+    // MARK: NewGameButton Events.
+    @IBAction func newGameButtonTouchMoved(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
+
+    @IBAction func newGameButtonPressedDown(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = false
+          print("newGameButton TouchDown")
+    }
+    @IBAction func newGameButtonPressed(_ sender: AnyObject) {
+        print("newGameButton TouchUp")
+        
+        // If touch was detected in GameScene, cancel loading a new game.
+        if scene.gameSceneTouchDetected == false {
+        
+            // Disable input while animations.
+            newGameButton.isUserInteractionEnabled = false
+            view.isUserInteractionEnabled = false
+        
+            // If newGameButton was clicked, but a gameOverPanel is on the screen, it needs to be hidden first!
+            if (tapGestureRecognizer != nil) {
+                hideGameOver()
+            }
+            else {
+                beginGame()
+                }
+            }
+    }
+    
+    // MARK: Handeling Events.
     func handleUserInput(_ input: Bool){
         if input == true {
             newGameButton.isUserInteractionEnabled = false
@@ -234,6 +260,7 @@ class GameViewController: UIViewController {
     func showGameOver() {
         // Make sure userinteraction is disabled!
         self.newGameButton.isUserInteractionEnabled = false
+        self.backToMenuButton.isUserInteractionEnabled = false
         view.isUserInteractionEnabled = false
         self.newGameButton.isHighlighted = true
         self.backToMenuButton.isHighlighted = true
@@ -251,7 +278,6 @@ class GameViewController: UIViewController {
             self.view.addGestureRecognizer(self.tapGestureRecognizer)
             // If users tap, pressing newGameButton while animating, the field gets shifted.
             self.newGameButton.isUserInteractionEnabled = false
-
             }
         }
     func hideGameOver() {
@@ -263,11 +289,18 @@ class GameViewController: UIViewController {
         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.gameOverPanel.alpha = 0})
         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.tapToContinueLabel.alpha = 0})
         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.bonusLabel.alpha = 0})
-
+        
+        scene.gameSceneTouchDetected = false
+        
         // Begin a new game.
         self.newGameButton.isHighlighted = false
         self.backToMenuButton.isHighlighted = false
         beginGame()
     }
-    
+    func wakingUpFromBackground(){
+        view.isUserInteractionEnabled = true
+        newGameButton.isUserInteractionEnabled = true
+        backToMenuButton.isUserInteractionEnabled = true
+        scene.isUserInteractionEnabled = true
+    }
 }

@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Liquid
+//  Glowing Spheres
 //
 //  Created by Martin List on 14/09/16.
 //  Copyright © 2016 Martin List. All rights reserved.
@@ -35,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

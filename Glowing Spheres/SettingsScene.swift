@@ -1,6 +1,6 @@
 //
 //  SettingsScene.swift
-//  Liquid
+//  Glowing Spheres
 //
 //  Created by Martin List on 27/09/2016.
 //  Copyright © 2016 Martin List. All rights reserved.
@@ -13,9 +13,6 @@ import StoreKit
 var themeSong: AVAudioPlayer?
 
 class SettingsScene: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
-    
-    var product_id: String?
-    var images: [UIImage] = []
 
     override var prefersStatusBarHidden : Bool {
         return true
@@ -29,23 +26,26 @@ class SettingsScene: UIViewController, SKProductsRequestDelegate, SKPaymentTrans
         return [UIInterfaceOrientationMask.portrait, UIInterfaceOrientationMask.portraitUpsideDown]
     }
     
-    @IBOutlet weak var playSoundsUISwitch: UISwitch!
-    @IBOutlet weak var playMusicUISwitch: UISwitch!
+    // MARK:  Variables and constants.
+    var product_id: String?
+    var images: [UIImage] = []
     let savedMusicSetting = UserDefaults.standard
     var playMusicSwitchOn : Bool = false
     let savedSoundsSetting = UserDefaults.standard
     var playSoundsSwitchOn : Bool = false
+    var savedFasterAnimations: Bool?
     
+    // MARK: Outlets Variables and constants.
+    @IBOutlet weak var playSoundsUISwitch: UISwitch!
+    @IBOutlet weak var playMusicUISwitch: UISwitch!
+    @IBOutlet weak var inAppPurchaseLabel: UILabel!
     @IBOutlet weak var restorePurchasesButton: UIButton!
     @IBOutlet weak var tipJarButton: UIButton!
     @IBOutlet weak var playSoundsImage: UIImageView!
     @IBOutlet weak var playMusicImage: UIImageView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var resetHighscore: UIButton!
-    var savedFasterAnimations: Bool?
-    
     @IBOutlet weak var supporterLabel: UIImageView!
-    //public let supportDeveloper = "com.martinlist.glowingspheres.supportDeveloper"
 
     override func viewDidLoad() {
         // Allow simultaneous playback.
@@ -57,12 +57,13 @@ class SettingsScene: UIViewController, SKProductsRequestDelegate, SKPaymentTrans
        
         // Set the images for the buttons.
         if locale.languageCode == "de" {
-            backButton.setImage(UIImage(named: "Zurueck"), for: .normal)
-            resetHighscore.setImage(UIImage(named: "Highscore zuruecksetzen"), for: .normal)
-            playSoundsImage.image = UIImage(named: "Soundeffekte")
-            playMusicImage.image = UIImage(named: "Musik")
+            backButton.setImage(UIImage(named: "Back-de"), for: .normal)
+            resetHighscore.setImage(UIImage(named: "ResetHighscore-de"), for: .normal)
+            playSoundsImage.image = UIImage(named: "PlaySounds-de")
+            playMusicImage.image = UIImage(named: "PlayMusic-de")
             tipJarButton.setImage(UIImage(named: "SupportDevelopment-de"), for: .normal)
             restorePurchasesButton.setImage(UIImage(named: "RestorePurchases-de"), for: .normal)
+            inAppPurchaseLabel.text = " Gefällt dir meine App?\n Unterstütze mich mit 99 ct."
 
         }
         else {
@@ -70,6 +71,8 @@ class SettingsScene: UIViewController, SKProductsRequestDelegate, SKPaymentTrans
             resetHighscore.setImage(UIImage(named: "ResetHighscore"), for: .normal)
             tipJarButton.setImage(UIImage(named: "SupportDevelopment"), for: .normal)
             restorePurchasesButton.setImage(UIImage(named: "RestorePurchases"), for: .normal)
+            inAppPurchaseLabel.text = " Like my app? Support its development\n with a 99 ct in-app purchase."
+
 
         }
         // Set the playMusicSwitch for the stored userDefault setting.
@@ -95,11 +98,10 @@ class SettingsScene: UIViewController, SKProductsRequestDelegate, SKPaymentTrans
         view.backgroundColor = UIColor.black
 
         // Initialize in-app purchase.
-        product_id = "com.martinlist.glowingspheres.testpurchase"
+        product_id = "com.martinlist.glowingspheres.tipJar"
         SKPaymentQueue.default().add(self)
 
         if (UserDefaults.standard.bool(forKey: "purchased")){
-            
             // Hide ads
             restorePurchasesButton.isEnabled = false
             restorePurchasesButton.isHighlighted = true
@@ -107,11 +109,18 @@ class SettingsScene: UIViewController, SKProductsRequestDelegate, SKPaymentTrans
             tipJarButton.isHighlighted = true
             supportAnimation()
             supporterLabel.isHidden = false
+            if locale.languageCode == "de" {
+                inAppPurchaseLabel.text = " Danke für deine Unterstützung. \n Du bist klasse!"
+            }
+            else {
+                inAppPurchaseLabel.text = " Thanks for your support. \n You're awesome!"
+            }
 
         } else {
             supporterLabel.isHidden = true
-
         }
+        // When coming back from background, restore any touch interaction, if touch was hold while entering background.
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
     @IBAction func playMusicUISwitchToggled(_ sender: AnyObject) {
@@ -152,7 +161,27 @@ class SettingsScene: UIViewController, SKProductsRequestDelegate, SKPaymentTrans
             savedSoundsSetting.set(playSoundsSwitchOn, forKey: "savedSoundsSetting")
     }
     }
+    // MARK: backButton Events.
+    @IBAction func BackButtonTouchedUp(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
+    @IBAction func BackButtonTouchDown(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = false
+    }
+    @IBAction func BackButtonMoved(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
+    
+    // MARK: resetHighscore Events.
+    @IBAction func reseHighscoreButtonTouchedDown(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = false
+    }
+    @IBAction func resetHighscoreButtonMoved(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
     @IBAction func resetHighscoreButtonPressed(_ sender: AnyObject) {
+        
+        view.isUserInteractionEnabled = true
         // Initiating an alertbox to confirm highscore reset.
         var title: String
         var message: String
@@ -175,8 +204,8 @@ class SettingsScene: UIViewController, SKProductsRequestDelegate, SKPaymentTrans
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 
         self.present(alert, animated: true, completion: nil)
-        
     }
+    
     func playBackgroundMusic(){
         let path = Bundle.main.path(forResource: "Theme.m4a", ofType:nil)!
         let url = URL(fileURLWithPath: path)
@@ -192,13 +221,31 @@ class SettingsScene: UIViewController, SKProductsRequestDelegate, SKPaymentTrans
         }
         
     }
+    
+// MARK: restorePurchases Events
+    @IBAction func restorePurchasesMoved(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
+    @IBAction func restorePurchasesTouchedDown(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = false
+    }
     @IBAction func restorePurchasesButtonPressed(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
         if (SKPaymentQueue.canMakePayments()) {
             SKPaymentQueue.default().restoreCompletedTransactions()
         }
 
     }
+    
+// MARK: tipJar Events
+    @IBAction func tipJarButtonTouchedDown(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = false
+    }
+    @IBAction func tipJarButtonMoved(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
     @IBAction func tipJarButtonPressed(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
         print("About to fetch the product...")
         
         // Can make payments
@@ -266,7 +313,13 @@ class SettingsScene: UIViewController, SKProductsRequestDelegate, SKPaymentTrans
                     restorePurchasesButton.isHighlighted = true
                     tipJarButton.isEnabled = false
                     tipJarButton.isHighlighted = true
-                    
+                    if locale.languageCode == "de" {
+                        inAppPurchaseLabel.text = " Danke für deine Unterstützung. \n Du bist klasse!"
+                    }
+                    else {
+                        inAppPurchaseLabel.text = " Thanks for your support. \n You're awesome!"
+                    }
+
                     // Start animation.
                     supportAnimation()
                     
@@ -291,6 +344,13 @@ class SettingsScene: UIViewController, SKProductsRequestDelegate, SKPaymentTrans
                     tipJarButton.isEnabled = false
                     tipJarButton.isHighlighted = true
                     supportAnimation()
+                    if locale.languageCode == "de" {
+                        inAppPurchaseLabel.text = " Danke für deine Unterstützung. \n Du bist klasse!"
+                    }
+                    else {
+                        inAppPurchaseLabel.text = " Thanks for your support. \n You're awesome!"
+                    }
+
                     // Handle the purchase
                     UserDefaults.standard.set(true , forKey: "purchased")
                     break;
@@ -304,11 +364,22 @@ class SettingsScene: UIViewController, SKProductsRequestDelegate, SKPaymentTrans
     func supportAnimation() {
         // Animation for supporterst of the app.
         for i in 1...48 {
+            if locale.languageCode == "de" {
+                images.append(UIImage(named: "supporter-de-\(i)")!)
+            } else {
             images.append(UIImage(named: "supporter-\(i)")!)
+            }
         }
         supporterLabel.animationImages = images
         supporterLabel.animationDuration = 4.0
         supporterLabel.startAnimating()
 
+    }
+    func wakingUpFromBackground(){
+        view.isUserInteractionEnabled = true
+        restorePurchasesButton.isUserInteractionEnabled = true
+        tipJarButton.isUserInteractionEnabled = true
+        resetHighscore.isUserInteractionEnabled = true
+        backButton.isUserInteractionEnabled = true
     }
 }
