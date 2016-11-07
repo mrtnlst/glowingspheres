@@ -49,16 +49,16 @@ class AboutScene: UIViewController {
         
         if (self.view.frame.size.width == 320){
             //iPhone 2G, 3G, 3GS, 4, 4s, 5, 5s, 5c
-            aboutText.font = UIFont(name: "Futura", size: 16)
+            aboutText.font = UIFont(name: "Futura", size: 18)
             
         }
         else if (self.view.frame.size.width == 375){
             //iPhone 6
-            aboutText.font = UIFont(name: "Futura", size: 18)
+            aboutText.font = UIFont(name: "Futura", size: 20)
         }
         else if (self.view.frame.size.width == 414){
             //iPhone 6 Plus
-            aboutText.font = UIFont(name: "Futura", size: 21)
+            aboutText.font = UIFont(name: "Futura", size: 24)
         }
         // When coming back from background, restore any touch interaction, if touch was hold while entering background.
         NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)

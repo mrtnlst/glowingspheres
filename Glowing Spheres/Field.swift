@@ -193,7 +193,7 @@ class Field {
         }
     }
     
-    func outOfMoves() -> Bool {
+    func outOfSameColors() -> Bool {
         
         // Scanning through grid from the bottom right.
         for column in (1..<NumColumns).reversed(){
@@ -213,10 +213,96 @@ class Field {
         return true
     }
     
+    func outOfMoves(availableSwaps: Int) -> Bool {
+        // Scanning through grid from the bottom right.
+        var typeOne = 0
+        var typeTwo = 0
+        var typeThree = 0
+        var typeFour = 0
+        for column in (1..<NumColumns).reversed(){
+            for row in (0..<(NumRows - 1)) {
+                if objects[column, row]?.objectType.rawValue == nil {
+                    break
+                } else {
+                switch objects[column, row]!.objectType.rawValue{
+                case 1:
+                    typeOne += 1
+                    break;
+                case 2:
+                    typeTwo += 1
+                    break;
+                case 3:
+                    typeThree += 1
+                    break;
+                case 4:
+                    typeFour += 1
+                    break;
+                default:
+                        break;
+                    }
+                }
+            }
+        }
+        if typeOne > 1 || typeTwo > 1 || typeThree > 1 || typeFour > 1 {
+          return false
+        }
+        return true
+    }
+//
+//        for column in (1..<NumColumns).reversed(){
+//            for row in (0..<(NumRows - 1)) {
+//                let type = objects[column, row]?.objectType.rawValue
+////                var columnCount: Int = 0
+////                var rowCount = availableSwaps + 1
+////
+//                for rowCount in (-(availableSwaps + 1)..<(availableSwaps + 2)){
+//                    for columnCount in 0..<(availableSwaps + 2) {
+//                        if (column - columnCount) >= 0 && (column + columnCount) <= NumColumns {
+//                            if (row + rowCount) >= 0 && (row + rowCount) <= NumRows {
+//                            if (objects[column - columnCount, row + rowCount]?.objectType.rawValue == type) && (objects[column - columnCount, row + rowCount] != nil){
+//                                return false
+//                                }
+//                            if (objects[column + columnCount, row + rowCount]?.objectType.rawValue == type) && (objects[column + columnCount, row + rowCount] != nil){
+//                                return false
+//                                }
+//                            }
+//                        }
+//                    }
+//                    
+//                }
+//                
+//                
+//                switch(availableSwaps){
+//                case 1:
+//                    // Check the object above or or left exists and has the same type.
+//                    while(rowCount <= availableSwaps) {
+//                        if (objects[column - columnCount, row + rowCount]?.objectType.rawValue == type) && (objects[column - columnCount, row + rowCount] != nil){
+//                            return false
+//                        }
+//                        rowCount -= 1
+//                        columnCount += 1
+//                    }
+//                    break;
+//                }
+
     func emptyField() -> Bool {
         if objects[NumColumns - 1, 0] == nil {
            return true
         }
         return false
+    }
+    func performSwap(swap: Swap) {
+        let columnA = swap.objectA.column
+        let rowA = swap.objectA.row
+        let columnB = swap.objectB.column
+        let rowB = swap.objectB.row
+        
+        objects[columnA, rowA] = swap.objectB
+        swap.objectB.column = columnA
+        swap.objectB.row = rowA
+        
+        objects[columnB, rowB] = swap.objectA
+        swap.objectA.column = columnB
+        swap.objectA.row = rowB
     }
 }

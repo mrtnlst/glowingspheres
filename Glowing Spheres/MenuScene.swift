@@ -17,6 +17,7 @@ class MenuScene: UIViewController {
     
     // Set an array for the logo animation.
     var images: [UIImage] = []
+    var tapGestureRecognizer: UITapGestureRecognizer!
 
     override var prefersStatusBarHidden : Bool {
         return true
@@ -30,6 +31,8 @@ class MenuScene: UIViewController {
         return [UIInterfaceOrientationMask.portrait, UIInterfaceOrientationMask.portraitUpsideDown]
     }
     
+    @IBOutlet weak var whatIsNewImage: UIImageView!
+    @IBOutlet weak var howToPlayButton: UIButton!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
@@ -38,10 +41,10 @@ class MenuScene: UIViewController {
     // Setting up music playback (if UserSetting is enabled).
     let savedMusicSetting = UserDefaults.standard
     var playMusicSwitchOn : Bool = false
+    let whatIsNewSetting = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Enable background music, if the userDefault setting is on.
         settingsScene = SettingsScene()
         if savedMusicSetting.value(forKey: "savedMusicSetting") != nil{
@@ -65,6 +68,7 @@ class MenuScene: UIViewController {
             playButton.setImage(UIImage(named: "Play-de"), for: .normal)
             aboutButton.setImage(UIImage(named: "About-de"), for: .normal)
             settingsButton.setImage(UIImage(named: "Settings-de"), for: .normal)
+
         }
         else {
             playButton.setImage(UIImage(named: "Play"), for: .normal)
@@ -81,6 +85,17 @@ class MenuScene: UIViewController {
         logoImageView.animationImages = images
         logoImageView.animationDuration = 4.0
         logoImageView.startAnimating()
+        
+        // Only show whatIsNewImage, first time user opens the app.
+        if whatIsNewSetting.value(forKey: "whatIsNewSetting") == nil{
+            showWhatIsNew()
+            whatIsNewSetting.set(true, forKey: "whatIsNewSetting")
+        }
+        else {
+            // I set false, because it's standard is true (buttons where clickable while image was displayed).
+            whatIsNewImage.isUserInteractionEnabled = false
+        }
+
         
         // When coming back from background, restore any touch interaction, if touch was hold while entering background.
         NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
@@ -114,11 +129,54 @@ class MenuScene: UIViewController {
     @IBAction func aboutButtonMoved(_ sender: AnyObject) {
         view.isUserInteractionEnabled = true
     }
+    
+    @IBAction func howToPlayButtonTouchDown(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = false
+        
+    }
+    @IBAction func howToPlayButtonMoved(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
+    @IBAction func howToPlayButtonTouchUp(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
     func wakingUpFromBackground(){
         view.isUserInteractionEnabled = true
         playButton.isUserInteractionEnabled = true
         settingsButton.isUserInteractionEnabled = true
         aboutButton.isUserInteractionEnabled = true
+    }
+    func hideWhatIsNew (){
+        view.removeGestureRecognizer(tapGestureRecognizer)
+        tapGestureRecognizer = nil
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.whatIsNewImage.alpha = 0})
+        
+        playButton.isUserInteractionEnabled = true
+        settingsButton.isUserInteractionEnabled = true
+        aboutButton.isUserInteractionEnabled = true
+        howToPlayButton.isUserInteractionEnabled = true
+        whatIsNewImage.isUserInteractionEnabled = false
+   
+    }
+    func showWhatIsNew(){
+        playButton.isUserInteractionEnabled = false
+        settingsButton.isUserInteractionEnabled = false
+        aboutButton.isUserInteractionEnabled = false
+        howToPlayButton.isUserInteractionEnabled = false
+        
+        if locale.languageCode == "de"{
+            whatIsNewImage.image = UIImage(fullscreenNamed: "whatIsNew-de")
+        }
+        else {
+            whatIsNewImage.image = UIImage(fullscreenNamed: "whatIsNew")
+        }
+        
+        whatIsNewImage.alpha = 0
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.whatIsNewImage.alpha = 1.0})
+        
+        self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.hideWhatIsNew))
+        self.view.addGestureRecognizer(self.tapGestureRecognizer)
     }
 }
 

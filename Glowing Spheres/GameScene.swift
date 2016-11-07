@@ -48,6 +48,10 @@ class GameScene: SKScene {
     // The touchHandler connect GameViewController with GameScene.
     // It is called when a object is touched and transfers object Information to handleTouch in GameViewController.
     var touchHandler: ((Object) -> ())?
+
+    // Managing swaps. 3 swaps per game are allowed.
+    var availableSwaps = 3
+    var swipeHandler: ((Swap) -> ())?
     
     // The inputHandler allows to disable input from newGameButton in the GameViewController.
     var inputHandler: ((Bool) -> ())?
@@ -193,8 +197,43 @@ class GameScene: SKScene {
             checkSelectionSprite = false
         } 
         gameSceneTouchDetected = false
+        touchInRow = nil
+        touchInColumn = nil
     }
-
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if availableSwaps > 0 {
+        // 1
+        guard touchInColumn != nil else { return }
+        
+        // 2
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: objectsLayer)
+        
+        let (success, column, row) = convertPoint(point: location)
+        if success {
+            
+            // 3
+            var horzDelta = 0, vertDelta = 0
+            if column < touchInColumn! {          // swipe left
+                horzDelta = -1
+            } else if column > touchInColumn! {   // swipe right
+                horzDelta = 1
+            } else if row < touchInRow! {         // swipe down
+                vertDelta = -1
+            } else if row > touchInRow! {         // swipe up
+                vertDelta = 1
+            }
+            
+            // 4
+            if horzDelta != 0 || vertDelta != 0 {
+                trySwap(horizontal: horzDelta, vertical: vertDelta)
+                
+                // 5
+                touchInColumn = nil
+                }
+            }
+        }
+    }
 
 // MARK: OBJECT ANIMATIONS
     
@@ -273,7 +312,7 @@ class GameScene: SKScene {
     
     func animateScoreForMatch(object: Object) {
         // Figure out what the position.
-        let centerPosition = pointForColumn(column: object.column, row: object.row)
+        var centerPosition = pointForColumn(column: object.column, row: object.row)
         
         // Add a label for the score that slowly floats up.
         let scoreLabel = SKLabelNode(fontNamed: "Futura-CondensedExtraBold")
@@ -286,6 +325,27 @@ class GameScene: SKScene {
         let moveAction = SKAction.move(by: CGVector(dx: 0, dy: 3), duration: 0.7)
         moveAction.timingMode = .easeOut
         scoreLabel.run(SKAction.sequence([moveAction, SKAction.removeFromParent()]))
+        
+        if field.deleteStateCount > 6
+        {
+            let swapLabel = SKLabelNode(fontNamed: "Futura-CondensedExtraBold")
+            centerPosition.y -= 20
+            swapLabel.fontSize = 16
+            if field.deleteStateCount > 18 {
+                swapLabel.text = String(format: "+ 2 Swap")
+            }
+            else {
+                swapLabel.text = String(format: "+ 1 Swap")
+            }
+            swapLabel.position = centerPosition
+            swapLabel.zPosition = 300
+            swapLabel.fontColor = UIColor.white //(red:0.00, green:1.00, blue:1.00, alpha:1.0)
+            objectsLayer.addChild(swapLabel)
+            
+            let moveAction = SKAction.move(by: CGVector(dx: 0, dy: 3), duration: 0.7)
+            moveAction.timingMode = .easeOut
+            swapLabel.run(SKAction.sequence([moveAction, SKAction.removeFromParent()]))
+        }
     }
 
     
@@ -364,6 +424,41 @@ class GameScene: SKScene {
             print("couldn't load file")
         }
         
+    }
+    func trySwap(horizontal horzDelta: Int, vertical vertDelta: Int) {
+        // 1
+        let toColumn = touchInColumn! + horzDelta
+        let toRow = touchInRow! + vertDelta
+        // 2
+        guard toColumn >= 0 && toColumn < NumColumns else { return }
+        guard toRow >= 0 && toRow < NumRows else { return }
+        // 3
+        if let toObject = field.objectAtColumn(column: toColumn, row: toRow),
+            let fromObject = field.objectAtColumn(column: touchInColumn!, row: touchInRow!) {
+            // 4
+            print("*** swapping \(fromObject) with \(toObject)")
+            if let handler = swipeHandler {
+                let swap = Swap(objectA: fromObject, objectB: toObject)
+                handler(swap)
+            }
+        }
+    }
+    func animate(_ swap: Swap, completion: @escaping () -> ()) {
+        let spriteA = swap.objectA.sprite!
+        let spriteB = swap.objectB.sprite!
+        
+        spriteA.zPosition = 100
+        spriteB.zPosition = 90
+        
+        let duration: TimeInterval = 0.3
+        
+        let moveA = SKAction.move(to: spriteB.position, duration: duration)
+        moveA.timingMode = .easeOut
+        spriteA.run(moveA, completion: completion)
+        
+        let moveB = SKAction.move(to: spriteA.position, duration: duration)
+        moveB.timingMode = .easeOut
+        spriteB.run(moveB)
     }
 }
 
