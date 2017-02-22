@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hGi-f9-ckA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hGi-f9-ckA">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,21 +19,24 @@
                         <viewControllerLayoutGuide type="bottom" id="ckR-rj-jeU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PhI-w9-hlG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Y8j-r4-NjS">
+                                <rect key="frame" x="128" y="302.5" width="119" height="196"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YL2-H3-FHx">
+                                        <rect key="frame" x="21" y="0.0" width="77" height="50"/>
                                         <state key="normal" image="Play"/>
                                         <connections>
                                             <action selector="playButtonMoved:" destination="hGi-f9-ckA" eventType="touchDragOutside" id="io6-K7-Mx7"/>
                                             <action selector="playButtonTouchedDown:" destination="hGi-f9-ckA" eventType="touchDown" id="tJD-dX-vIt"/>
                                             <action selector="playButtonTouchedUpd:" destination="hGi-f9-ckA" eventType="touchUpInside" id="Ftg-dr-T2J"/>
-                                            <segue destination="BV1-FR-VrT" kind="presentation" modalTransitionStyle="crossDissolve" id="eu3-hS-oqD"/>
+                                            <segue destination="BV1-FR-VrT" kind="presentation" modalTransitionStyle="crossDissolve" id="f0V-Wu-nmx"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5N-ig-8mY">
+                                        <rect key="frame" x="0.0" y="52" width="119" height="50"/>
                                         <state key="normal" image="Settings"/>
                                         <connections>
                                             <action selector="settingsButtonMoved:" destination="hGi-f9-ckA" eventType="touchDragOutside" id="17C-8J-Lq5"/>
@@ -40,6 +46,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unE-0X-GlA">
+                                        <rect key="frame" x="10" y="104" width="99" height="50"/>
                                         <state key="normal" image="About"/>
                                         <connections>
                                             <action selector="aboutButtonMoved:" destination="hGi-f9-ckA" eventType="touchDragOutside" id="Agt-X6-h1Q"/>
@@ -49,6 +56,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Dt-yH-uny" userLabel="How To Play Button">
+                                        <rect key="frame" x="43" y="156" width="33" height="40"/>
                                         <state key="normal" image="HowToPlayButton"/>
                                         <connections>
                                             <action selector="howToPlayButtonMoved:" destination="hGi-f9-ckA" eventType="touchDragOutside" id="ttp-4Z-9vb"/>
@@ -59,8 +67,12 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="EbS-d3-iy7"/>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Chl-LF-qM4"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="EbS-d3-iy7">
+                                <rect key="frame" x="0.0" y="70" width="375" height="154"/>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Chl-LF-qM4">
+                                <rect key="frame" x="0.0" y="-66" width="375" height="733"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -97,32 +109,41 @@
                         <viewControllerLayoutGuide type="bottom" id="qHh-Mt-9TT"/>
                     </layoutGuides>
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OaA-Y2-R6M">
+                                <rect key="frame" x="16" y="221" width="343" height="225"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="225" id="USZ-0t-LoN"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tap to continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQR-KF-ocm">
+                                <rect key="frame" x="123.5" y="466" width="129.5" height="21"/>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="16"/>
                                 <color key="textColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bonus + 300" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a99-ms-eo3">
+                                <rect key="frame" x="134.5" y="507" width="106.5" height="21"/>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="16"/>
                                 <color key="textColor" red="0.15649035573005676" green="0.90056353807449341" blue="0.94708353281021118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oQA-Pa-v4j">
+                                <rect key="frame" x="2" y="35" width="371" height="120"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="lgu-IC-E5q">
+                                        <rect key="frame" x="0.0" y="0.0" width="371" height="60"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-31" translatesAutoresizingMaskIntoConstraints="NO" id="jN2-QN-52S">
+                                                <rect key="frame" x="0.0" y="0.0" width="123" height="60"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Score" translatesAutoresizingMaskIntoConstraints="NO" id="h8x-K0-yZ6"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Score" translatesAutoresizingMaskIntoConstraints="NO" id="h8x-K0-yZ6">
+                                                        <rect key="frame" x="0.0" y="0.0" width="123" height="70"/>
+                                                    </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jq0-Nw-bNh" userLabel="Score Label">
+                                                        <rect key="frame" x="39.5" y="39" width="44" height="21"/>
                                                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="16"/>
                                                         <color key="textColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -130,9 +151,13 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-31" translatesAutoresizingMaskIntoConstraints="NO" id="tbG-F8-sVm">
+                                                <rect key="frame" x="124" y="0.0" width="123" height="60"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Highscore" translatesAutoresizingMaskIntoConstraints="NO" id="eo2-2B-1ig"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Highscore" translatesAutoresizingMaskIntoConstraints="NO" id="eo2-2B-1ig">
+                                                        <rect key="frame" x="0.0" y="0.0" width="123" height="70"/>
+                                                    </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60v-BS-fec" userLabel="Highscore Label">
+                                                        <rect key="frame" x="39.5" y="39" width="44" height="21"/>
                                                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="16"/>
                                                         <color key="textColor" red="0.98958333333333337" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -140,9 +165,13 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-31" translatesAutoresizingMaskIntoConstraints="NO" id="8TS-3t-dA2">
+                                                <rect key="frame" x="248" y="0.0" width="123" height="60"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Swap" translatesAutoresizingMaskIntoConstraints="NO" id="YjU-j0-HWV"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Swap" translatesAutoresizingMaskIntoConstraints="NO" id="YjU-j0-HWV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="123" height="70"/>
+                                                    </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFt-6U-fZW" userLabel="Swap Label">
+                                                        <rect key="frame" x="39.5" y="39" width="44" height="21"/>
                                                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="16"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -152,16 +181,20 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="joh-hF-djG">
+                                        <rect key="frame" x="42.5" y="60" width="286" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHB-go-COu" userLabel="Back">
+                                                <rect key="frame" x="0.0" y="10" width="118" height="40"/>
                                                 <state key="normal" image="Quit"/>
                                                 <connections>
                                                     <action selector="backButtonMoved:" destination="BV1-FR-VrT" eventType="touchDragOutside" id="a73-7c-kcf"/>
                                                     <action selector="backButtonTouchDown:" destination="BV1-FR-VrT" eventType="touchDown" id="pb7-Kb-eiP"/>
                                                     <action selector="backButtonTouchUp:" destination="BV1-FR-VrT" eventType="touchUpInside" id="eN9-Lx-68L"/>
+                                                    <segue destination="hGi-f9-ckA" kind="presentation" identifier="continue" modalTransitionStyle="crossDissolve" id="Tju-Tj-bPt"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5C-Ar-cQz" userLabel="New Game">
+                                                <rect key="frame" x="168" y="5" width="118" height="50"/>
                                                 <state key="normal" image="NewGame"/>
                                                 <connections>
                                                     <action selector="newGameButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Cz2-Dy-2sK"/>
@@ -174,6 +207,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x swaps left: + x " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ys5-TT-hjw">
+                                <rect key="frame" x="112" y="548" width="151" height="21"/>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="16"/>
                                 <color key="textColor" red="0.1564903557" green="0.90056353810000001" blue="0.94708353280000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -207,7 +241,6 @@
                         <outlet property="swapBonusLabel" destination="ys5-TT-hjw" id="p5c-aZ-zoW"/>
                         <outlet property="swapLabel" destination="MFt-6U-fZW" id="wAf-9Y-tAn"/>
                         <outlet property="tapToContinueLabel" destination="XQR-KF-ocm" id="P7y-dz-B7Y"/>
-                        <segue destination="hGi-f9-ckA" kind="presentation" identifier="continue" modalTransitionStyle="crossDissolve" id="lhC-hQ-4Jd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -223,15 +256,20 @@
                         <viewControllerLayoutGuide type="bottom" id="9hR-20-D99"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UgA-Rg-xoO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="peS-Ib-ac4">
+                                <rect key="frame" x="67" y="244" width="241" height="165"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="M0s-R5-8cN">
+                                        <rect key="frame" x="0.0" y="0.0" width="241" height="45"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Play Music" translatesAutoresizingMaskIntoConstraints="NO" id="VK4-9m-IpO"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Play Music" translatesAutoresizingMaskIntoConstraints="NO" id="VK4-9m-IpO">
+                                                <rect key="frame" x="0.0" y="0.0" width="152" height="45"/>
+                                            </imageView>
                                             <switch opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bDL-Ft-626" userLabel="playMusicSwitch">
+                                                <rect key="frame" x="192" y="7" width="51" height="31"/>
                                                 <color key="onTintColor" red="0.98431372549999996" green="0.031372549020000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="playMusicUISwitchToggled:" destination="1la-hR-lFB" eventType="valueChanged" id="e4N-hi-lRa"/>
@@ -240,9 +278,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="sK5-JD-h3y">
+                                        <rect key="frame" x="0.0" y="60" width="241" height="45"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="251" image="Play Sounds" translatesAutoresizingMaskIntoConstraints="NO" id="3zf-w8-L5y"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="251" image="Play Sounds" translatesAutoresizingMaskIntoConstraints="NO" id="3zf-w8-L5y">
+                                                <rect key="frame" x="0.0" y="0.0" width="152" height="45"/>
+                                            </imageView>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kp8-be-MOd" userLabel="playSoundsSwitch">
+                                                <rect key="frame" x="192" y="7" width="51" height="31"/>
                                                 <color key="onTintColor" red="0.98431372549999996" green="0.031372549020000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="playSoundsUISwitchToggled:" destination="1la-hR-lFB" eventType="valueChanged" id="aPp-Pl-gll"/>
@@ -251,6 +293,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idM-jb-ksJ">
+                                        <rect key="frame" x="0.0" y="120" width="222" height="45"/>
                                         <inset key="contentEdgeInsets" minX="-3" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" image="ResetHighscore"/>
                                         <connections>
@@ -259,43 +302,13 @@
                                             <action selector="resetHighscoreButtonPressed:" destination="1la-hR-lFB" eventType="touchUpInside" id="bUe-rt-cnC"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="VPk-Lw-WKs">
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAY-pC-R4t">
-                                                <inset key="contentEdgeInsets" minX="-6" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" image="SupportDevelopment">
-                                                    <color key="titleColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="tipJarButtonMoved:" destination="1la-hR-lFB" eventType="touchDragOutside" id="GvV-Qv-fti"/>
-                                                    <action selector="tipJarButtonPressed:" destination="1la-hR-lFB" eventType="touchUpInside" id="4w9-cB-fSR"/>
-                                                    <action selector="tipJarButtonTouchedDown:" destination="1la-hR-lFB" eventType="touchDown" id="8Ny-ac-tN6"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMc-FP-KAa">
-                                                <string key="text"> Like my app? Support its development
- with a 99 ct in-app purchase.</string>
-                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8x6-Y4-nXP">
-                                        <inset key="contentEdgeInsets" minX="-6" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" image="RestorePurchases">
-                                            <color key="titleColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="restorePurchasesButtonPressed:" destination="1la-hR-lFB" eventType="touchUpInside" id="PRO-Jp-e9W"/>
-                                            <action selector="restorePurchasesMoved:" destination="1la-hR-lFB" eventType="touchDragOutside" id="e9f-R0-UoS"/>
-                                            <action selector="restorePurchasesTouchedDown:" destination="1la-hR-lFB" eventType="touchDown" id="ysa-kY-zdl"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="supporter-1" translatesAutoresizingMaskIntoConstraints="NO" id="45O-v2-IEY"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="supporter-1" translatesAutoresizingMaskIntoConstraints="NO" id="45O-v2-IEY">
+                                <rect key="frame" x="28" y="137" width="320" height="77"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXq-tS-xBS">
+                                <rect key="frame" x="160" y="434" width="56" height="50"/>
                                 <state key="normal" image="Back"/>
                                 <connections>
                                     <action selector="BackButtonMoved:" destination="1la-hR-lFB" eventType="touchDragOutside" id="pK8-sq-izE"/>
@@ -307,26 +320,22 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="45O-v2-IEY" secondAttribute="trailing" constant="8" id="0e2-FA-YrK"/>
-                            <constraint firstItem="peS-Ib-ac4" firstAttribute="centerY" secondItem="UgA-Rg-xoO" secondAttribute="centerY" constant="10" id="F8w-4F-M3w"/>
-                            <constraint firstItem="peS-Ib-ac4" firstAttribute="top" secondItem="45O-v2-IEY" secondAttribute="bottom" constant="12" id="INU-dK-fqW"/>
-                            <constraint firstItem="OXq-tS-xBS" firstAttribute="top" secondItem="peS-Ib-ac4" secondAttribute="bottom" constant="10" id="gh1-2y-5qv"/>
-                            <constraint firstItem="peS-Ib-ac4" firstAttribute="centerX" secondItem="UgA-Rg-xoO" secondAttribute="centerX" id="j0E-Cq-J8U"/>
-                            <constraint firstItem="45O-v2-IEY" firstAttribute="leading" secondItem="UgA-Rg-xoO" secondAttribute="leading" constant="8" id="jaM-vH-Muw"/>
-                            <constraint firstItem="OXq-tS-xBS" firstAttribute="centerX" secondItem="UgA-Rg-xoO" secondAttribute="centerX" id="mJV-I2-Lcg"/>
+                            <constraint firstItem="OXq-tS-xBS" firstAttribute="centerX" secondItem="UgA-Rg-xoO" secondAttribute="centerX" id="0Qr-V7-hPl"/>
+                            <constraint firstItem="peS-Ib-ac4" firstAttribute="top" secondItem="45O-v2-IEY" secondAttribute="bottom" constant="30" id="U2c-yC-O8r"/>
+                            <constraint firstItem="peS-Ib-ac4" firstAttribute="centerY" secondItem="UgA-Rg-xoO" secondAttribute="centerY" constant="-7" id="YYL-ZV-Wsg"/>
+                            <constraint firstItem="peS-Ib-ac4" firstAttribute="centerX" secondItem="UgA-Rg-xoO" secondAttribute="centerX" id="gp1-Sr-o8l"/>
+                            <constraint firstItem="45O-v2-IEY" firstAttribute="centerX" secondItem="UgA-Rg-xoO" secondAttribute="centerX" id="rcl-Ui-Rsf"/>
+                            <constraint firstItem="OXq-tS-xBS" firstAttribute="top" secondItem="peS-Ib-ac4" secondAttribute="bottom" constant="25" id="tlC-jf-3fo"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="OXq-tS-xBS" id="2db-zD-P44"/>
-                        <outlet property="inAppPurchaseLabel" destination="zMc-FP-KAa" id="Qlb-du-d15"/>
                         <outlet property="playMusicImage" destination="VK4-9m-IpO" id="WY6-An-0lW"/>
                         <outlet property="playMusicUISwitch" destination="bDL-Ft-626" id="RHO-xw-XxL"/>
                         <outlet property="playSoundsImage" destination="3zf-w8-L5y" id="BfX-AN-oWb"/>
                         <outlet property="playSoundsUISwitch" destination="kp8-be-MOd" id="7zI-3Q-Ly3"/>
                         <outlet property="resetHighscore" destination="idM-jb-ksJ" id="cTW-2R-Pau"/>
-                        <outlet property="restorePurchasesButton" destination="8x6-Y4-nXP" id="sbm-Ws-Tsn"/>
                         <outlet property="supporterLabel" destination="45O-v2-IEY" id="1fs-vu-t9d"/>
-                        <outlet property="tipJarButton" destination="OAY-pC-R4t" id="iuD-es-3s6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SCo-8a-EyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -342,14 +351,17 @@
                         <viewControllerLayoutGuide type="bottom" id="us3-Nq-01K"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wDT-Em-RLj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DVd-ZK-DRS">
+                                <rect key="frame" x="50.5" y="157" width="274.5" height="353"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2FA-oi-hXR">
+                                        <rect key="frame" x="0.0" y="0.0" width="274.5" height="303"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8FM-YV-cOz">
+                                                <rect key="frame" x="0.0" y="0.0" width="274.5" height="70.5"/>
                                                 <string key="text">Glowing Spheres was developed 
 and designed by Martin List.
 </string>
@@ -358,6 +370,7 @@ and designed by Martin List.
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ob-9N-lPm">
+                                                <rect key="frame" x="0.0" y="70.5" width="121" height="35"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                 <state key="normal" title="Follow @mrtnlst">
                                                     <color key="titleColor" red="0.25098039215686274" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -369,6 +382,7 @@ and designed by Martin List.
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Hy-vb-X1F">
+                                                <rect key="frame" x="0.0" y="105.5" width="190" height="35"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                 <state key="normal" title="Follow @glowingspheres">
                                                     <color key="titleColor" red="0.30605217810000002" green="0.6758336425" blue="0.99861246349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -380,6 +394,7 @@ and designed by Martin List.
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDN-ta-jpj">
+                                                <rect key="frame" x="0.0" y="140.5" width="189" height="35"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                 <state key="normal" title="E-Mail @glowingspheres">
                                                     <color key="titleColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -391,6 +406,7 @@ and designed by Martin List.
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYv-C3-gLW">
+                                                <rect key="frame" x="0.0" y="175.5" width="192.5" height="127.5"/>
                                                 <string key="text">
 The font LAZER 84 was made 
 by Juan Hodgson. 
@@ -405,6 +421,7 @@ Jean M. Wojciechowski.
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCT-Xc-Oca">
+                                        <rect key="frame" x="109.5" y="303" width="56" height="50"/>
                                         <state key="normal" image="Back"/>
                                         <connections>
                                             <action selector="backButtonMoved:" destination="NMC-W4-SMu" eventType="touchDragOutside" id="1a6-ya-CXU"/>
@@ -444,41 +461,52 @@ Jean M. Wojciechowski.
                         <viewControllerLayoutGuide type="bottom" id="hP8-sZ-P6H"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9fc-pM-ZJ0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="C3K-b6-mVU">
+                                <rect key="frame" x="62" y="110" width="251" height="347"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOW TO PLAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKR-sX-r0h">
+                                        <rect key="frame" x="0.0" y="0.0" width="131.5" height="22.5"/>
                                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
                                         <color key="textColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XSX-az-427">
+                                        <rect key="frame" x="0.0" y="32.5" width="222.5" height="144"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bF-c7-Rhx">
+                                                <rect key="frame" x="0.0" y="0.0" width="222.5" height="42"/>
                                                 <string key="text">Tap on spheres that match the 
 same color to score points.</string>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                                                 <color key="textColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HowToPlay1" translatesAutoresizingMaskIntoConstraints="NO" id="Yrj-xd-TPv"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HowToPlay1" translatesAutoresizingMaskIntoConstraints="NO" id="Yrj-xd-TPv">
+                                                <rect key="frame" x="60" y="42" width="103" height="102"/>
+                                            </imageView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VDR-X1-cT8">
+                                        <rect key="frame" x="0.0" y="186.5" width="242" height="88"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="13" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yX-dg-zyx">
+                                                <rect key="frame" x="0.0" y="0.0" width="242" height="42"/>
                                                 <string key="text">Swipe from one sphere to 
 another, to change their position.</string>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                                                 <color key="textColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HowToPlay2" translatesAutoresizingMaskIntoConstraints="NO" id="zmO-0s-iIt"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HowToPlay2" translatesAutoresizingMaskIntoConstraints="NO" id="zmO-0s-iIt">
+                                                <rect key="frame" x="71.5" y="42" width="99" height="46"/>
+                                            </imageView>
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c82-2Z-eQU">
+                                        <rect key="frame" x="0.0" y="284.5" width="251" height="62.5"/>
                                         <string key="text">Each game starts with 3 swaps.
 For every match with more than 6 
 spheres you get + 1 swap.</string>
@@ -489,6 +517,7 @@ spheres you get + 1 swap.</string>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qo6-aQ-BAW">
+                                <rect key="frame" x="112" y="477" width="151" height="50"/>
                                 <state key="normal" image="Back"/>
                                 <connections>
                                     <action selector="backToMenuButtonMoved:" destination="COR-Gc-bTp" eventType="touchDragOutside" id="Cjs-yT-Kfo"/>
@@ -522,26 +551,24 @@ spheres you get + 1 swap.</string>
     </scenes>
     <resources>
         <image name="About" width="99" height="50"/>
-        <image name="Back" width="72" height="40"/>
-        <image name="Highscore" width="164" height="80"/>
-        <image name="HowToPlay1" width="121" height="121"/>
-        <image name="HowToPlay2" width="115" height="56"/>
-        <image name="HowToPlayButton" width="41" height="50"/>
-        <image name="NewGame" width="156" height="40"/>
+        <image name="Back" width="56" height="50"/>
+        <image name="Highscore" width="143" height="70"/>
+        <image name="HowToPlay1" width="103" height="102"/>
+        <image name="HowToPlay2" width="99" height="46"/>
+        <image name="HowToPlayButton" width="33" height="40"/>
+        <image name="NewGame" width="118" height="50"/>
         <image name="Play" width="77" height="50"/>
-        <image name="Play Music" width="169" height="50"/>
-        <image name="Play Sounds" width="169" height="50"/>
-        <image name="Quit" width="73" height="50"/>
-        <image name="ResetHighscore" width="250" height="50"/>
-        <image name="RestorePurchases" width="255" height="50"/>
-        <image name="Score" width="164" height="80"/>
+        <image name="Play Music" width="152" height="45"/>
+        <image name="Play Sounds" width="152" height="45"/>
+        <image name="Quit" width="58" height="40"/>
+        <image name="ResetHighscore" width="225" height="45"/>
+        <image name="Score" width="143" height="70"/>
         <image name="Settings" width="119" height="50"/>
-        <image name="SupportDevelopment" width="299" height="50"/>
-        <image name="Swap" width="164" height="80"/>
-        <image name="logo-1" width="414" height="200"/>
-        <image name="supporter-1" width="414" height="100"/>
+        <image name="Swap" width="143" height="70"/>
+        <image name="logo-1" width="320" height="154"/>
+        <image name="supporter-1" width="320" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lhC-hQ-4Jd"/>
+        <segue reference="lAb-fV-mb5"/>
     </inferredMetricsTieBreakers>
 </document>

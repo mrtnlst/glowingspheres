@@ -45,7 +45,7 @@ class GameViewController: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(locale.languageCode)
+        print(locale.languageCode!)
         // Changing the style of the two buttons.
         if locale.languageCode == "de" {
             backToMenuButton.setImage(UIImage(named: "Quit-de"), for: .normal)
@@ -56,6 +56,7 @@ class GameViewController: UIViewController {
             backToMenuButton.setImage(UIImage(named: "Quit"), for: .normal)
             newGameButton.setImage(UIImage(named: "NewGame"), for: .normal)
         }
+        
         // Make sure the gameOverPanel is hidden.
         gameOverPanel.alpha = 0
         bonusLabel.alpha = 0

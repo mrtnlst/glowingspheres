@@ -11,6 +11,7 @@ import GameplayKit
 import AVFoundation
 
 var disappearSound: AVAudioPlayer?
+let screenSize = UIScreen.main.bounds.height
 
 class GameScene: SKScene {
 
@@ -27,10 +28,11 @@ class GameScene: SKScene {
     private var checkSelectionSprite: Bool?
     private var soundEffectsCounter: Int = 1
     var field: Field!
-    
+   
     // Set TileWidth and TileHight.
-    let TileWidth: CGFloat = 40.0
-    let TileHeight: CGFloat = 40.0
+    
+    var TileWidth: CGFloat = 40.0
+    var TileHeight: CGFloat = 40.0
     
     // Set the game and objects layer.
     let gameLayer = SKNode()
@@ -64,7 +66,20 @@ class GameScene: SKScene {
     
     override init(size: CGSize) {
         super.init(size: size)
-
+        
+        // Different screen size, different tile size
+        switch screenSize {
+        case 736:
+             TileWidth = 50.0
+             TileHeight = 50.0
+        case 667:
+             TileWidth = 45.0
+             TileHeight = 45.0
+        default:
+             TileWidth = 40.0
+             TileHeight = 40.0
+        }
+        
         anchorPoint = CGPoint(x: 0.5, y: 0.4)
         backgroundColor = SKColor.black
 
@@ -180,7 +195,7 @@ class GameScene: SKScene {
                 // Check if object touch ended at the same position, where it began.
                 // Otherwise you can tap on an object, swipe and release on a different object.
                 if column == touchInColumn && row == touchInRow {
-                    print(field.objects[column, row]?.description)
+                    print(field.objects[column, row]?.description as Any)
                     if let handler = touchHandler {
                         let object = field.objects[column, row]
                         handler(object!)
