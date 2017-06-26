@@ -9,8 +9,6 @@
 import UIKit
 import SpriteKit
 
-let locale = Locale.current
-
 class GameViewController: UIViewController {
     
     override var prefersStatusBarHidden : Bool {
@@ -30,7 +28,20 @@ class GameViewController: UIViewController {
     var score = 0
     var highscore = 0
     var tapGestureRecognizer: UITapGestureRecognizer!
- 
+    
+    var totalCount = 0
+    var highestCombo = 0
+    var gamesPlayed = 0
+    var swapsPerGame = 0
+    var perfectGame = 0
+    
+    var highscoreThresh = 1500
+    var comboThresh = 810
+    var swapsThresh = 4
+    var perfectGamesThresh = 30
+    var spheresTotalThresh = 10000
+    var totalGamesThresh = 100
+    
     
     @IBOutlet weak var swapBonusLabel: UILabel!
     @IBOutlet weak var swapLabel: UILabel!
@@ -41,27 +52,21 @@ class GameViewController: UIViewController {
     @IBOutlet weak var newGameButton: UIButton!
     @IBOutlet weak var backToMenuButton: UIButton!
     @IBOutlet weak var gameOverPanel: UIImageView!
-    
+    @IBOutlet weak var achievementUnlockedLabel: UILabel!
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(locale.languageCode!)
         // Changing the style of the two buttons.
-        if locale.languageCode == "de" {
-            backToMenuButton.setImage(UIImage(named: "Quit-de"), for: .normal)
-            newGameButton.setImage(UIImage(named: "NewGame-de"), for: .normal)
-            tapToContinueLabel.text = "tippen um fortzufahren"
-        }
-        else {
-            backToMenuButton.setImage(UIImage(named: "Quit"), for: .normal)
-            newGameButton.setImage(UIImage(named: "NewGame"), for: .normal)
-        }
+        backToMenuButton.setImage(UIImage(named: "Quit"), for: .normal)
+        newGameButton.setImage(UIImage(named: "NewGame"), for: .normal)
+    
         
         // Make sure the gameOverPanel is hidden.
         gameOverPanel.alpha = 0
         bonusLabel.alpha = 0
         tapToContinueLabel.alpha = 0
         swapBonusLabel.alpha = 0
+        achievementUnlockedLabel.alpha = 0
         
         //Configure the view.
         let skView = view as! SKView
@@ -82,6 +87,38 @@ class GameViewController: UIViewController {
         scene.touchHandler = handleTouch
         scene.inputHandler = handleUserInput
         scene.swipeHandler = handleSwipe
+        
+        if (self.view.frame.size.width == 320){
+            //iPhone 2G, 3G, 3GS, 4, 4s, 5, 5s, 5c
+            scoreLabel.font = UIFont(name: "Futura-Bold", size: 16)
+            swapLabel.font = UIFont(name: "Futura-Bold", size: 16)
+            highscoreLabel.font = UIFont(name: "Futura-Bold", size: 16)
+        }
+        else if (self.view.frame.size.width == 375){
+            //iPhone 6
+            scoreLabel.font = UIFont(name: "Futura-Bold", size: 18)
+            swapLabel.font = UIFont(name: "Futura-Bold", size: 18)
+            highscoreLabel.font = UIFont(name: "Futura-Bold", size: 18)
+        }
+        else if (self.view.frame.size.width == 414){
+            //iPhone 6 Plus
+            scoreLabel.font = UIFont(name: "Futura-Bold", size: 20)
+            swapLabel.font = UIFont(name: "Futura-Bold", size: 20)
+            highscoreLabel.font = UIFont(name: "Futura-Bold", size: 20)
+        }
+        UserDefaults.standard.register(defaults: ["Highscore-Achievement" : false])
+        UserDefaults.standard.register(defaults: ["Combo-Achievement" : false])
+        UserDefaults.standard.register(defaults: ["Swaps-Achievement" : false])
+        UserDefaults.standard.register(defaults: ["Spheres-Achievement" : false])
+        UserDefaults.standard.register(defaults: ["Games-Achievement" : false])
+        UserDefaults.standard.register(defaults: ["Perfect-Achievement" : false])
+        
+        UserDefaults.standard.register(defaults: ["Highscore" : 0])
+        UserDefaults.standard.register(defaults: ["PerfectGames" : 0])
+        UserDefaults.standard.register(defaults: ["TotalCount" : 0])
+        UserDefaults.standard.register(defaults: ["HighestCombo" : 0])
+        UserDefaults.standard.register(defaults: ["GamesPlayed" : 0])
+        UserDefaults.standard.register(defaults: ["SwapsPerGame" : false])
 
         beginGame()
         
@@ -98,15 +135,34 @@ class GameViewController: UIViewController {
             self.view.isUserInteractionEnabled = true
             self.backToMenuButton.isUserInteractionEnabled = true
         }
-        // Reset the score.
+        // Reset the variables.
         score = 0
         scene.availableSwaps = 3
-        // By default the bonusLabel is hidden.
+        swapsPerGame = 0
+        
+        // By default the bonusLabel, swapBonusLabel and achievementLabel are hidden.
         bonusLabel.isHidden = true
         swapBonusLabel.isHidden = true
+        achievementUnlockedLabel.isHidden = true
+        
 
-
-        // Recieve the highscore stored in UserDefaults.standard.
+        // Receive total games played.
+        let perfectGames = UserDefaults.standard
+        perfectGame = perfectGames.integer(forKey: "PerfectGames")
+        
+        // Receive total games played.
+        let totalGamesPlayed = UserDefaults.standard
+        gamesPlayed = totalGamesPlayed.integer(forKey: "GamesPlayed")
+        
+        // Receive total count.
+        let totalSavedCount = UserDefaults.standard
+        totalCount = totalSavedCount.integer(forKey: "TotalCount")
+        
+        // Receive highest combo.
+        let highestComboSaved = UserDefaults.standard
+        highestCombo = highestComboSaved.integer(forKey: "HighestCombo")
+                
+        // Receive the highscore stored in UserDefaults.standard.
         let savedScore = UserDefaults.standard
         highscore = savedScore.integer(forKey: "Highscore")
         updateLabels()
@@ -137,14 +193,9 @@ class GameViewController: UIViewController {
             var title: String
             var message: String
         
-            if locale.languageCode == "de" {
-                title = "Spiel verlassen?"
-                message = "Dein Punktestand wird nicht gespeichert!"
-            } else {
-                title = "Quit this game?"
-                message = "You will lose your current score!"
-            }
-        
+            title = "Quit this game?"
+            message = "You will lose your current score!"
+            
             let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
             // Actions for alertbox.
@@ -220,12 +271,7 @@ class GameViewController: UIViewController {
                     if self.score > self.highscore {
                         
                         // Show NewHighscore image.
-                        if locale.languageCode == "de"{
-                            self.gameOverPanel.image = UIImage(named: "NewHighscore-de")
-                        }
-                        else {
-                            self.gameOverPanel.image = UIImage(named: "NewHighscore")
-                        }
+                        self.gameOverPanel.image = UIImage(named: "NewHighscore")
                         self.showGameOver()
                         
                         // Copy the new highscore.
@@ -238,12 +284,7 @@ class GameViewController: UIViewController {
                     }
                     else {
                         // If there is no new highscore, show OutOfMoves.
-                        if locale.languageCode == "de"{
-                            self.gameOverPanel.image = UIImage(named: "NoMoreMoves-de")
-                        }
-                        else {
-                            self.gameOverPanel.image = UIImage(named: "NoMoreMoves")
-                        }
+                        self.gameOverPanel.image = UIImage(named: "NoMoreMoves")
                         self.showGameOver()
                     }
                 }
@@ -267,14 +308,30 @@ class GameViewController: UIViewController {
             // If true, disable any user interaction.
             view.isUserInteractionEnabled = false
             
-            // Calculate the score, based on deleteStateCount.
+            // Save the totalCount of spheres.
             print(field.deleteStateCount)
+            totalCount += field.deleteStateCount
+            
+            var savedScore = UserDefaults.standard
+            savedScore.set(self.totalCount, forKey: "TotalCount")
+            print("\nTotal Count:" , totalCount)
             score += field.calculateScore(count: field.deleteStateCount)
+            
+            let checkCombo = field.calculateScore(count: field.deleteStateCount)
+            if checkCombo! > highestCombo{
+                highestCombo = checkCombo!
+                savedScore = UserDefaults.standard
+                savedScore.set(self.highestCombo, forKey: "HighestCombo")
+            }
+            
+            // Calculate the score, based on deleteStateCount.
             if field.deleteStateCount > 6 {
                 if field.deleteStateCount > 18 {
                     scene.availableSwaps += 2
+                    self.swapsPerGame += 2
                 } else {
                 scene.availableSwaps += 1
+                self.swapsPerGame += 1
                 }
             }
             updateLabels()
@@ -312,26 +369,36 @@ class GameViewController: UIViewController {
                 if swapsAvailable < 1 {
                 // Check if there are any more moves to be made.
                     if self.field.outOfSameColors(){
-                        print ("Game Over")
-                 
+                        
+                        // Achievement calculating.
+                        self.gamesPlayed += 1
+                        print ("Game Over\nGames played:", self.gamesPlayed)
+
+                        let totalGamesPlayed = UserDefaults.standard
+                        totalGamesPlayed.set(self.gamesPlayed, forKey: "GamesPlayed")
+                        
+                        if self.swapsPerGame > self.swapsThresh {
+                            let swapAchievement = true
+                            let swapsPerGameEarned = UserDefaults.standard
+                            swapsPerGameEarned.set(swapAchievement, forKey: "SwapsPerGame")
+                            print ("Swaps achievement:", swapAchievement)
+                        }
+                        
                         // Emtpy field adds extra points.
                         if self.field.emptyField() {
                             self.score += 300
                             self.updateLabels()
                             self.bonusLabel.isHidden = false
+                            
+                            // Set total games played.
+                            self.perfectGame += 1
+                            let perfectGames = UserDefaults.standard
+                            perfectGames.set(self.perfectGame, forKey: "PerfectGames")
+                            print ("Perfect Games played:", self.perfectGame)
                         }
                         
                         // Check if there is a new highscore.
                         if self.score > self.highscore {
-                            
-                            // Show NewHighscore image.
-                            if locale.languageCode == "de"{
-                                self.gameOverPanel.image = UIImage(named: "NewHighscore-de")
-                            }
-                            else {
-                                self.gameOverPanel.image = UIImage(named: "NewHighscore")
-                            }
-                            self.showGameOver()
                             
                             // Copy the new highscore.
                             self.highscore = self.score
@@ -340,15 +407,25 @@ class GameViewController: UIViewController {
                             // Save the new highscore in UserDefaults.
                             let savedScore = UserDefaults.standard
                             savedScore.set(self.highscore, forKey: "Highscore")
+                            
+                            // Check whether an achievement was unlocked!
+                            if self.checkAchievementUnlocked(){
+                                self.achievementUnlockedLabel.isHidden = false
+                            }
+                            
+                            // Show NewHighscore image.
+                            self.gameOverPanel.image = UIImage(named: "NewHighscore")
+                            self.showGameOver()
+                           
                         }
                         else {
+                            // Check whether an achievement was unlocked!
+                            if self.checkAchievementUnlocked(){
+                                self.achievementUnlockedLabel.isHidden = false
+                            }
+                            
                             // If there is no new highscore, show OutOfMoves.
-                            if locale.languageCode == "de"{
-                                self.gameOverPanel.image = UIImage(named: "NoMoreMoves-de")
-                            }
-                            else {
-                                self.gameOverPanel.image = UIImage(named: "NoMoreMoves")
-                            }
+                            self.gameOverPanel.image = UIImage(named: "NoMoreMoves")
                             self.showGameOver()
                         }
                     }
@@ -356,46 +433,45 @@ class GameViewController: UIViewController {
                 else {
                     // Check whether you are able to swap and make a combination.
                     if self.field.outOfMoves(availableSwaps: swapsAvailable) == true {
-                        print ("Game Over")
+                        self.gamesPlayed += 1
+                        print ("Game Over\nGames played:", self.gamesPlayed)
+                        
+                        let totalGamesPlayed = UserDefaults.standard
+                        totalGamesPlayed.set(self.gamesPlayed, forKey: "GamesPlayed")
+                        
+                        if self.swapsPerGame > self.swapsThresh {
+                            let swapAchievement = true
+                            let swapsPerGameEarned = UserDefaults.standard
+                            swapsPerGameEarned.set(swapAchievement, forKey: "SwapsPerGame")
+                            print ("Swaps achievement:", swapAchievement)
+                        }
                         
                         // Emtpy field adds extra points.
                         if self.field.emptyField() {
                             self.score += 300
                             self.updateLabels()
                             self.bonusLabel.isHidden = false
+                            
+                            // Set total games played.
+                            self.perfectGame += 1
+                            let perfectGames = UserDefaults.standard
+                            perfectGames.set(self.perfectGame, forKey: "PerfectGames")
+                            print ("Perfect Games played:", self.perfectGame)
                         }
                         if swapsAvailable > 0 {
                             self.score += (50 * swapsAvailable)
                             self.updateLabels()
                             
-                            if locale.languageCode == "de"{
-                                if swapsAvailable > 1 {
-                                    self.swapBonusLabel.text = String(format: "%d Swaps übrig: + %d", swapsAvailable, swapsAvailable * 50)
-                                } else {
-                                    self.swapBonusLabel.text = String(format: "%d Swap übrig: + %d", swapsAvailable, swapsAvailable * 50)
-                                    }
-                                }
-                            else {
-                                if swapsAvailable > 1 {
+                            if swapsAvailable > 1 {
                                     self.swapBonusLabel.text = String(format: "%d Swaps left: + %d", swapsAvailable, swapsAvailable * 50)
                                 } else {
                                     self.swapBonusLabel.text = String(format: "%d Swap left: + %d", swapsAvailable, swapsAvailable * 50)
                                     }
-                            }
                             self.swapBonusLabel.isHidden = false
                         }
                         
                         // Check if there is a new highscore.
                         if self.score > self.highscore {
-                            
-                            // Show NewHighscore image.
-                            if locale.languageCode == "de"{
-                                self.gameOverPanel.image = UIImage(named: "NewHighscore-de")
-                            }
-                            else {
-                                self.gameOverPanel.image = UIImage(named: "NewHighscore")
-                            }
-                            self.showGameOver()
                             
                             // Copy the new highscore.
                             self.highscore = self.score
@@ -404,15 +480,25 @@ class GameViewController: UIViewController {
                             // Save the new highscore in UserDefaults.
                             let savedScore = UserDefaults.standard
                             savedScore.set(self.highscore, forKey: "Highscore")
+                            
+                            // Check whether an achievement was unlocked!
+                            if self.checkAchievementUnlocked(){
+                                self.achievementUnlockedLabel.isHidden = false
+                            }
+                            
+                            // Show NewHighscore image.
+                            self.gameOverPanel.image = UIImage(named: "NewHighscore")
+                            self.showGameOver()
+                           
                         }
                         else {
+                            // Check whether an achievement was unlocked!
+                            if self.checkAchievementUnlocked(){
+                                self.achievementUnlockedLabel.isHidden = false
+                            }
+            
                             // If there is no new highscore, show OutOfMoves.
-                            if locale.languageCode == "de"{
-                                self.gameOverPanel.image = UIImage(named: "NoMoreMoves-de")
-                            }
-                            else {
-                                self.gameOverPanel.image = UIImage(named: "NoMoreMoves")
-                            }
+                            self.gameOverPanel.image = UIImage(named: "NoMoreMoves")
                             self.showGameOver()
                         }
                     }
@@ -443,7 +529,8 @@ class GameViewController: UIViewController {
         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.gameOverPanel.alpha = 1.0})
         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.tapToContinueLabel.alpha = 1.0})
         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.bonusLabel.alpha = 1.0})
-         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.swapBonusLabel.alpha = 1.0})
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.swapBonusLabel.alpha = 1.0})
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.achievementUnlockedLabel.alpha = 1.0})
 
         // Animate gameOver (objects falling out of the screen).
         scene.animateGameOver() {
@@ -465,6 +552,8 @@ class GameViewController: UIViewController {
         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.tapToContinueLabel.alpha = 0})
         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.bonusLabel.alpha = 0})
         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.swapBonusLabel.alpha = 0})
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.achievementUnlockedLabel.alpha = 0})
+        
         scene.gameSceneTouchDetected = false
         
         // Begin a new game.
@@ -481,5 +570,45 @@ class GameViewController: UIViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         return true
+    }
+    
+    func checkAchievementUnlocked()->Bool{
+        var check = false
+        
+        let savedScore = UserDefaults.standard
+        let savedHighscore = savedScore.integer(forKey: "Highscore")
+        let totalSavedCount = savedScore.integer(forKey: "TotalCount")
+        let savedHighestCombo = savedScore.integer(forKey: "HighestCombo")
+        let games = savedScore.integer(forKey: "PerfectGames")
+        let played = savedScore.integer(forKey: "GamesPlayed")
+        let swapsCheck = savedScore.bool(forKey: "SwapsPerGame")
+        
+        if savedHighscore >= highscoreThresh && !(savedScore.bool(forKey: "Highscore-Achievement")) {
+            savedScore.set(true, forKey: "Highscore-Achievement")
+            check = true
+        }
+        if totalSavedCount >= spheresTotalThresh && !(savedScore.bool(forKey: "Spheres-Achievement")) {
+            savedScore.set(true, forKey: "Spheres-Achievement")
+            check = true
+        }
+        if savedHighestCombo >= comboThresh && !(savedScore.bool(forKey: "Combo-Achievement")){
+            savedScore.set(true, forKey: "Combo-Achievement")
+            check = true
+        }
+        if games >= perfectGamesThresh && !(savedScore.bool(forKey: "Perfect-Achievement")){
+            savedScore.set(true, forKey: "Perfect-Achievement")
+            check = true
+        }
+        if played >= totalGamesThresh && !(savedScore.bool(forKey: "Games-Achievement")){
+            savedScore.set(true, forKey: "Games-Achievement")
+            check = true
+        }
+        if swapsCheck == true && !(savedScore.bool(forKey: "Swaps-Achievement")){
+            savedScore.set(true, forKey: "Swaps-Achievement")
+            check = true
+        }
+        
+        return check
+        
     }
 }

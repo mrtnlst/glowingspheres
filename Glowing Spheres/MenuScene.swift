@@ -37,6 +37,7 @@ class MenuScene: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
+    @IBOutlet weak var statsButton: UIButton!
     
     // Setting up music playback (if UserSetting is enabled).
     let savedMusicSetting = UserDefaults.standard
@@ -63,18 +64,11 @@ class MenuScene: UIViewController {
             }
         }
         
-        // Set images for menu buttons.
-        if locale.languageCode == "de" {
-            playButton.setImage(UIImage(named: "Play-de"), for: .normal)
-            aboutButton.setImage(UIImage(named: "About-de"), for: .normal)
-            settingsButton.setImage(UIImage(named: "Settings-de"), for: .normal)
+        playButton.setImage(UIImage(named: "Play"), for: .normal)
+        aboutButton.setImage(UIImage(named: "About"), for: .normal)
+        settingsButton.setImage(UIImage(named: "Settings"), for: .normal)
+        statsButton.setImage(UIImage(named: "Stats"), for: .normal)
 
-        }
-        else {
-            playButton.setImage(UIImage(named: "Play"), for: .normal)
-            aboutButton.setImage(UIImage(named: "About"), for: .normal)
-            settingsButton.setImage(UIImage(named: "Settings"), for: .normal)
-        }
         // Set background image.
         self.view.backgroundColor = UIColor(patternImage: UIImage(fullscreenNamed: "Main Menu")!)
         
@@ -87,9 +81,9 @@ class MenuScene: UIViewController {
         logoImageView.startAnimating()
         
         // Only show whatIsNewImage, first time user opens the app.
-        if whatIsNewSetting.value(forKey: "whatIsNewSetting") == nil{
+        if whatIsNewSetting.value(forKey: "whatIsNewV1.2") == nil{
             showWhatIsNew()
-            whatIsNewSetting.set(true, forKey: "whatIsNewSetting")
+            whatIsNewSetting.set(true, forKey: "whatIsNewV1.2")
         }
         else {
             // I set false, because it's standard is true (buttons where clickable while image was displayed).
@@ -140,11 +134,25 @@ class MenuScene: UIViewController {
     @IBAction func howToPlayButtonTouchUp(_ sender: AnyObject) {
         view.isUserInteractionEnabled = true
     }
+    
+    @IBAction func statsButtonTouchedDown(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = false
+    }
+    @IBAction func statsButtonMoved(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
+    @IBAction func statsButtonTouchedUpd(_ sender: AnyObject) {
+        view.isUserInteractionEnabled = true
+    }
+
+    
+    
     func wakingUpFromBackground(){
         view.isUserInteractionEnabled = true
         playButton.isUserInteractionEnabled = true
         settingsButton.isUserInteractionEnabled = true
         aboutButton.isUserInteractionEnabled = true
+        statsButton.isUserInteractionEnabled = true
     }
     func hideWhatIsNew (){
         view.removeGestureRecognizer(tapGestureRecognizer)
@@ -157,6 +165,7 @@ class MenuScene: UIViewController {
         aboutButton.isUserInteractionEnabled = true
         howToPlayButton.isUserInteractionEnabled = true
         whatIsNewImage.isUserInteractionEnabled = false
+        statsButton.isUserInteractionEnabled = true
    
     }
     func showWhatIsNew(){
@@ -164,13 +173,11 @@ class MenuScene: UIViewController {
         settingsButton.isUserInteractionEnabled = false
         aboutButton.isUserInteractionEnabled = false
         howToPlayButton.isUserInteractionEnabled = false
+        statsButton.isUserInteractionEnabled = false
         
-        if locale.languageCode == "de"{
-            whatIsNewImage.image = UIImage(fullscreenNamed: "whatIsNew-de")
-        }
-        else {
-            whatIsNewImage.image = UIImage(fullscreenNamed: "whatIsNew")
-        }
+       
+        whatIsNewImage.image = UIImage(fullscreenNamed: "whatIsNew")
+        
         
         whatIsNewImage.alpha = 0
         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.whatIsNewImage.alpha = 1.0})

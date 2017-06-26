@@ -8,11 +8,10 @@
 
 import UIKit
 import AVFoundation
-//import StoreKit
 
 var themeSong: AVAudioPlayer?
 
-class SettingsScene: UIViewController/*, SKProductsRequestDelegate, SKPaymentTransactionObserver*/ {
+class SettingsScene: UIViewController {
 
     override var prefersStatusBarHidden : Bool {
         return true
@@ -38,14 +37,12 @@ class SettingsScene: UIViewController/*, SKProductsRequestDelegate, SKPaymentTra
     // MARK: Outlets Variables and constants.
     @IBOutlet weak var playSoundsUISwitch: UISwitch!
     @IBOutlet weak var playMusicUISwitch: UISwitch!
-    //@IBOutlet weak var inAppPurchaseLabel: UILabel!
-    //@IBOutlet weak var restorePurchasesButton: UIButton!
-    //@IBOutlet weak var tipJarButton: UIButton!
     @IBOutlet weak var playSoundsImage: UIImageView!
     @IBOutlet weak var playMusicImage: UIImageView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var resetHighscore: UIButton!
     @IBOutlet weak var supporterLabel: UIImageView!
+    @IBOutlet weak var resetStatsButton: UIButton!
 
     override func viewDidLoad() {
         // Allow simultaneous playback.
@@ -56,25 +53,16 @@ class SettingsScene: UIViewController/*, SKProductsRequestDelegate, SKPaymentTra
         } catch let error as NSError { print(error)}
        
         // Set the images for the buttons.
-        if locale.languageCode == "de" {
-            backButton.setImage(UIImage(named: "Back-de"), for: .normal)
-            resetHighscore.setImage(UIImage(named: "ResetHighscore-de"), for: .normal)
-            playSoundsImage.image = UIImage(named: "PlaySounds-de")
-            playMusicImage.image = UIImage(named: "PlayMusic-de")
-            //tipJarButton.setImage(UIImage(named: "SupportDevelopment-de"), for: .normal)
-            //restorePurchasesButton.setImage(UIImage(named: "RestorePurchases-de"), for: .normal)
-            //inAppPurchaseLabel.text = " Gefällt dir meine App?\n Unterstütze mich mit 99 ct."
+        backButton.setImage(UIImage(named: "Back"), for: .normal)
+        resetHighscore.setImage(UIImage(named: "ResetHighscore"), for: .normal)
+        resetStatsButton.setImage(UIImage(named: "ResetStats"), for: .normal)
 
-        }
-        else {
-            backButton.setImage(UIImage(named: "Back"), for: .normal)
-            resetHighscore.setImage(UIImage(named: "ResetHighscore"), for: .normal)
-            //tipJarButton.setImage(UIImage(named: "SupportDevelopment"), for: .normal)
-            //restorePurchasesButton.setImage(UIImage(named: "RestorePurchases"), for: .normal)
-            //inAppPurchaseLabel.text = " Like my app? Support its development\n with a 99 ct in-app purchase."
-
-
-        }
+        playSoundsImage.image = UIImage(named: "Play Sounds")
+        playMusicImage.image = UIImage(named: "Play Music")
+        
+        // Load Background.
+        self.view.backgroundColor = UIColor(patternImage: UIImage(fullscreenNamed: "BG")!)
+        
         // Set the playMusicSwitch for the stored userDefault setting.
         if savedMusicSetting.value(forKey: "savedMusicSetting") != nil{
             playMusicSwitchOn = savedMusicSetting.value(forKey: "savedMusicSetting")  as! Bool
@@ -94,29 +82,10 @@ class SettingsScene: UIViewController/*, SKProductsRequestDelegate, SKPaymentTra
             playSoundsUISwitch.setOn(playSoundsSwitchOn, animated: false)
         }
 
-        // Set the background color.
-        view.backgroundColor = UIColor.black
-
         // Initialize in-app purchase.
-//        product_id = "com.martinlist.glowingspheres.tipJar"
-//        SKPaymentQueue.default().add(self)
-//
-        if (UserDefaults.standard.bool(forKey: "purchased")){
-            // Hide ads
-            //restorePurchasesButton.isEnabled = false
-            //restorePurchasesButton.isHighlighted = true
-            //tipJarButton.isEnabled = false
-            //tipJarButton.isHighlighted = true
+       if (UserDefaults.standard.bool(forKey: "purchased")){
             supportAnimation()
-            //supporterLabel.isHidden = false
-//            if locale.languageCode == "de" {
-//                inAppPurchaseLabel.text = " Danke für deine Unterstützung. \n Du bist klasse!"
-//            }
-//            else {
-//                inAppPurchaseLabel.text = " Thanks for your support. \n You're awesome!"
-//            }
-
-        } else {
+            } else {
             supporterLabel.isHidden = true
         }
         // When coming back from background, restore any touch interaction, if touch was hold while entering background.
@@ -186,13 +155,8 @@ class SettingsScene: UIViewController/*, SKProductsRequestDelegate, SKPaymentTra
         var title: String
         var message: String
         
-        if locale.languageCode == "de" {
-            title = "Highscore zurücksetzen"
-            message = "Dies kann nicht rückgängig gemacht werden!"
-        } else {
-            title = "Reset Highscore"
-            message = "This cannot be undone!"
-        }
+        title = "Reset Highscore"
+        message = "This cannot be undone!"
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
@@ -221,154 +185,55 @@ class SettingsScene: UIViewController/*, SKProductsRequestDelegate, SKPaymentTra
         }
         
     }
+// MARK: Reset Stats Events:
     
-// MARK: restorePurchases Events
-//    @IBAction func restorePurchasesMoved(_ sender: AnyObject) {
-//        view.isUserInteractionEnabled = true
-//    }
-//    @IBAction func restorePurchasesTouchedDown(_ sender: AnyObject) {
-//        view.isUserInteractionEnabled = false
-//    }
-//    @IBAction func restorePurchasesButtonPressed(_ sender: AnyObject) {
-//        view.isUserInteractionEnabled = true
-//        if (SKPaymentQueue.canMakePayments()) {
-//            SKPaymentQueue.default().restoreCompletedTransactions()
-//        }
-//
-//    }
-//    
-//// MARK: tipJar Events
-//    @IBAction func tipJarButtonTouchedDown(_ sender: AnyObject) {
-//        view.isUserInteractionEnabled = false
-//    }
-//    @IBAction func tipJarButtonMoved(_ sender: AnyObject) {
-//        view.isUserInteractionEnabled = true
-//    }
-//    @IBAction func tipJarButtonPressed(_ sender: AnyObject) {
-//        view.isUserInteractionEnabled = true
-//        print("About to fetch the product...")
-//        
-//        // Can make payments
-//        if (SKPaymentQueue.canMakePayments())
-//        {
-//            let productID:NSSet = NSSet(object: self.product_id!);
-//            let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>);
-//            productsRequest.delegate = self;
-//            productsRequest.start();
-//            print("Fetching Products");
-//        }else{
-//            print("Can't make purchases");
-//        }
-//    }
-//    func buyProduct(product: SKProduct){
-//        print("Sending the Payment Request to Apple");
-//        let payment = SKPayment(product: product)
-//        SKPaymentQueue.default().add(payment);
-//        
-//    }
-//    func productsRequest (_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-//        
-//        let count : Int = response.products.count
-//        if (count>0) {
-//            let validProduct: SKProduct = response.products[0] as SKProduct
-//            if (validProduct.productIdentifier == self.product_id) {
-//                print(validProduct.localizedTitle)
-//                print(validProduct.localizedDescription)
-//                print(validProduct.price)
-//                buyProduct(product: validProduct);
-//            } else {
-//                print(validProduct.productIdentifier)
-//            }
-//        } else {
-//            print("nothing")
-//        }
-//    }
-//    
-//    
-//    func request(_ request: SKRequest, didFailWithError error: Error) {
-//        print("Error Fetching product information");
-//    }
-//    
-//    func paymentQueue(_ queue: SKPaymentQueue,
-//                      updatedTransactions transactions: [SKPaymentTransaction])
-//        
-//    {
-//        print("Received Payment Transaction Response from Apple");
-//        
-//        for transaction:AnyObject in transactions {
-//            if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction{
-//                switch trans.transactionState {
-//                case .purchased:
-//                    print("Product Purchased");
-//                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-//                    // Handle the purchase
-//                    UserDefaults.standard.set(true , forKey: "purchased")
-//                    
-//                    // Unhide the animted supporter Label.
-//                    supporterLabel.isHidden = false
-//                    supporterLabel.isHidden = false
-//                   
-//                    // Disable the purchaseButton and restoreButton.
-//                    restorePurchasesButton.isEnabled = false
-//                    restorePurchasesButton.isHighlighted = true
-//                    tipJarButton.isEnabled = false
-//                    tipJarButton.isHighlighted = true
-//                    if locale.languageCode == "de" {
-//                        inAppPurchaseLabel.text = " Danke für deine Unterstützung. \n Du bist klasse!"
-//                    }
-//                    else {
-//                        inAppPurchaseLabel.text = " Thanks for your support. \n You're awesome!"
-//                    }
-//
-//                    // Start animation.
-//                    supportAnimation()
-//                    
-//                    break;
-//                
-//                case .failed:
-//                    print("Purchased Failed");
-//                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-//                    break;
-//                    
-//                case .restored:
-//                    print("Already Purchased");
-//                    //SKPaymentQueue.default().restoreCompletedTransactions()
-//                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-//                    
-//                    // Unhide the animted supporter Label.
-//                    supporterLabel.isHidden = false
-//                   
-//                    // Disable the purchaseButton and restoreButton.
-//                    restorePurchasesButton.isEnabled = false
-//                    restorePurchasesButton.isHighlighted = true
-//                    tipJarButton.isEnabled = false
-//                    tipJarButton.isHighlighted = true
-//                    supportAnimation()
-//                    if locale.languageCode == "de" {
-//                        inAppPurchaseLabel.text = " Danke für deine Unterstützung. \n Du bist klasse!"
-//                    }
-//                    else {
-//                        inAppPurchaseLabel.text = " Thanks for your support. \n You're awesome!"
-//                    }
-//
-//                    // Handle the purchase
-//                    UserDefaults.standard.set(true , forKey: "purchased")
-//                    break;
-//                default:
-//                    break;
-//                }
-//            }
-//        }
-//        
-//    }
+    @IBAction func resetStatsTouchUp(_ sender: Any) {
+        view.isUserInteractionEnabled = true
+        
+        var title: String
+        var message: String
+        
+        title = "Reset Stats"
+        message = "This cannot be undone!"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        // Actions for alertbox.
+        alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+            let savedScore = UserDefaults.standard
+            savedScore.set(0, forKey: "Highscore")
+            savedScore.set(0, forKey: "TotalCount")
+            savedScore.set(0, forKey: "HighestCombo")
+            savedScore.set(0, forKey: "PerfectGames")
+            savedScore.set(0, forKey: "GamesPlayed")
+            savedScore.set(false, forKey: "SwapsPerGame")
+
+            savedScore.set(false, forKey: "Highscore-Achievement")
+            savedScore.set(false, forKey: "Spheres-Achievement")
+            savedScore.set(false, forKey: "Combo-Achievement")
+            savedScore.set(false, forKey: "Perfect-Achievement")
+            savedScore.set(false, forKey: "Games-Achievement")
+            savedScore.set(false, forKey: "Swaps-Achievement")
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+
+    }
+    
+    @IBAction func resetStatsTouchDown(_ sender: Any) {
+        view.isUserInteractionEnabled = false
+    }
+    @IBAction func resetStatsMoved(_ sender: Any) {
+        view.isUserInteractionEnabled = true
+    }
+    
+    
+    
     func supportAnimation() {
         // Animation for supporterst of the app.
         for i in 1...48 {
-            if locale.languageCode == "de" {
-                images.append(UIImage(named: "supporter-de-\(i)")!)
-            } else {
-            images.append(UIImage(named: "supporter-\(i)")!)
-            }
+        images.append(UIImage(named: "supporter-\(i)")!)
         }
         supporterLabel.animationImages = images
         supporterLabel.animationDuration = 4.0
@@ -377,8 +242,6 @@ class SettingsScene: UIViewController/*, SKProductsRequestDelegate, SKPaymentTra
     }
     func wakingUpFromBackground(){
         view.isUserInteractionEnabled = true
-        //restorePurchasesButton.isUserInteractionEnabled = true
-        //tipJarButton.isUserInteractionEnabled = true
         resetHighscore.isUserInteractionEnabled = true
         backButton.isUserInteractionEnabled = true
     }

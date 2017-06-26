@@ -101,7 +101,6 @@ class Field {
             for column in 0..<NumColumns {
                 if objects[column, row]?.deleteStatus == true {
                     match.addObject(objects[column, row]!)
-                    print("I'm a Match!")
                     objects[column, row]?.deleteStatus = false
                     objects[column, row] = nil
                 }

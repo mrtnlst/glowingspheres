@@ -36,16 +36,11 @@ class AboutScene: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        // Load Background.
+        self.view.backgroundColor = UIColor(patternImage: UIImage(fullscreenNamed: "BG")!)
+        
         // Setting up the button image.
-        if locale.languageCode == "de" {
-            backButton.setImage(UIImage(named: "Back-de"), for: .normal)
-            aboutText.text = "Glowing Spheres wurde gestaltet \nund programmiert von Martin List.\n"
-            fontCreditsText.text = "\nSchriftart LAZER 84 von Juan Hodgson. \nSchriftart Axis von Jean M. Wojciechowski\n\n"
-        } else {
         backButton.setImage(UIImage(named: "Back"), for: .normal)
-        }
-        // Setting up the background color.
-        view.backgroundColor = UIColor.black
         
         if (self.view.frame.size.width == 320){
             //iPhone 2G, 3G, 3GS, 4, 4s, 5, 5s, 5c

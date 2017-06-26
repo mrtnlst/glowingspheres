@@ -424,8 +424,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "174"
             endingLineNumber = "174"
-            landmarkName = "newGameButtonPressed(_:)"
-            landmarkType = "7">
+            landmarkName = "GameViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -440,7 +440,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "176"
             endingLineNumber = "176"
-            landmarkName = "newGameButtonPressed(_:)"
+            landmarkName = "shuffle()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -472,8 +472,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
             endingLineNumber = "14"
-            landmarkName = "GameViewController"
-            landmarkType = "3">
+            landmarkName = "prefersStatusBarHidden"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
