@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hGi-f9-ckA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hGi-f9-ckA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,7 +14,7 @@
         <!--Menu Scene View Controller-->
         <scene sceneID="B4f-Ma-CdA">
             <objects>
-                <viewController title="MenuScene.swift" id="hGi-f9-ckA" userLabel="Menu Scene View Controller" customClass="MenuScene" customModule="Glowing_Spheres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="MenuScene.swift" id="hGi-f9-ckA" userLabel="Menu Scene View Controller" customClass="MenuView" customModule="Glowing_Spheres" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="muA-Z1-8jo"/>
                         <viewControllerLayoutGuide type="bottom" id="ckR-rj-jeU"/>
@@ -271,7 +271,7 @@
         <!--Settings View Controller-->
         <scene sceneID="y91-xZ-hUx">
             <objects>
-                <viewController id="1la-hR-lFB" userLabel="Settings View Controller" customClass="SettingsScene" customModule="Glowing_Spheres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1la-hR-lFB" userLabel="Settings View Controller" customClass="SettingsView" customModule="Glowing_Spheres" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QPJ-Of-BkT"/>
                         <viewControllerLayoutGuide type="bottom" id="9hR-20-D99"/>
@@ -377,7 +377,7 @@
         <!--About View Controller-->
         <scene sceneID="guN-uZ-hMH">
             <objects>
-                <viewController id="NMC-W4-SMu" userLabel="About View Controller" customClass="AboutScene" customModule="Glowing_Spheres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NMC-W4-SMu" userLabel="About View Controller" customClass="AboutView" customModule="Glowing_Spheres" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wkf-3u-58D"/>
                         <viewControllerLayoutGuide type="bottom" id="us3-Nq-01K"/>
@@ -481,10 +481,10 @@ Jean M. Wojciechowski.
             </objects>
             <point key="canvasLocation" x="1945" y="464"/>
         </scene>
-        <!--How To Play Scene-->
+        <!--How To Play View-->
         <scene sceneID="aKr-LX-aPX">
             <objects>
-                <viewController id="COR-Gc-bTp" customClass="HowToPlayScene" customModule="Glowing_Spheres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="COR-Gc-bTp" customClass="HowToPlayView" customModule="Glowing_Spheres" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="euZ-sd-3KM"/>
                         <viewControllerLayoutGuide type="bottom" id="hP8-sZ-P6H"/>
@@ -573,7 +573,7 @@ spheres you get + 1 swap.</string>
         <!--Stats View Controller-->
         <scene sceneID="4Ng-5V-fbE">
             <objects>
-                <viewController storyboardIdentifier="Stats View Controller" title="Stats View Controller" id="Tbf-ci-NZz" customClass="StatsScene" customModule="Glowing_Spheres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Stats View Controller" title="Stats View Controller" id="Tbf-ci-NZz" customClass="StatsView" customModule="Glowing_Spheres" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GOq-jb-UO1"/>
                         <viewControllerLayoutGuide type="bottom" id="dMQ-76-6Ta"/>
@@ -757,6 +757,6 @@ spheres you get + 1 swap.</string>
         <image name="supporter-1" width="320" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="T0l-AS-H09"/>
+        <segue reference="9No-LN-xtn"/>
     </inferredMetricsTieBreakers>
 </document>

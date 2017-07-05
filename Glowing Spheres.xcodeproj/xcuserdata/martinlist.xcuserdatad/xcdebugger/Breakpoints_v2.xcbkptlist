@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Glowing Spheres/GameScene.swift"
+            timestampString = "509455446.166634"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "GameScene"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Glowing_Spheres.GameScene.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Glowing_Spheres.GameScene&gt;"
+                  moduleName = "Glowing Spheres"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/martinlist/Documents/Programming/Glowing%20Spheres/Glowing%20Spheres/GameScene.swift"
+                  timestampString = "509454264.700601"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "256">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Glowing_Spheres.GameScene.TileWidth.getter : CoreGraphics.CGFloat"
+                  moduleName = "Glowing Spheres"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/martinlist/Documents/Programming/Glowing%20Spheres/Glowing%20Spheres/GameScene.swift"
+                  timestampString = "509454264.720838"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Glowing_Spheres.GameScene.init (size : __C.CGSize) -&gt; Glowing_Spheres.GameScene"
+                  moduleName = "Glowing Spheres"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/martinlist/Documents/Programming/Glowing%20Spheres/Glowing%20Spheres/GameScene.swift"
+                  timestampString = "509454264.7256"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "264">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Glowing Spheres/SettingsScene.swift"
+            timestampString = "509456993.147638"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "SettingsScene"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
