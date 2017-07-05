@@ -1,5 +1,5 @@
 //
-//  MenuScene.swift
+//  MenuView.swift
 //  Glowing Spheres
 //
 //  Created by Martin List on 27/09/2016.
@@ -10,10 +10,10 @@ import UIKit
 import SpriteKit
 import MediaPlayer
 
-class MenuScene: UIViewController {
+class MenuView: UIViewController {
     
     // Create an instance of SettingScene.
-    var settingsScene: SettingsScene!
+    var settingsScene: SettingsView!
     
     // Set an array for the logo animation.
     var images: [UIImage] = []
@@ -47,7 +47,7 @@ class MenuScene: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Enable background music, if the userDefault setting is on.
-        settingsScene = SettingsScene()
+        settingsScene = SettingsView()
         if savedMusicSetting.value(forKey: "savedMusicSetting") != nil{
              playMusicSwitchOn = savedMusicSetting.value(forKey: "savedMusicSetting")  as! Bool
             // Check if the setting stored is true.

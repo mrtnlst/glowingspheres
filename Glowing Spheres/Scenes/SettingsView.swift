@@ -1,5 +1,5 @@
 //
-//  SettingsScene.swift
+//  SettingsView.swift
 //  Glowing Spheres
 //
 //  Created by Martin List on 27/09/2016.
@@ -11,7 +11,7 @@ import AVFoundation
 
 var themeSong: AVAudioPlayer?
 
-class SettingsScene: UIViewController {
+class SettingsView: UIViewController {
 
     override var prefersStatusBarHidden : Bool {
         return true

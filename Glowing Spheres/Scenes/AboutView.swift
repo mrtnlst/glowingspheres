@@ -1,5 +1,5 @@
 //
-//  AboutScene.swift
+//  AboutView.swift
 //  Glowing Spheres
 //
 //  Created by Martin List on 29/09/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AboutScene: UIViewController {
+class AboutView: UIViewController {
     
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         return [UIInterfaceOrientationMask.portrait, UIInterfaceOrientationMask.portraitUpsideDown]

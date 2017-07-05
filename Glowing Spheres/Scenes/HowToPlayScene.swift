@@ -1,5 +1,5 @@
 //
-//  HowToPlayScene.swift
+//  HowToPlayView.swift
 //  Glowing Spheres
 //
 //  Created by Martin List on 19/10/2016.
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SpriteKit
 
-class HowToPlayScene: UIViewController {
+class HowToPlayView: UIViewController {
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         return [UIInterfaceOrientationMask.portrait, UIInterfaceOrientationMask.portraitUpsideDown]
     }

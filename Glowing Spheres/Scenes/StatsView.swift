@@ -1,5 +1,5 @@
 //
-//  StatsScene.swift
+//  StatsView.swift
 //  Glowing Spheres
 //
 //  Created by Martin List on 22/02/2017.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class StatsScene: UIViewController {
+class StatsView: UIViewController {
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var totalCount: UILabel!
