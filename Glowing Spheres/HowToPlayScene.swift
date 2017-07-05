@@ -33,11 +33,7 @@ class HowToPlayScene: UIViewController {
 
         // Load Background.
         self.view.backgroundColor = UIColor(patternImage: UIImage(fullscreenNamed: "BG")!)
-        
         backToMenuButton.setImage(UIImage(named: "Back"), for: .normal)
-//        instructionLabel1.text = "Tap on neighbouring spheres with\nidentical color to score points."
-//        instructionLabel2.text = "Swipe from one sphere to\nanother to swap their positions."
-//        instructionLabel3.text = "Each game offers 3 swaps to\nstart with. Get more swaps for\nevery score with more than \n6 spheres."
         
         if (self.view.frame.size.width == 320){
             //iPhone 2G, 3G, 3GS, 4, 4s, 5, 5s, 5c
