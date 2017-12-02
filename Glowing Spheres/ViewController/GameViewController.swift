@@ -53,13 +53,18 @@ class GameViewController: UIViewController {
     @IBOutlet weak var backToMenuButton: UIButton!
     @IBOutlet weak var gameOverPanel: UIImageView!
     @IBOutlet weak var achievementUnlockedLabel: UILabel!
- 
+    @IBOutlet weak var scoreHeaderLabel: UIImageView!
+    @IBOutlet weak var highscoreHeaderLabel: UIImageView!
+    @IBOutlet weak var swapsHeaderLabel: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Changing the style of the two buttons.
         backToMenuButton.setImage(UIImage(named: "Quit"), for: .normal)
         newGameButton.setImage(UIImage(named: "NewGame"), for: .normal)
-    
+        self.swapsHeaderLabel.image = UIImage(fullscreenNamed: "Swap")
+        self.highscoreHeaderLabel.image = UIImage(fullscreenNamed: "Highscore")
+        self.scoreHeaderLabel.image = UIImage(fullscreenNamed: "Score")
         
         // Make sure the gameOverPanel is hidden.
         gameOverPanel.alpha = 0
@@ -542,7 +547,7 @@ class GameViewController: UIViewController {
             self.newGameButton.isUserInteractionEnabled = false
             }
         }
-    func hideGameOver() {
+    @objc func hideGameOver() {
         // Remove gestureRecognizer and hide gameOverPanel.
         view.removeGestureRecognizer(tapGestureRecognizer)
         tapGestureRecognizer = nil
@@ -561,7 +566,7 @@ class GameViewController: UIViewController {
         self.backToMenuButton.isHighlighted = false
         beginGame()
     }
-    func wakingUpFromBackground(){
+    @objc func wakingUpFromBackground(){
         view.isUserInteractionEnabled = true
         newGameButton.isUserInteractionEnabled = true
         backToMenuButton.isUserInteractionEnabled = true

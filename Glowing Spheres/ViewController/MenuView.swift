@@ -147,14 +147,14 @@ class MenuView: UIViewController {
 
     
     
-    func wakingUpFromBackground(){
+    @objc func wakingUpFromBackground(){
         view.isUserInteractionEnabled = true
         playButton.isUserInteractionEnabled = true
         settingsButton.isUserInteractionEnabled = true
         aboutButton.isUserInteractionEnabled = true
         statsButton.isUserInteractionEnabled = true
     }
-    func hideWhatIsNew (){
+    @objc func hideWhatIsNew (){
         view.removeGestureRecognizer(tapGestureRecognizer)
         tapGestureRecognizer = nil
         

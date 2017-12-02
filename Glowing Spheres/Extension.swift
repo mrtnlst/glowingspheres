@@ -15,7 +15,11 @@ extension UIImage {
     convenience init?(fullscreenNamed name: String) {
         if UIScreen.main.bounds.size.height == 667 {
             self.init(named: "\(name)-667h")
-        } else {
+        }
+        else if UIScreen.main.bounds.size.height == 812 {
+            self.init(named: "\(name)-812h")
+        }
+        else {
             self.init(named: name)
         }
     }
