@@ -209,7 +209,6 @@
                                                     <action selector="backButtonMoved:" destination="BV1-FR-VrT" eventType="touchDragOutside" id="a73-7c-kcf"/>
                                                     <action selector="backButtonTouchDown:" destination="BV1-FR-VrT" eventType="touchDown" id="pb7-Kb-eiP"/>
                                                     <action selector="backButtonTouchUp:" destination="BV1-FR-VrT" eventType="touchUpInside" id="eN9-Lx-68L"/>
-                                                    <segue destination="hGi-f9-ckA" kind="presentation" identifier="continue" modalTransitionStyle="crossDissolve" id="Tju-Tj-bPt"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5C-Ar-cQz" userLabel="New Game">
@@ -405,43 +404,50 @@
                                     <segue destination="hGi-f9-ckA" kind="presentation" modalTransitionStyle="crossDissolve" id="DIf-xJ-TSj"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="WPd-sG-48s">
-                                <rect key="frame" x="28" y="171" width="319" height="105"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WPd-sG-48s">
+                                <rect key="frame" x="28" y="171" width="101" height="35"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Hy-vb-X1F">
-                                        <rect key="frame" x="0.0" y="0.0" width="190" height="35"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                        <state key="normal" title="Follow @glowingspheres">
-                                            <color key="titleColor" red="0.30605217810000002" green="0.6758336425" blue="0.99861246349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="followGlowingSpheresMoved:" destination="NMC-W4-SMu" eventType="touchDragOutside" id="1tp-Wl-iGb"/>
-                                            <action selector="followGlowingSpheresPressed:" destination="NMC-W4-SMu" eventType="touchUpInside" id="6yC-jF-0xf"/>
-                                            <action selector="followGlowingSpheresTouchDown:" destination="NMC-W4-SMu" eventType="touchDown" id="rsQ-vv-Zzt"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDN-ta-jpj">
-                                        <rect key="frame" x="0.0" y="35" width="189" height="35"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                        <state key="normal" title="E-Mail @glowingspheres">
-                                            <color key="titleColor" red="0.99208809379999996" green="1" blue="0.99572433540000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="writeEmailMoved:" destination="NMC-W4-SMu" eventType="touchDragOutside" id="k2l-LO-VdV"/>
-                                            <action selector="writeEmailPressed:" destination="NMC-W4-SMu" eventType="touchUpInside" id="EWr-sa-pao"/>
-                                            <action selector="writeEmailTouchDown:" destination="NMC-W4-SMu" eventType="touchDown" id="56R-QZ-1E4"/>
-                                        </connections>
-                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Twitter" translatesAutoresizingMaskIntoConstraints="NO" id="SBd-WV-Lj0">
+                                        <rect key="frame" x="0.0" y="5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="ZAC-Zy-JFO"/>
+                                            <constraint firstAttribute="width" constant="25" id="bcv-Jc-5IU"/>
+                                        </constraints>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ob-9N-lPm">
-                                        <rect key="frame" x="0.0" y="70" width="121" height="35"/>
+                                        <rect key="frame" x="35" y="0.0" width="66" height="35"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                        <state key="normal" title="Follow @mrtnlst">
+                                        <state key="normal" title="@mrtnlst">
                                             <color key="titleColor" red="0.25098039215686274" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="followOnTwitterMoved:" destination="NMC-W4-SMu" eventType="touchDragOutside" id="unn-64-vmu"/>
                                             <action selector="followOnTwitterPressed:" destination="NMC-W4-SMu" eventType="touchUpInside" id="Jmt-9G-rQr"/>
                                             <action selector="followOnTwitterTouchDown:" destination="NMC-W4-SMu" eventType="touchDown" id="uBO-ee-r2O"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="GSs-O6-EjH">
+                                <rect key="frame" x="28" y="211" width="139" height="35"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Browser" translatesAutoresizingMaskIntoConstraints="NO" id="VyE-IK-ehT">
+                                        <rect key="frame" x="0.0" y="5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="4fI-Fl-yh1"/>
+                                            <constraint firstAttribute="height" constant="25" id="a3t-tI-HRm"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAo-lT-zDI">
+                                        <rect key="frame" x="38" y="0.0" width="101" height="35"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                        <state key="normal" title="martinlist.org">
+                                            <color key="titleColor" red="0.25098039220000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="openWebsiteMoved:" destination="NMC-W4-SMu" eventType="touchUpInside" id="xEu-Xh-vjn"/>
+                                            <action selector="openWebsitePressed:" destination="NMC-W4-SMu" eventType="touchUpInside" id="Zwy-WR-XQo"/>
+                                            <action selector="openWebsiteTouchDown:" destination="NMC-W4-SMu" eventType="touchUpInside" id="pPQ-uA-zR3"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -453,7 +459,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYv-C3-gLW">
-                                <rect key="frame" x="28" y="306" width="319" height="73"/>
+                                <rect key="frame" x="28" y="266" width="319" height="73"/>
                                 <string key="text">The font LAZER 84 was made 
 by Juan Hodgson. 
 The font Axis was made by
@@ -466,25 +472,25 @@ Jean M. Wojciechowski.</string>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="WPd-sG-48s" firstAttribute="leading" secondItem="wDT-Em-RLj" secondAttribute="leadingMargin" constant="12" id="9Wh-EH-qyg"/>
+                            <constraint firstItem="GSs-O6-EjH" firstAttribute="leading" secondItem="wDT-Em-RLj" secondAttribute="leadingMargin" constant="12" id="ApQ-xL-ktt"/>
+                            <constraint firstItem="fYv-C3-gLW" firstAttribute="top" secondItem="GSs-O6-EjH" secondAttribute="bottom" constant="20" id="Ard-Zn-g6j"/>
                             <constraint firstItem="WPd-sG-48s" firstAttribute="top" secondItem="8FM-YV-cOz" secondAttribute="bottom" constant="30" id="KhH-rD-GKR"/>
                             <constraint firstItem="8FM-YV-cOz" firstAttribute="leading" secondItem="wDT-Em-RLj" secondAttribute="leadingMargin" constant="12" id="Y03-2L-f5c"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fYv-C3-gLW" secondAttribute="trailing" constant="12" id="aKc-lz-8vc"/>
                             <constraint firstItem="us3-Nq-01K" firstAttribute="top" secondItem="yCT-Xc-Oca" secondAttribute="bottom" constant="40" id="bPl-0S-dbA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8FM-YV-cOz" secondAttribute="trailing" constant="12" id="cpD-bh-nOq"/>
                             <constraint firstItem="yCT-Xc-Oca" firstAttribute="centerX" secondItem="wDT-Em-RLj" secondAttribute="centerX" id="dH2-mr-1zK"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="WPd-sG-48s" secondAttribute="trailing" constant="12" id="fce-GP-laA"/>
                             <constraint firstItem="8FM-YV-cOz" firstAttribute="top" secondItem="Wkf-3u-58D" secondAttribute="bottom" constant="50" id="iQn-Ys-Y71"/>
                             <constraint firstItem="fYv-C3-gLW" firstAttribute="leading" secondItem="wDT-Em-RLj" secondAttribute="leadingMargin" constant="12" id="p6h-AG-bSz"/>
-                            <constraint firstItem="fYv-C3-gLW" firstAttribute="top" secondItem="WPd-sG-48s" secondAttribute="bottom" constant="30" id="qdv-fT-JTP"/>
+                            <constraint firstItem="GSs-O6-EjH" firstAttribute="top" secondItem="WPd-sG-48s" secondAttribute="bottom" constant="5" id="sCg-hN-pTz"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="aboutText" destination="8FM-YV-cOz" id="W10-Fz-f3Z"/>
                         <outlet property="backButton" destination="yCT-Xc-Oca" id="de9-ws-6ej"/>
-                        <outlet property="followGlowingSpheres" destination="9Hy-vb-X1F" id="nml-gV-YSn"/>
                         <outlet property="followOnTwitter" destination="4Ob-9N-lPm" id="vLN-t6-qn2"/>
                         <outlet property="fontCreditsText" destination="fYv-C3-gLW" id="MnJ-5l-Lwh"/>
-                        <outlet property="writeEmail" destination="WDN-ta-jpj" id="wYQ-ap-K3D"/>
+                        <outlet property="openWebsite" destination="UAo-lT-zDI" id="GiO-Dw-GQn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mRj-HB-bOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -743,6 +749,7 @@ spheres you get + 1 swap.</string>
     <resources>
         <image name="About" width="131" height="50"/>
         <image name="Back" width="90" height="50"/>
+        <image name="Browser" width="25" height="25"/>
         <image name="Combo" width="116" height="116"/>
         <image name="Highscore" width="150" height="66"/>
         <image name="HowToPlay1" width="121" height="121"/>
@@ -759,6 +766,7 @@ spheres you get + 1 swap.</string>
         <image name="Settings" width="152" height="50"/>
         <image name="Stats" width="99" height="50"/>
         <image name="Swap" width="150" height="66"/>
+        <image name="Twitter" width="25" height="25"/>
         <image name="logo-1" width="414" height="200"/>
         <image name="supporter-1" width="414" height="100"/>
     </resources>

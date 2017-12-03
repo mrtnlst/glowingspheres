@@ -228,8 +228,6 @@ class SettingsView: UIViewController {
         view.isUserInteractionEnabled = true
     }
     
-    
-    
     func supportAnimation() {
         // Animation for supporterst of the app.
         for i in 1...48 {
@@ -240,7 +238,8 @@ class SettingsView: UIViewController {
         supporterLabel.startAnimating()
 
     }
-    func wakingUpFromBackground(){
+   
+    @objc func wakingUpFromBackground(){
         view.isUserInteractionEnabled = true
         resetHighscore.isUserInteractionEnabled = true
         backButton.isUserInteractionEnabled = true

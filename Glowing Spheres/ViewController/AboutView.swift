@@ -25,13 +25,12 @@ class AboutView: UIViewController {
     @IBOutlet weak var fontCreditsText: UILabel!
     @IBOutlet weak var aboutText: UILabel!
     @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var writeEmail: UIButton!
     @IBOutlet weak var followOnTwitter: UIButton!
-    @IBOutlet weak var followGlowingSpheres: UIButton!
+    @IBOutlet weak var openWebsite: UIButton!
     
     // Setting up a twitter URL.
     var twitterURLMartin = URL(string: "https://twitter.com/mrtnlst")
-    var twitterURLGlowingSpheres = URL(string: "https://twitter.com/glowingspheres")
+    var websiteURL = URL(string: "https://martinlist.org")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,32 +57,18 @@ class AboutView: UIViewController {
         // When coming back from background, restore any touch interaction, if touch was hold while entering background.
         NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
-    // MARK: writeEmail Events.
-    @IBAction func writeEmailTouchDown(_ sender: AnyObject) {
-        view.isUserInteractionEnabled = false
-    }
-    @IBAction func writeEmailMoved(_ sender: AnyObject) {
-        view.isUserInteractionEnabled = true
-    }
-    @IBAction func writeEmailPressed(_ sender: AnyObject) {
-        view.isUserInteractionEnabled = true
-        let coded = URL(string:"mailto:glowingspheresios@gmail.com")
-        let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
-        UIApplication.shared.open(coded!, options: options, completionHandler: nil)
-
-    }
     
     // MARK: followGlowingSpheres Events.
-    @IBAction func followGlowingSpheresTouchDown(_ sender: AnyObject) {
+    @IBAction func openWebsiteTouchDown(_ sender: AnyObject) {
         view.isUserInteractionEnabled = false
     }
-    @IBAction func followGlowingSpheresMoved(_ sender: AnyObject) {
+    @IBAction func openWebsiteMoved(_ sender: AnyObject) {
         view.isUserInteractionEnabled = true
     }
-    @IBAction func followGlowingSpheresPressed(_ sender: AnyObject) {
+    @IBAction func openWebsitePressed(_ sender: AnyObject) {
         view.isUserInteractionEnabled = true
         let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
-        UIApplication.shared.open(twitterURLGlowingSpheres!, options: options, completionHandler: nil)
+        UIApplication.shared.open(websiteURL!, options: options, completionHandler: nil)
 
     }
     
@@ -111,11 +96,11 @@ class AboutView: UIViewController {
     @IBAction func backButtonMoved(_ sender: AnyObject) {
         view.isUserInteractionEnabled = true
     }
-    func wakingUpFromBackground(){
+    
+    @objc func wakingUpFromBackground(){
         view.isUserInteractionEnabled = true
         followOnTwitter.isUserInteractionEnabled = true
-        followGlowingSpheres.isUserInteractionEnabled = true
-        writeEmail.isUserInteractionEnabled = true
+        openWebsite.isUserInteractionEnabled = true
         backButton.isUserInteractionEnabled = true
     }
 }

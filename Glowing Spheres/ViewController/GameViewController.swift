@@ -194,7 +194,7 @@ class GameViewController: UIViewController {
         view.isUserInteractionEnabled = true
         
         // Check, wether there is a game in proggress or not. If yes, ask if the player wants to quit it.
-        if score != 0 {
+        if score != 0 || scene.availableSwaps != 3 {
             var title: String
             var message: String
         
@@ -205,16 +205,16 @@ class GameViewController: UIViewController {
         
             // Actions for alertbox.
             alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
-                self.performSegue(withIdentifier: "continue", sender: nil)
+                self.dismiss(animated: true, completion: nil)
             })
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
             self.present(alert, animated: true, completion: nil)
-            }
-            else {
-                performSegue(withIdentifier: "continue", sender: nil)
-            }
         }
+        else {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     @IBAction func backButtonMoved(_ sender: AnyObject) {
         view.isUserInteractionEnabled = true
     }

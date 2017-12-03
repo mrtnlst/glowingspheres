@@ -67,7 +67,7 @@ class HowToPlayView: UIViewController {
     @IBAction func backToMenuButtonTouchUp(_ sender: AnyObject) {
         view.isUserInteractionEnabled = true
     }
-    func wakingUpFromBackground(){
+    @objc func wakingUpFromBackground(){
         view.isUserInteractionEnabled = true
         backToMenuButton.isUserInteractionEnabled = true
     }

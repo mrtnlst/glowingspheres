@@ -147,7 +147,7 @@ class StatsView: UIViewController {
         perfectGames.text = String(format: "%ld", games)
     }
     
-    func wakingUpFromBackground(){
+    @objc func wakingUpFromBackground(){
         view.isUserInteractionEnabled = true
         backButton.isUserInteractionEnabled = true
     }
