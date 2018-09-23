@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hGi-f9-ckA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hGi-f9-ckA">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Futura.ttc">
-            <string>Futura-Bold</string>
-            <string>Futura-Medium</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Menu Scene View Controller-->
         <scene sceneID="B4f-Ma-CdA">
@@ -87,21 +79,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="EbS-d3-iy7">
                                 <rect key="frame" x="0.0" y="80" width="320" height="154"/>
                             </imageView>
-                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Chl-LF-qM4">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Chl-LF-qM4" firstAttribute="top" secondItem="PhI-w9-hlG" secondAttribute="top" id="10d-IN-5ES"/>
                             <constraint firstItem="EbS-d3-iy7" firstAttribute="top" secondItem="muA-Z1-8jo" secondAttribute="bottom" constant="60" id="3HC-Td-5nY"/>
                             <constraint firstItem="EbS-d3-iy7" firstAttribute="leading" secondItem="PhI-w9-hlG" secondAttribute="leading" id="EcR-sB-jFR"/>
-                            <constraint firstItem="ckR-rj-jeU" firstAttribute="top" secondItem="Chl-LF-qM4" secondAttribute="bottom" id="Ker-tI-Z1M"/>
-                            <constraint firstItem="ckR-rj-jeU" firstAttribute="top" secondItem="Chl-LF-qM4" secondAttribute="bottom" id="SKW-6s-TSE"/>
                             <constraint firstItem="Y8j-r4-NjS" firstAttribute="centerX" secondItem="PhI-w9-hlG" secondAttribute="centerX" id="Zde-f6-toJ"/>
-                            <constraint firstItem="Chl-LF-qM4" firstAttribute="leading" secondItem="PhI-w9-hlG" secondAttribute="leading" id="Zu6-gu-F8e"/>
                             <constraint firstItem="ckR-rj-jeU" firstAttribute="top" secondItem="Y8j-r4-NjS" secondAttribute="bottom" constant="25" id="f4X-6L-hMs"/>
-                            <constraint firstAttribute="trailing" secondItem="Chl-LF-qM4" secondAttribute="trailing" id="gTu-WO-zUK"/>
                             <constraint firstAttribute="trailing" secondItem="EbS-d3-iy7" secondAttribute="trailing" id="kDg-fQ-Lnn"/>
                         </constraints>
                     </view>
@@ -112,7 +96,6 @@
                         <outlet property="playButton" destination="YL2-H3-FHx" id="uSl-90-5V4"/>
                         <outlet property="settingsButton" destination="z5N-ig-8mY" id="10n-Qh-ac7"/>
                         <outlet property="statsButton" destination="4dl-d9-yu4" id="86g-vX-kCA"/>
-                        <outlet property="whatIsNewImage" destination="Chl-LF-qM4" id="OFV-bn-mND"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n6v-3S-Yxu" userLabel="First Responder" sceneMemberID="firstResponder"/>

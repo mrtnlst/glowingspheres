@@ -100,7 +100,7 @@ class GameScene: SKScene {
         
         // Allow simultaneous playback.
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+            try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
         } catch let error as NSError { print(error)}
 

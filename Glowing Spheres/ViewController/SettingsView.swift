@@ -48,7 +48,7 @@ class SettingsView: UIViewController {
         // Allow simultaneous playback.
         super.viewDidLoad()
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+            try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
         } catch let error as NSError { print(error)}
        
@@ -89,7 +89,7 @@ class SettingsView: UIViewController {
             supporterLabel.isHidden = true
         }
         // When coming back from background, restore any touch interaction, if touch was hold while entering background.
-        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     @IBAction func playMusicUISwitchToggled(_ sender: AnyObject) {
@@ -158,7 +158,7 @@ class SettingsView: UIViewController {
         title = "Reset Highscore"
         message = "This cannot be undone!"
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
         // Actions for alertbox.
         alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
@@ -196,7 +196,7 @@ class SettingsView: UIViewController {
         title = "Reset Stats"
         message = "This cannot be undone!"
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
         // Actions for alertbox.
         alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in

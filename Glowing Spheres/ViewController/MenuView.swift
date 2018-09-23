@@ -17,8 +17,8 @@ class MenuView: UIViewController {
     
     // Set an array for the logo animation.
     var images: [UIImage] = []
-    var tapGestureRecognizer: UITapGestureRecognizer!
-
+    var polygonMountain = UIImageView()
+    
     override var prefersStatusBarHidden : Bool {
         return true
     }
@@ -31,7 +31,6 @@ class MenuView: UIViewController {
         return [UIInterfaceOrientationMask.portrait, UIInterfaceOrientationMask.portraitUpsideDown]
     }
     
-    @IBOutlet weak var whatIsNewImage: UIImageView!
     @IBOutlet weak var howToPlayButton: UIButton!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var playButton: UIButton!
@@ -70,7 +69,7 @@ class MenuView: UIViewController {
         statsButton.setImage(UIImage(named: "Stats"), for: .normal)
 
         // Set background image.
-        self.view.backgroundColor = UIColor(patternImage: UIImage(fullscreenNamed: "Main Menu")!)
+        setupBackground()
         
         // Loop through all 24 images, to generate logo animation.
         for i in 1...48 {
@@ -80,19 +79,32 @@ class MenuView: UIViewController {
         logoImageView.animationDuration = 4.0
         logoImageView.startAnimating()
         
-        // Only show whatIsNewImage, first time user opens the app.
-        if whatIsNewSetting.value(forKey: "whatIsNewV1.2") == nil{
-            showWhatIsNew()
-            whatIsNewSetting.set(true, forKey: "whatIsNewV1.2")
-        }
-        else {
-            // I set false, because it's standard is true (buttons where clickable while image was displayed).
-            whatIsNewImage.isUserInteractionEnabled = false
-        }
-
-        
         // When coming back from background, restore any touch interaction, if touch was hold while entering background.
-        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    private func setupBackground() {
+        polygonMountain = UIImageView(image: UIImage(named: "Polygon Mountain"))
+        polygonMountain.translatesAutoresizingMaskIntoConstraints = false
+        polygonMountain.contentMode = .scaleAspectFit
+        polygonMountain.alpha = 0.6
+        view.addSubview(polygonMountain)
+        view.sendSubviewToBack(polygonMountain)
+        
+        var guide: UILayoutGuide
+        
+        if #available(iOS 11.0, *) {
+            guide = view.safeAreaLayoutGuide
+        } else {
+            guide = view.layoutMarginsGuide
+        }
+        
+        NSLayoutConstraint.activate([
+            polygonMountain.topAnchor.constraint(equalTo: guide.topAnchor, constant: -250),
+            polygonMountain.heightAnchor.constraint(equalToConstant: view.frame.height),
+            polygonMountain.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: -150),
+            polygonMountain.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: 150),
+            ])
     }
     
     // MARK: Set up correct button behavior.
@@ -145,45 +157,12 @@ class MenuView: UIViewController {
         view.isUserInteractionEnabled = true
     }
 
-    
-    
     @objc func wakingUpFromBackground(){
         view.isUserInteractionEnabled = true
         playButton.isUserInteractionEnabled = true
         settingsButton.isUserInteractionEnabled = true
         aboutButton.isUserInteractionEnabled = true
         statsButton.isUserInteractionEnabled = true
-    }
-    @objc func hideWhatIsNew (){
-        view.removeGestureRecognizer(tapGestureRecognizer)
-        tapGestureRecognizer = nil
-        
-        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.whatIsNewImage.alpha = 0})
-        
-        playButton.isUserInteractionEnabled = true
-        settingsButton.isUserInteractionEnabled = true
-        aboutButton.isUserInteractionEnabled = true
-        howToPlayButton.isUserInteractionEnabled = true
-        whatIsNewImage.isUserInteractionEnabled = false
-        statsButton.isUserInteractionEnabled = true
-   
-    }
-    func showWhatIsNew(){
-        playButton.isUserInteractionEnabled = false
-        settingsButton.isUserInteractionEnabled = false
-        aboutButton.isUserInteractionEnabled = false
-        howToPlayButton.isUserInteractionEnabled = false
-        statsButton.isUserInteractionEnabled = false
-        
-       
-        whatIsNewImage.image = UIImage(fullscreenNamed: "whatIsNew")
-        
-        
-        whatIsNewImage.alpha = 0
-        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.whatIsNewImage.alpha = 1.0})
-        
-        self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.hideWhatIsNew))
-        self.view.addGestureRecognizer(self.tapGestureRecognizer)
     }
 }
 

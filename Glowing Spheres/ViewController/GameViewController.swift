@@ -128,7 +128,7 @@ class GameViewController: UIViewController {
         beginGame()
         
         // When coming back from background, restore any touch interaction, if touch was hold while entering background.
-         NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
         
         
     }
@@ -201,7 +201,7 @@ class GameViewController: UIViewController {
             title = "Quit this game?"
             message = "You will lose your current score!"
             
-            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
             // Actions for alertbox.
             alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
@@ -531,11 +531,11 @@ class GameViewController: UIViewController {
 
         
         // If it is not hidden, the bonusLabel gets animated, too.
-        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.gameOverPanel.alpha = 1.0})
-        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.tapToContinueLabel.alpha = 1.0})
-        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.bonusLabel.alpha = 1.0})
-        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.swapBonusLabel.alpha = 1.0})
-        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.achievementUnlockedLabel.alpha = 1.0})
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: { self.gameOverPanel.alpha = 1.0})
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: { self.tapToContinueLabel.alpha = 1.0})
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: { self.bonusLabel.alpha = 1.0})
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: { self.swapBonusLabel.alpha = 1.0})
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: { self.achievementUnlockedLabel.alpha = 1.0})
 
         // Animate gameOver (objects falling out of the screen).
         scene.animateGameOver() {
@@ -553,11 +553,11 @@ class GameViewController: UIViewController {
         tapGestureRecognizer = nil
        
         //gameOverPanel.alpha = 1
-        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.gameOverPanel.alpha = 0})
-        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.tapToContinueLabel.alpha = 0})
-        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.bonusLabel.alpha = 0})
-        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.swapBonusLabel.alpha = 0})
-        UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { self.achievementUnlockedLabel.alpha = 0})
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: { self.gameOverPanel.alpha = 0})
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: { self.tapToContinueLabel.alpha = 0})
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: { self.bonusLabel.alpha = 0})
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: { self.swapBonusLabel.alpha = 0})
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: { self.achievementUnlockedLabel.alpha = 0})
         
         scene.gameSceneTouchDetected = false
         

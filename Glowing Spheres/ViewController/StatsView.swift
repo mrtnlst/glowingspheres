@@ -136,7 +136,7 @@ class StatsView: UIViewController {
         }
 
         // When coming back from background, restore any touch interaction, if touch was hold while entering background.
-        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
     
     }
     func loadLabels(score: Int, count: Int, combo: Int, games: Int, played: Int) {

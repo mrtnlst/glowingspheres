@@ -55,7 +55,7 @@ class AboutView: UIViewController {
             aboutText.font = UIFont(name: "Futura", size: 24)
         }
         // When coming back from background, restore any touch interaction, if touch was hold while entering background.
-        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     // MARK: followGlowingSpheres Events.
@@ -67,7 +67,7 @@ class AboutView: UIViewController {
     }
     @IBAction func openWebsitePressed(_ sender: AnyObject) {
         view.isUserInteractionEnabled = true
-        let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
+        let options = [UIApplication.OpenExternalURLOptionsKey.universalLinksOnly : false]
         UIApplication.shared.open(websiteURL!, options: options, completionHandler: nil)
 
     }
@@ -82,7 +82,7 @@ class AboutView: UIViewController {
     @IBAction func followOnTwitterPressed(_ sender: AnyObject) {
         view.isUserInteractionEnabled = true
         // If the button is pressed, open Twitter.app if possible, or safari.
-        let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
+        let options = [UIApplication.OpenExternalURLOptionsKey.universalLinksOnly : false]
         UIApplication.shared.open(twitterURLMartin!, options: options, completionHandler: nil)
     }
     
