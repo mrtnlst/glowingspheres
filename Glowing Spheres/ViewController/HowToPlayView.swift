@@ -28,12 +28,15 @@ class HowToPlayView: UIViewController {
     @IBOutlet weak var instructionLabel3: UILabel!
     @IBOutlet weak var backToMenuButton: UIButton!
     
+    var background: BackgroundView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Load Background.
-        self.view.backgroundColor = UIColor(patternImage: UIImage(fullscreenNamed: "BG")!)
-        backToMenuButton.setImage(UIImage(named: "Back"), for: .normal)
+        background = BackgroundView(frame: view.frame)
+        view.addSubview(background)
+        view.sendSubviewToBack(background)
         
         if (self.view.frame.size.width == 320){
             //iPhone 2G, 3G, 3GS, 4, 4s, 5, 5s, 5c

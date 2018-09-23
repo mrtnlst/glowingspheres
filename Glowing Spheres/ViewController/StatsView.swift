@@ -34,6 +34,9 @@ class StatsView: UIViewController {
     override var prefersStatusBarHidden : Bool {
         return true
     }
+    var background: BackgroundView!
+
+    
 // MARK: Button Events.
     @IBAction func BackButtonTouchedUp(_ sender: AnyObject) {
         view.isUserInteractionEnabled = true
@@ -77,7 +80,9 @@ class StatsView: UIViewController {
         highscoreImage.image = UIImage(named: "15khighscore")
 
         // Load Background.
-        self.view.backgroundColor = UIColor(patternImage: UIImage(fullscreenNamed: "BG")!)
+        background = BackgroundView(frame: view.frame)
+        view.addSubview(background)
+        view.sendSubviewToBack(background)
         
         if (self.view.frame.size.width == 320){
             //iPhone 2G, 3G, 3GS, 4, 4s, 5, 5s, 5c

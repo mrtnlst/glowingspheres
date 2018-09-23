@@ -20,6 +20,7 @@
 		5B3C672E1D89A6D300AFCABA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C672D1D89A6D300AFCABA /* GameViewController.swift */; };
 		5B3C67311D89A6D300AFCABA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C672F1D89A6D300AFCABA /* Main.storyboard */; };
 		5B3C67361D89A6D300AFCABA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C67341D89A6D300AFCABA /* LaunchScreen.storyboard */; };
+		5B607CAC2157BC9200D4C353 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B607CAB2157BC9200D4C353 /* BackgroundView.swift */; };
 		5B8D06A51DAA4ADC00DDFE60 /* Matched-1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B8D06A11DAA4ADC00DDFE60 /* Matched-1.wav */; };
 		5B8D06A61DAA4ADC00DDFE60 /* Matched-2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B8D06A21DAA4ADC00DDFE60 /* Matched-2.wav */; };
 		5B8D06A71DAA4ADC00DDFE60 /* Matched-3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B8D06A31DAA4ADC00DDFE60 /* Matched-3.wav */; };
@@ -48,6 +49,7 @@
 		5B3C67301D89A6D300AFCABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B3C67351D89A6D300AFCABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B3C67371D89A6D300AFCABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B607CAB2157BC9200D4C353 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		5B8D06A11DAA4ADC00DDFE60 /* Matched-1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Matched-1.wav"; path = "Sounds/Matched-1.wav"; sourceTree = "<group>"; };
 		5B8D06A21DAA4ADC00DDFE60 /* Matched-2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Matched-2.wav"; path = "Sounds/Matched-2.wav"; sourceTree = "<group>"; };
 		5B8D06A31DAA4ADC00DDFE60 /* Matched-3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Matched-3.wav"; path = "Sounds/Matched-3.wav"; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		5B374A391DAA9CAD00E7B58D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5B607CAB2157BC9200D4C353 /* BackgroundView.swift */,
 				5BFD6D791D92C1CD0023F551 /* Match.swift */,
 				5B2461BA1DB4D4FB002E8A86 /* Swap.swift */,
 				5B9AFFED1D97C62B00A227FD /* Object.swift */,
@@ -227,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B607CAC2157BC9200D4C353 /* BackgroundView.swift in Sources */,
 				5B3C672C1D89A6D300AFCABA /* GameScene.swift in Sources */,
 				5B3C672E1D89A6D300AFCABA /* GameViewController.swift in Sources */,
 				5B3AD6D41D9C76E800E3F709 /* AboutView.swift in Sources */,

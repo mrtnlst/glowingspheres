@@ -31,12 +31,15 @@ class AboutView: UIViewController {
     // Setting up a twitter URL.
     var twitterURLMartin = URL(string: "https://twitter.com/mrtnlst")
     var websiteURL = URL(string: "https://martinlist.org")
-    
+    var background: BackgroundView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
        
         // Load Background.
-        self.view.backgroundColor = UIColor(patternImage: UIImage(fullscreenNamed: "BG")!)
+        background = BackgroundView(frame: view.frame)
+        view.addSubview(background)
+        view.sendSubviewToBack(background)
         
         // Setting up the button image.
         backButton.setImage(UIImage(named: "Back"), for: .normal)

@@ -33,6 +33,7 @@ class SettingsView: UIViewController {
     let savedSoundsSetting = UserDefaults.standard
     var playSoundsSwitchOn : Bool = false
     var savedFasterAnimations: Bool?
+    var background: BackgroundView!
     
     // MARK: Outlets Variables and constants.
     @IBOutlet weak var playSoundsUISwitch: UISwitch!
@@ -61,7 +62,9 @@ class SettingsView: UIViewController {
         playMusicImage.image = UIImage(named: "Play Music")
         
         // Load Background.
-        self.view.backgroundColor = UIColor(patternImage: UIImage(fullscreenNamed: "BG")!)
+        background = BackgroundView(frame: view.frame)
+        view.addSubview(background)
+        view.sendSubviewToBack(background)
         
         // Set the playMusicSwitch for the stored userDefault setting.
         if savedMusicSetting.value(forKey: "savedMusicSetting") != nil{
@@ -91,7 +94,7 @@ class SettingsView: UIViewController {
         // When coming back from background, restore any touch interaction, if touch was hold while entering background.
         NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
-    
+
     @IBAction func playMusicUISwitchToggled(_ sender: AnyObject) {
         // If the user enables music playback.
         if playMusicUISwitch.isOn{
