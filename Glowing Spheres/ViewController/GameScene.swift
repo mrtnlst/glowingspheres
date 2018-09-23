@@ -69,15 +69,15 @@ class GameScene: SKScene {
         
         // Different screen size, different tile size
         switch screenSize {
-        case 736:
-             TileWidth = 50.0
-             TileHeight = 50.0
-        case 667:
-             TileWidth = 45.0
-             TileHeight = 45.0
+        case 736, 896:
+            TileWidth = 50.0
+            TileHeight = 50.0
+        case 667, 812:
+            TileWidth = 45.0
+            TileHeight = 45.0
         default:
-             TileWidth = 40.0
-             TileHeight = 40.0
+            TileWidth = 40.0
+            TileHeight = 40.0
         }
         
         anchorPoint = CGPoint(x: 0.5, y: 0.4)
