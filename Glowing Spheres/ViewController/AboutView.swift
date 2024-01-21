@@ -44,16 +44,14 @@ class AboutView: UIViewController {
         // Setting up the button image.
         backButton.setImage(UIImage(named: "Back"), for: .normal)
         
-        if (self.view.frame.size.width == 320){
+        if view.frame.size.width.isSmallDevice {
             //iPhone 2G, 3G, 3GS, 4, 4s, 5, 5s, 5c
             aboutText.font = UIFont(name: "Futura", size: 18)
             
-        }
-        else if (self.view.frame.size.width == 375){
+        } else if view.frame.size.width.isMediumDevice {
             //iPhone 6
             aboutText.font = UIFont(name: "Futura", size: 20)
-        }
-        else if (self.view.frame.size.width == 414){
+        } else if view.frame.size.width.isBigDevice {
             //iPhone 6 Plus
             aboutText.font = UIFont(name: "Futura", size: 24)
         }

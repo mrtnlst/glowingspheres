@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B01CFAC2B5D9CF000809A7D /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B01CFAB2B5D9CF000809A7D /* AudioPlayer.swift */; };
+		5B01CFAE2B5DA23B00809A7D /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B01CFAD2B5DA23B00809A7D /* Device.swift */; };
 		5B026E111D9EABA50066CB0C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B026E101D9EABA50066CB0C /* Extension.swift */; };
 		5B1C7ED31D8BFF7500E7A88C /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C7ED21D8BFF7500E7A88C /* Array2D.swift */; };
 		5B1C7ED51D8C019100E7A88C /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C7ED41D8C019100E7A88C /* Field.swift */; };
@@ -21,19 +23,17 @@
 		5B3C67311D89A6D300AFCABA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C672F1D89A6D300AFCABA /* Main.storyboard */; };
 		5B3C67361D89A6D300AFCABA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C67341D89A6D300AFCABA /* LaunchScreen.storyboard */; };
 		5B607CAC2157BC9200D4C353 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B607CAB2157BC9200D4C353 /* BackgroundView.swift */; };
-		5B8D06A51DAA4ADC00DDFE60 /* Matched-1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B8D06A11DAA4ADC00DDFE60 /* Matched-1.wav */; };
-		5B8D06A61DAA4ADC00DDFE60 /* Matched-2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B8D06A21DAA4ADC00DDFE60 /* Matched-2.wav */; };
-		5B8D06A71DAA4ADC00DDFE60 /* Matched-3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B8D06A31DAA4ADC00DDFE60 /* Matched-3.wav */; };
-		5B8D06A81DAA4ADC00DDFE60 /* Matched-4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B8D06A41DAA4ADC00DDFE60 /* Matched-4.wav */; };
+		5B8D06A51DAA4ADC00DDFE60 /* Matched.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B8D06A11DAA4ADC00DDFE60 /* Matched.wav */; };
 		5B9AFFEE1D97C62B00A227FD /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9AFFED1D97C62B00A227FD /* Object.swift */; };
 		5BCF7DA31DB7CFB00050B072 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF7DA21DB7CFB00050B072 /* HowToPlayView.swift */; };
-		5BD5C4F41DA7A7BD00B3A210 /* Matched.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 5BD5C4F31DA7A7BD00B3A210 /* Matched.m4a */; };
 		5BFD6D7A1D92C1CD0023F551 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6D791D92C1CD0023F551 /* Match.swift */; };
 		A9C8A7C61E81970100C3758A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9C8A7C51E81970100C3758A /* Assets.xcassets */; };
 		A9E84FF71E5DD67D00AEF973 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E84FF61E5DD67D00AEF973 /* StatsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B01CFAB2B5D9CF000809A7D /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		5B01CFAD2B5DA23B00809A7D /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		5B026E101D9EABA50066CB0C /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		5B1C7ED21D8BFF7500E7A88C /* Array2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array2D.swift; path = Models/Array2D.swift; sourceTree = "<group>"; };
 		5B1C7ED41D8C019100E7A88C /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Field.swift; path = Models/Field.swift; sourceTree = "<group>"; };
@@ -50,13 +50,9 @@
 		5B3C67351D89A6D300AFCABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B3C67371D89A6D300AFCABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B607CAB2157BC9200D4C353 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
-		5B8D06A11DAA4ADC00DDFE60 /* Matched-1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Matched-1.wav"; path = "Sounds/Matched-1.wav"; sourceTree = "<group>"; };
-		5B8D06A21DAA4ADC00DDFE60 /* Matched-2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Matched-2.wav"; path = "Sounds/Matched-2.wav"; sourceTree = "<group>"; };
-		5B8D06A31DAA4ADC00DDFE60 /* Matched-3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Matched-3.wav"; path = "Sounds/Matched-3.wav"; sourceTree = "<group>"; };
-		5B8D06A41DAA4ADC00DDFE60 /* Matched-4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Matched-4.wav"; path = "Sounds/Matched-4.wav"; sourceTree = "<group>"; };
+		5B8D06A11DAA4ADC00DDFE60 /* Matched.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Matched.wav; path = Sounds/Matched.wav; sourceTree = "<group>"; };
 		5B9AFFED1D97C62B00A227FD /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Object.swift; path = Models/Object.swift; sourceTree = "<group>"; };
 		5BCF7DA21DB7CFB00050B072 /* HowToPlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HowToPlayView.swift; path = ViewController/HowToPlayView.swift; sourceTree = "<group>"; };
-		5BD5C4F31DA7A7BD00B3A210 /* Matched.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Matched.m4a; path = Sounds/Matched.m4a; sourceTree = "<group>"; };
 		5BFD6D791D92C1CD0023F551 /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Match.swift; path = Models/Match.swift; sourceTree = "<group>"; };
 		A9C8A7C51E81970100C3758A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9E84FF61E5DD67D00AEF973 /* StatsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatsView.swift; path = ViewController/StatsView.swift; sourceTree = "<group>"; };
@@ -76,11 +72,7 @@
 		5B2040DD1DA686D300F9EB3A /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				5B8D06A11DAA4ADC00DDFE60 /* Matched-1.wav */,
-				5B8D06A21DAA4ADC00DDFE60 /* Matched-2.wav */,
-				5B8D06A31DAA4ADC00DDFE60 /* Matched-3.wav */,
-				5B8D06A41DAA4ADC00DDFE60 /* Matched-4.wav */,
-				5BD5C4F31DA7A7BD00B3A210 /* Matched.m4a */,
+				5B8D06A11DAA4ADC00DDFE60 /* Matched.wav */,
 				5B2040E21DA68C2500F9EB3A /* Theme.m4a */,
 			);
 			name = Sounds;
@@ -136,6 +128,8 @@
 				5B374A381DAA9C7C00E7B58D /* ViewController */,
 				5B3C67251D89A6D300AFCABA /* AppDelegate.swift */,
 				5B026E101D9EABA50066CB0C /* Extension.swift */,
+				5B01CFAB2B5D9CF000809A7D /* AudioPlayer.swift */,
+				5B01CFAD2B5DA23B00809A7D /* Device.swift */,
 				5B3C672F1D89A6D300AFCABA /* Main.storyboard */,
 				A9C8A7C51E81970100C3758A /* Assets.xcassets */,
 				5B2040DD1DA686D300F9EB3A /* Sounds */,
@@ -171,14 +165,15 @@
 		5B3C671A1D89A6D300AFCABA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1510;
 				ORGANIZATIONNAME = "Martin List";
 				TargetAttributes = {
 					5B3C67211D89A6D300AFCABA = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 4853CED358;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1510;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
@@ -190,7 +185,7 @@
 			};
 			buildConfigurationList = 5B3C671D1D89A6D300AFCABA /* Build configuration list for PBXProject "Glowing Spheres" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -211,15 +206,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BD5C4F41DA7A7BD00B3A210 /* Matched.m4a in Resources */,
-				5B8D06A51DAA4ADC00DDFE60 /* Matched-1.wav in Resources */,
+				5B8D06A51DAA4ADC00DDFE60 /* Matched.wav in Resources */,
 				A9C8A7C61E81970100C3758A /* Assets.xcassets in Resources */,
-				5B8D06A61DAA4ADC00DDFE60 /* Matched-2.wav in Resources */,
 				5B2040E31DA68C2500F9EB3A /* Theme.m4a in Resources */,
-				5B8D06A81DAA4ADC00DDFE60 /* Matched-4.wav in Resources */,
 				5B3C67311D89A6D300AFCABA /* Main.storyboard in Resources */,
 				5B3C67361D89A6D300AFCABA /* LaunchScreen.storyboard in Resources */,
-				5B8D06A71DAA4ADC00DDFE60 /* Matched-3.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,11 +224,13 @@
 				5B607CAC2157BC9200D4C353 /* BackgroundView.swift in Sources */,
 				5B3C672C1D89A6D300AFCABA /* GameScene.swift in Sources */,
 				5B3C672E1D89A6D300AFCABA /* GameViewController.swift in Sources */,
+				5B01CFAE2B5DA23B00809A7D /* Device.swift in Sources */,
 				5B3AD6D41D9C76E800E3F709 /* AboutView.swift in Sources */,
 				5B1C7ED51D8C019100E7A88C /* Field.swift in Sources */,
 				5B026E111D9EABA50066CB0C /* Extension.swift in Sources */,
 				5B3C67261D89A6D300AFCABA /* AppDelegate.swift in Sources */,
 				5BCF7DA31DB7CFB00050B072 /* HowToPlayView.swift in Sources */,
+				5B01CFAC2B5D9CF000809A7D /* AudioPlayer.swift in Sources */,
 				5B1C7ED31D8BFF7500E7A88C /* Array2D.swift in Sources */,
 				A9E84FF71E5DD67D00AEF973 /* StatsView.swift in Sources */,
 				5B2F89921D9A9DAF00DEB367 /* MenuView.swift in Sources */,
@@ -294,6 +287,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -306,6 +300,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -320,7 +315,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -353,6 +348,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -365,6 +361,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -373,10 +370,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -387,16 +385,23 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Martin List (7P8BY8528R)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4853CED358;
 				INFOPLIST_FILE = "$(SRCROOT)/Glowing Spheres/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_KEY_CFBundleDisplayName = "Glowing Spheres";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.glowingspheres;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -406,16 +411,23 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Martin List (4853CED358)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4853CED358;
 				INFOPLIST_FILE = "$(SRCROOT)/Glowing Spheres/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_KEY_CFBundleDisplayName = "Glowing Spheres";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.glowingspheres;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

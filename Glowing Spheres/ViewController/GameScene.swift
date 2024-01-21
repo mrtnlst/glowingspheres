@@ -10,23 +10,12 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 
-var disappearSound: AVAudioPlayer?
 let screenSize = UIScreen.main.bounds.height
 
 class GameScene: SKScene {
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder) is not used in this app")
-    }
-    
-    override func didMove(to view: SKView) {
-        
-    }
-    
     private var touchInColumn: Int?
     private var touchInRow: Int?
     private var checkSelectionSprite: Bool?
-    private var soundEffectsCounter: Int = 1
     var field: Field!
    
     // Set TileWidth and TileHight.
@@ -42,8 +31,7 @@ class GameScene: SKScene {
     var selectionSprite = SKSpriteNode()
     
     // Preload sound effect for match.
-    //let matchedSound = SKAction.playSoundFileNamed("Matched.m4a", waitForCompletion: false)
-    
+
     let savedSoundsSetting = UserDefaults.standard
     var playSoundsSwitchOn : Bool = false
     
@@ -97,13 +85,10 @@ class GameScene: SKScene {
         checkSelectionSprite = nil
       
         let _ = SKLabelNode(fontNamed: "Futura-CondensedExtraBold")
-        
-        // Allow simultaneous playback.
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch let error as NSError { print(error)}
+    }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder) is not used in this app")
     }
 
    // Adding sprite image to the objects.
@@ -266,7 +251,7 @@ class GameScene: SKScene {
                 }
             }
         }
-        if playSoundsSwitchOn == true{
+        if playSoundsSwitchOn {
             playSoundeffect()
         }
         run(SKAction.wait(forDuration: 0.3), completion: completion)
@@ -421,25 +406,10 @@ class GameScene: SKScene {
         }
     }
 
-    func playSoundeffect(){
-        let path = Bundle.main.path(forResource: "Matched-\(soundEffectsCounter).wav", ofType:nil)!
-        let url = URL(fileURLWithPath: path)
-        
-        do {
-            let sound = try AVAudioPlayer(contentsOf: url)
-            disappearSound = sound
-            sound.volume = 1.0
-            sound.play()
-            
-            soundEffectsCounter += 1
-            if soundEffectsCounter > 4 {
-                soundEffectsCounter = 1
-            }
-        } catch {
-            print("couldn't load file")
-        }
-        
+    func playSoundeffect() {
+        AudioPlayer.main.playSoundEffect()
     }
+
     func trySwap(horizontal horzDelta: Int, vertical vertDelta: Int) {
         // 1
         let toColumn = touchInColumn! + horzDelta

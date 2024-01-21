@@ -84,7 +84,7 @@ class StatsView: UIViewController {
         view.addSubview(background)
         view.sendSubviewToBack(background)
         
-        if (self.view.frame.size.width == 320){
+        if view.frame.size.width.isSmallDevice {
             //iPhone 2G, 3G, 3GS, 4, 4s, 5, 5s, 5c
             totalCount.font = UIFont(name: "Futura-Bold", size: 18)
             totalCountLabel.font = UIFont(name: "Futura", size: 18)
@@ -102,8 +102,7 @@ class StatsView: UIViewController {
             gamesPlayedLabel.font = UIFont(name: "Futura", size: 18)
 
 
-        }
-        else if (self.view.frame.size.width == 375){
+        } else if view.frame.size.width.isMediumDevice {
             //iPhone 6
             totalCount.font = UIFont(name: "Futura-Bold", size: 20)
             totalCountLabel.font = UIFont(name: "Futura", size: 20)
@@ -120,8 +119,7 @@ class StatsView: UIViewController {
             gamesPlayed.font = UIFont(name: "Futura-Bold", size: 20)
             gamesPlayedLabel.font = UIFont(name: "Futura", size: 20)
 
-        }
-        else if (self.view.frame.size.width == 414){
+        } else if view.frame.size.width.isBigDevice {
             //iPhone 6 Plus
             totalCount.font = UIFont(name: "Futura-Bold", size: 24)
             totalCountLabel.font = UIFont(name: "Futura", size: 24)

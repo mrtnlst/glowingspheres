@@ -9,32 +9,28 @@
 import UIKit
 import AVFoundation
 
-var themeSong: AVAudioPlayer?
-
 class SettingsView: UIViewController {
 
     override var prefersStatusBarHidden : Bool {
         return true
     }
-    
+
     override var shouldAutorotate : Bool {
         return true
     }
-    
+
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         return [UIInterfaceOrientationMask.portrait, UIInterfaceOrientationMask.portraitUpsideDown]
     }
-    
+
     // MARK:  Variables and constants.
     var product_id: String?
     var images: [UIImage] = []
-    let savedMusicSetting = UserDefaults.standard
-    var playMusicSwitchOn : Bool = false
     let savedSoundsSetting = UserDefaults.standard
     var playSoundsSwitchOn : Bool = false
     var savedFasterAnimations: Bool?
     var background: BackgroundView!
-    
+
     // MARK: Outlets Variables and constants.
     @IBOutlet weak var playSoundsUISwitch: UISwitch!
     @IBOutlet weak var playMusicUISwitch: UISwitch!
@@ -46,13 +42,6 @@ class SettingsView: UIViewController {
     @IBOutlet weak var resetStatsButton: UIButton!
 
     override func viewDidLoad() {
-        // Allow simultaneous playback.
-        super.viewDidLoad()
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch let error as NSError { print(error)}
-       
         // Set the images for the buttons.
         backButton.setImage(UIImage(named: "Back"), for: .normal)
         resetHighscore.setImage(UIImage(named: "ResetHighscore"), for: .normal)
@@ -60,23 +49,21 @@ class SettingsView: UIViewController {
 
         playSoundsImage.image = UIImage(named: "Play Sounds")
         playMusicImage.image = UIImage(named: "Play Music")
-        
+
         // Load Background.
         background = BackgroundView(frame: view.frame)
         view.addSubview(background)
         view.sendSubviewToBack(background)
-        
+
         // Set the playMusicSwitch for the stored userDefault setting.
-        if savedMusicSetting.value(forKey: "savedMusicSetting") != nil{
-            playMusicSwitchOn = savedMusicSetting.value(forKey: "savedMusicSetting")  as! Bool
-            playMusicUISwitch.setOn(playMusicSwitchOn, animated: false)
+        if let value = UserDefaults.standard.value(forKey: "savedMusicSetting") as? Bool {
+            playMusicUISwitch.setOn(value, animated: false)
         } else {
             // If there is no defaultUser setting available, set it true.
-            playMusicSwitchOn = true
-            playMusicUISwitch.setOn(playMusicSwitchOn, animated: false)
+            playMusicUISwitch.setOn(true, animated: false)
         }
         if savedSoundsSetting.value(forKey: "savedSoundsSetting") != nil{
-            playSoundsSwitchOn = savedMusicSetting.value(forKey: "savedSoundsSetting")  as! Bool
+            playSoundsSwitchOn = UserDefaults.standard.value(forKey: "savedSoundsSetting")  as! Bool
             playSoundsUISwitch.setOn(playSoundsSwitchOn, animated: false)
             print("Loading Setting")
         } else {
@@ -86,43 +73,33 @@ class SettingsView: UIViewController {
         }
 
         // Initialize in-app purchase.
-       if (UserDefaults.standard.bool(forKey: "purchased")){
+        if (UserDefaults.standard.bool(forKey: "purchased")){
             supportAnimation()
-            } else {
+        } else {
             supporterLabel.isHidden = true
         }
+
         // When coming back from background, restore any touch interaction, if touch was hold while entering background.
         NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.wakingUpFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
 
     @IBAction func playMusicUISwitchToggled(_ sender: AnyObject) {
         // If the user enables music playback.
-        if playMusicUISwitch.isOn{
+        if playMusicUISwitch.isOn {
             // Set the new userDefault setting.
-            playMusicSwitchOn = true
-            savedMusicSetting.set(playMusicSwitchOn, forKey: "savedMusicSetting")
-            
+            UserDefaults.standard.set(true, forKey: "savedMusicSetting")
+
             // Only start playing if there is no playback.
-            if themeSong == nil {
-                playBackgroundMusic()
-                print ("Music started.")
-            } else {
-                    print("Music already playing.")
-            }
+            AudioPlayer.main.playThemeSong()
         }
-       
+
         // If the user disables music playback.
-        if playMusicUISwitch.isOn == false{
-            playMusicSwitchOn = false
-            savedMusicSetting.set(playMusicSwitchOn, forKey: "savedMusicSetting")
-            // Only stop, if a song is playing.
-            if themeSong != nil {
-                //themeSong?.stop()
-                themeSong = nil
-            }
+        if !playMusicUISwitch.isOn {
+            UserDefaults.standard.set(false, forKey: "savedMusicSetting")
+            AudioPlayer.main.stopThemeSong()
         }
     }
-    
+
     @IBAction func playSoundsUISwitchToggled(_ sender: AnyObject) {
         if playSoundsUISwitch.isOn{
             playSoundsSwitchOn = true
@@ -131,7 +108,7 @@ class SettingsView: UIViewController {
         if playSoundsUISwitch.isOn == false{
             playSoundsSwitchOn = false
             savedSoundsSetting.set(playSoundsSwitchOn, forKey: "savedSoundsSetting")
-    }
+        }
     }
     // MARK: backButton Events.
     @IBAction func BackButtonTouchedUp(_ sender: AnyObject) {
@@ -143,7 +120,7 @@ class SettingsView: UIViewController {
     @IBAction func BackButtonMoved(_ sender: AnyObject) {
         view.isUserInteractionEnabled = true
     }
-    
+
     // MARK: resetHighscore Events.
     @IBAction func reseHighscoreButtonTouchedDown(_ sender: AnyObject) {
         view.isUserInteractionEnabled = false
@@ -152,17 +129,17 @@ class SettingsView: UIViewController {
         view.isUserInteractionEnabled = true
     }
     @IBAction func resetHighscoreButtonPressed(_ sender: AnyObject) {
-        
+
         view.isUserInteractionEnabled = true
         // Initiating an alertbox to confirm highscore reset.
         var title: String
         var message: String
-        
+
         title = "Reset Highscore"
         message = "This cannot be undone!"
-        
+
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        
+
         // Actions for alertbox.
         alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
             let savedScore = UserDefaults.standard
@@ -172,35 +149,20 @@ class SettingsView: UIViewController {
 
         self.present(alert, animated: true, completion: nil)
     }
-    
-    func playBackgroundMusic(){
-        let path = Bundle.main.path(forResource: "Theme.m4a", ofType:nil)!
-        let url = URL(fileURLWithPath: path)
-        
-        do {
-            let sound = try AVAudioPlayer(contentsOf: url)
-            themeSong = sound
-            sound.volume = 0.1
-            sound.play()
-            sound.numberOfLoops = -1
-        } catch {
-            print("couldn't load file")
-        }
-        
-    }
-// MARK: Reset Stats Events:
-    
+
+    // MARK: Reset Stats Events:
+
     @IBAction func resetStatsTouchUp(_ sender: Any) {
         view.isUserInteractionEnabled = true
-        
+
         var title: String
         var message: String
-        
+
         title = "Reset Stats"
         message = "This cannot be undone!"
-        
+
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        
+
         // Actions for alertbox.
         alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
             let savedScore = UserDefaults.standard
@@ -219,29 +181,29 @@ class SettingsView: UIViewController {
             savedScore.set(false, forKey: "Swaps-Achievement")
         })
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
+
         self.present(alert, animated: true, completion: nil)
 
     }
-    
+
     @IBAction func resetStatsTouchDown(_ sender: Any) {
         view.isUserInteractionEnabled = false
     }
     @IBAction func resetStatsMoved(_ sender: Any) {
         view.isUserInteractionEnabled = true
     }
-    
+
     func supportAnimation() {
         // Animation for supporterst of the app.
         for i in 1...48 {
-        images.append(UIImage(named: "supporter-\(i)")!)
+            images.append(UIImage(named: "supporter-\(i)")!)
         }
         supporterLabel.animationImages = images
         supporterLabel.animationDuration = 4.0
         supporterLabel.startAnimating()
 
     }
-   
+
     @objc func wakingUpFromBackground(){
         view.isUserInteractionEnabled = true
         resetHighscore.isUserInteractionEnabled = true

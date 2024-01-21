@@ -37,32 +37,19 @@ class MenuView: UIViewController {
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
     @IBOutlet weak var statsButton: UIButton!
-    
-    // Setting up music playback (if UserSetting is enabled).
-    let savedMusicSetting = UserDefaults.standard
-    var playMusicSwitchOn : Bool = false
-    let whatIsNewSetting = UserDefaults.standard
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Enable background music, if the userDefault setting is on.
         settingsScene = SettingsView()
-        if savedMusicSetting.value(forKey: "savedMusicSetting") != nil{
-             playMusicSwitchOn = savedMusicSetting.value(forKey: "savedMusicSetting")  as! Bool
-            // Check if the setting stored is true.
-            if playMusicSwitchOn == true {
-                // Only start playback, if the song is not playing.
-                if themeSong == nil {
-                settingsScene.playBackgroundMusic()
-                }
-            }
-        } else {
-            playMusicSwitchOn = true
-            if themeSong == nil {
-                settingsScene.playBackgroundMusic()
-            }
+
+        let value = UserDefaults.standard.value(forKey: "savedMusicSetting") as? Bool
+        if let value, value {
+            AudioPlayer.main.playThemeSong()
+        } else if value == nil {
+            AudioPlayer.main.playThemeSong()
         }
-        
+
         playButton.setImage(UIImage(named: "Play"), for: .normal)
         aboutButton.setImage(UIImage(named: "About"), for: .normal)
         settingsButton.setImage(UIImage(named: "Settings"), for: .normal)

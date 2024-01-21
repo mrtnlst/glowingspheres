@@ -38,19 +38,16 @@ class HowToPlayView: UIViewController {
         view.addSubview(background)
         view.sendSubviewToBack(background)
         
-        if (self.view.frame.size.width == 320){
+        if view.frame.size.width.isSmallDevice {
             //iPhone 2G, 3G, 3GS, 4, 4s, 5, 5s, 5c
             instructionLabel1.font = UIFont(name: "Futura", size: 16)
-            
-        }
-        else if (self.view.frame.size.width == 375){
+        } else if view.frame.size.width.isMediumDevice {
             //iPhone 6
             instructionLabel1.font = UIFont(name: "Futura", size: 20)
             instructionLabel2.font = UIFont(name: "Futura", size: 20)
             instructionLabel3.font = UIFont(name: "Futura", size: 20)
 
-        }
-        else if (self.view.frame.size.width == 414){
+        } else if view.frame.size.width.isBigDevice {
             //iPhone 6 Plus
             instructionLabel1.font = UIFont(name: "Futura", size: 22)
             instructionLabel2.font = UIFont(name: "Futura", size: 22)

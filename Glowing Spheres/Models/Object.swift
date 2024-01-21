@@ -41,15 +41,16 @@ class Object: CustomStringConvertible, Hashable {
     var description: String {
         return "type:\(objectType) position:(\(column),\(row))"
     }
-    var hashValue: Int {
-        return row*10 + column
-    }
     
     init(column: Int, row: Int, objectType: ObjectType) {
         self.column = column
         self.row = row
         self.objectType = objectType
         self.deleteStatus = false
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(row * 10 + column)
     }
 }
 

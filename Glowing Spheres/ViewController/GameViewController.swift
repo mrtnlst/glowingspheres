@@ -93,19 +93,17 @@ class GameViewController: UIViewController {
         scene.inputHandler = handleUserInput
         scene.swipeHandler = handleSwipe
         
-        if (self.view.frame.size.width == 320){
+        if view.frame.size.width.isSmallDevice {
             //iPhone 2G, 3G, 3GS, 4, 4s, 5, 5s, 5c
             scoreLabel.font = UIFont(name: "Futura-Bold", size: 16)
             swapLabel.font = UIFont(name: "Futura-Bold", size: 16)
             highscoreLabel.font = UIFont(name: "Futura-Bold", size: 16)
-        }
-        else if (self.view.frame.size.width == 375){
+        } else if view.frame.size.width.isMediumDevice {
             //iPhone 6
             scoreLabel.font = UIFont(name: "Futura-Bold", size: 18)
             swapLabel.font = UIFont(name: "Futura-Bold", size: 18)
             highscoreLabel.font = UIFont(name: "Futura-Bold", size: 18)
-        }
-        else if (self.view.frame.size.width == 414){
+        } else if view.frame.size.width.isBigDevice {
             //iPhone 6 Plus
             scoreLabel.font = UIFont(name: "Futura-Bold", size: 20)
             swapLabel.font = UIFont(name: "Futura-Bold", size: 20)
@@ -298,12 +296,8 @@ class GameViewController: UIViewController {
         }
     }
 
-    func handleUserInput(_ input: Bool){
-        if input == true {
-            newGameButton.isUserInteractionEnabled = false
-        } else {
-             newGameButton.isUserInteractionEnabled = true
-        }
+    func handleUserInput(_ input: Bool) {
+        newGameButton.isUserInteractionEnabled = !input
     }
 
     func handleTouch(_ object: Object){
@@ -349,10 +343,7 @@ class GameViewController: UIViewController {
             
             // Reset deleteStateCount.
             field.deleteStateCount = 0
-            
-
-        }
-        else {
+        } else {
             // If detectMatches finds no matches, reset deleteStateCount and enable user interaction.
             print(field.deleteStateCount)
             field.deleteStateCount = 0

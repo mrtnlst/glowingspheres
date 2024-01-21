@@ -16,13 +16,13 @@ class Match: Hashable {
         objects.append(object)
     }
 
-    var hashValue: Int {
-        return objects.reduce (0) { $0.hashValue ^ $1.hashValue }
-    }
     var length: Int {
         return objects.count
     }
     
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(objects.reduce (0) { $0.hashValue ^ $1.hashValue })
+    }
 }
 
 func ==(lhs: Match, rhs: Match) -> Bool {
